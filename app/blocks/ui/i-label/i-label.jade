@@ -1,0 +1,4 @@
+mixin i-label(valTag)
+	- valTag = valTag || 'span'
+	+b(valTag).i-label&attributes(attributes)
+		block

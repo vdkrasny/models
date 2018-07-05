@@ -1,0 +1,89 @@
+.card-media
+	@extends $ex-block-box-shadow
+
+	display block
+
+	&:hover
+	.is-current &
+		.card-media
+
+			&__link
+				overflow visible
+				height 45px
+
+			&__card-profile
+				display block
+
+	&__body
+		position relative
+		display flex
+		flex-direction column
+		justify-content flex-end
+		min-height 270px
+		background-repeat no-repeat
+		background-position center
+		background-size cover
+
+		&:before
+			position-center(0)
+			display block
+			pointer-events none
+			content ''
+			background alpha(#ffffff, 60%)
+
+	&__inner
+		position relative
+		z-index 1
+		margin-top auto
+		padding 10px 20px
+
+	&__title
+		margin-bottom 10px
+		padding 5px 15px
+		display inline-block
+		font-size 16px
+		line-height 20px
+		color #ffffff
+		background-color $color-accent
+
+	&__date
+		margin-bottom 10px
+		display block
+		font-size 12px
+		font-weight 300
+		color $color-accent
+
+	&__content
+		font-size 12px
+		font-weight 300
+
+	&__link
+		position relative
+		display flex
+		align-items center
+		justify-content flex-end
+		overflow hidden
+		height 0
+		font-size 12px
+		font-weight 300
+		cursor pointer
+		color #ffffff
+		background-color $color-accent
+
+		transition 100ms ease
+		transition-property height, background
+
+		&:after
+			display block
+			width 45px
+			height 100%
+			content ''
+			background url(../images/icon_card-media-link-arrow-right.png) no-repeat center
+
+		&:hover
+		&:focus
+			background-color darken($color-accent, 15%)
+
+	&__card-profile
+		margin-top 15px
+		display none

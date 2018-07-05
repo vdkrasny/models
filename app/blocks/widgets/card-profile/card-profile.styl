@@ -1,0 +1,78 @@
+.card-profile
+	position relative
+	display flex
+	align-items center
+	transition 150ms ease
+	transition-property box-shadow
+
+	&_lg
+		margin-y 16px
+
+		.card-profile__avatar
+			margin-right 25px
+			width 120px
+			min-width 120px
+			height 120px
+
+		.card-profile__rating
+			margin-top 35px
+
+	&_md
+		margin-y 8px
+
+		.card-profile__avatar
+			width 65px
+			min-width 65px
+			height 65px
+
+	&_sm
+		margin-y 4px
+
+		.card-profile__avatar
+			width 50px
+			min-width 50px
+			height 50px
+
+	&_hover:hover
+		background-color #ffffff
+		box-shadow 0 0 0 7px #ffffff, 0 0 0 14px #ff002a
+
+		.card-profile__nav-line
+			right -14px
+			left -14px
+			pointer-events auto
+			opacity 1
+			
+	&__avatar
+		margin-right 15px
+
+	&__nav-line
+		position absolute
+		z-index 5
+		top 100%
+		right 0
+		left 0
+		display flex
+		justify-content flex-end
+		pointer-events none
+		background-color #ff002a
+		opacity 0
+		transition 150ms ease
+		transition-property right, left, opacity
+
++media($breakpoints[xs], 'max')
+
+	.card-profile
+		align-items flex-start
+
+		&_lg
+			margin-y 8px
+
+			.card-profile__avatar
+				margin-right 15px
+				width 80px
+				min-width 80px
+				height 80px
+
+			.card-profile__rating
+				margin-top 20px

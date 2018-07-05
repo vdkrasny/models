@@ -1,0 +1,7 @@
+mixin widget-slider()
+	+b.widget-slider&attributes(attributes)
+		+e.controls
+			+e('button').control-prev preview
+			+e('button').control-next next
+		+e.body
+			block

@@ -1,0 +1,124 @@
+include /../node_modules/bemto.jade/bemto
+include /../node_modules/jade-injected/jade-injected
+include ../../include/scripts/scripts
+
+include ../../../styles/typography/typography
+
+include ../../ui/guide-control/guide-control
+
+include ../../ui/grid-actions/grid-actions
+include ../../ui/field/field
+include ../../ui/switcher-choice/switcher-choice
+include ../../ui/rating/rating
+include ../../ui/box-close/box-close
+
+include ../../widgets/guide/guide
+include ../../widgets/footer/footer
+include ../../widgets/header/header
+
+doctype html
+html(lang='ru')
+	include ../../include/head/head
+	body
+
+		block fixed
+
+		+b.page
+			+e.board
+				+e.board-section
+					+guide-control
+			+e.guide
+				// +e('i').guide-close
+				+guide
+			+header
+			+e.content
+				.container
+					.grid
+						.col-24
+							+b.widget
+								+e.inner
+									.grid.grid_items-center
+										.col-24.col-xs-auto
+											+typography()._size_xs.__title=pageTitle
+									.grid
+										.col-24.col-lg-7
+											+b.card-profile._lg
+												+avatar('img_avatar.png').__avatar
+													+e.confirmed
+												+b.user-info
+													+e('ul').list
+														+e('li').list-item
+															+typography()._size_xl._weight_light Иванов Иван Иванович
+														+e('li').list-item
+															+rating()._up._lg.card-profile__rating
+																+icon().rating-star-md
+										.col-24.col-lg-17
+											.grid.grid_items-center
+												.col-24.col-lg-19.col-offset-lg-5
+													+switcher-choice()
+														+e('span').styled(role='checkbox')
+															+e('span').styled-icon
+														+e('span').side-left Все контакты
+														+e('span').side-right Только закладки
+												.col-24.col-lg-19.col-offset-lg-5
+													.grid
+														.col-24.col-md-8
+															select
+																option Добавить фильтр
+														.col-24.col-md-16
+															+grid-actions
+																li.col-auto
+																	+box-close()
+																		+btn()._default.btn_size_md
+																			+e('span').label Модель
+																li.col-auto
+																	+box-close()
+																		+btn()._default.btn_size_md
+																			+e('span').label Актер
+																li.col-auto
+																	+box-close()
+																		+btn()._default.btn_size_md
+																			+e('span').label Видеооператор
+																li.col-auto
+																	+box-close()
+																		+btn()._default.btn_size_md
+																			+e('span').label Агент
+																li.col-auto
+																	+box-close()
+																		+btn()._default.btn_size_md
+																			+e('span').label Визажист
+												.col-24.col-lg-5
+													+switcher-choice()
+														+e('span').styled(role='checkbox')
+															+e('span').styled-icon
+														+e('span').side-left Аватарки
+														+e('span').side-right Фото
+												.col-24.col-lg-19
+													+field('Поиск')._input._default
+														+e.controls
+															+btn()._clear._square._size_sm
+																+icon.search.__icon Поиск
+						.col-24
+							+b.widget
+								+e.inner
+									+grid-actions
+										li.col-24.col-sm-auto
+											+typography()._size Сортировка по:
+										li.col-auto
+											select
+												option Алфавит
+										li.col-auto
+											select
+												option Рейтинг
+										li.col-auto
+											select
+												option Последнее сообщение
+										li.col-auto
+											select
+												option Тип
+								block content
+
+			+footer
+
+		+scripts(['app.min.js'])
+		block script

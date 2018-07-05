@@ -1,0 +1,49 @@
+include ../../ui/link/link
+include ../../ui/icon/icon
+include ../../ui/badge/badge
+include ../../ui/btn/btn
+
+mixin nav-pages()
+	+b('ul').nav-pages&attributes(attributes)
+		+e('li').item#profile
+			+link('#link')._hidden.__link Профиль
+			+icon().__icon
+			+e('span').label Профиль
+			+btn('a', '#btn')._default._size_sm.__btn
+				+e('span').label Редактировать
+		+e('li').item#rating
+			+link('#link')._hidden.__link Рейтинг
+			+icon().__icon
+			+e('span').label Рейтинг
+		+e('li').item#contacts
+			+link('#link')._hidden.__link Контакты
+			+icon().__icon
+			+e('span').label Контакты
+		+e('li').item#chat
+			+link('#link')._hidden.__link Чат
+			+icon().__icon
+			+e('span').label Чат
+			+badge().__badge 7
+		+e('li').item#projects
+			+link('#link')._hidden.__link Проекты
+			+icon().__icon
+			+e('span').label Проекты
+			+btn('a', '#btn')._default._square._size_sm.__btn
+				+e('span').icon Добавить
+					img(src='./assets/images/icon_btn-plus.png')
+		+e('li').item#casting
+			+link('#link')._hidden.__link Кастинг
+			+icon().__icon
+			+e('span').label Кастинг
+		+e('li').item#purse
+			+link('#link')._hidden.__link Кошелек
+			+icon().__icon
+			+e('span').label Кошелек
+		+e('li').item#jury
+			+link('#link')._hidden.__link Жюри
+			+icon().__icon
+			+e('span').label Жюри
+		+e('li').item#help
+			+link('#link')._hidden.__link Помощь
+			+icon().__icon
+			+e('span').label Помощь

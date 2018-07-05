@@ -1,0 +1,7 @@
+mixin field(valPlh, valTag)
+	- valTag = valTag || 'input'
+
+	+b.field&attributes(attributes)
+		+e.inner
+			+e(valTag).entry(placeholder=valPlh type='text')
+		block

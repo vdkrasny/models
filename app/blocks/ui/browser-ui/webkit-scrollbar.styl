@@ -1,0 +1,24 @@
+track-color = #f2f6fb
+track-color-hover = #eaeef3
+
+thumb-color = $color-default
+thumb-color-hover = $color-accent
+
++media($breakpoints[md])
+	::-webkit-scrollbar
+		width 8px
+		height 8px
+
+		&-track
+			background-color track-color
+
+			&:hover
+				background-color track-color-hover
+
+		&-thumb
+			background-color thumb-color
+			border none
+
+			&:hover
+				cursor pointer
+				background-color thumb-color-hover

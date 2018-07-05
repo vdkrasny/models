@@ -1,0 +1,47 @@
+.audio-file
+	position relative
+	padding-x 25px
+	display flex
+	align-items center
+	justify-content center
+	min-width 240px
+	height 38px
+	cursor pointer
+	color #ffffff
+	background-color #b0bacc
+	border-radius 5px
+
+	& > * + *
+		margin-left 10px
+
+	&__name
+		display block
+		overflow hidden
+		min-width 25%
+		max-width 25%
+		font-size 14px
+		font-weight 300
+		white-space nowrap
+		text-overflow ellipsis
+
+	&__track
+		position relative
+		margin-y 5px
+		display block
+		overflow hidden
+		width 100%
+		height 4px
+		cursor pointer
+		background-color #8d97a9
+		border-radius 4px
+		transition background-color 300ms ease
+
+		&:hover
+			background-color darken(#8d97a9, 10%)
+
+	&__track-fill
+		position absolute
+		left 0
+		width 0
+		height 100%
+		background #fff

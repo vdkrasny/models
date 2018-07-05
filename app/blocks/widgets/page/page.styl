@@ -1,0 +1,95 @@
+$page-guide-width = 320px
+$page-board-width = 50px
+$page-board-height = 50px
+
+.page
+	display block
+	background-image url(../images/bg_pages.png)
+	background-repeat no-repeat
+	background-position top right
+
+	&.is-guide-open
+
+		.page__guide
+			transform translateX(0)
+
+	&__board
+		position fixed
+		z-index 100
+		top 0
+		left 0
+		display flex
+		align-items center
+		justify-content space-between
+		overflow hidden
+		background-color #f2f6fb
+
+		&-section
+			display flex
+			align-items center
+			justify-content space-between
+
+	&__guide
+		position fixed
+		z-index 99
+		top 0
+		left 0
+		width $page-guide-width
+		transition 300ms ease
+		transition-property transform
+		transform translateX(-100%)
+
+	&__guide-close
+		position absolute
+		z-index 4
+		top 5px
+		left 5px
+		display block
+		width 20px
+		height 20px
+		cursor pointer
+		content ''
+		background url('../images/icon_page-guide-close.png') no-repeat center
+
+	&__content
+		display block
+		transition 300ms ease
+		transition-property margin
+
++media($breakpoints[xxl])
+	.page
+
+		&.is-guide-open
+
+			.page__content
+				margin-left $page-guide-width
+
++media($breakpoints[sm])
+	.page
+		margin-left $page-board-width
+
+		&__board
+			bottom 0
+			padding-y 18px
+			flex-direction column
+			width $page-board-width
+			height 100vh
+
+			&-section
+				flex-direction column
+
+		&__guide
+			left $page-board-width
+
++media($breakpoints[sm], 'max')
+	.page
+		margin-top $page-board-height
+
+		&__board
+			padding-x 15px
+			width 100vw
+			height $page-board-height
+
+
+		.guide
+			padding-top $page-board-height

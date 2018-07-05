@@ -1,0 +1,70 @@
+.btn
+	position relative
+	padding 0
+	display flex
+	flex-wrap nowrap
+	align-items center
+	justify-content center
+	overflow hidden
+	line-height 1.5em
+	text-align center
+	text-decoration none
+	cursor pointer
+
+	user-select none
+	color inherit
+	background none
+	border none
+	transition 300ms ease
+
+	&__label
+		order 1
+		overflow hidden
+		max-width 100%
+		line-height 1.1
+		white-space nowrap
+		text-overflow ellipsis
+
+	&__icon
+		font-size 0
+		line-height 0
+
+	&_icon-top
+		flex-direction column
+		justify-content center
+
+		& > * + *
+			margin-top 7px
+
+		& > .btn__icon
+			order 0
+
+	&_icon-right
+
+		& > .btn__icon
+			margin-left 15px
+			order 2
+
+	&_icon-left
+
+		& > .btn__icon
+			margin-right 15px
+			order 0
+
+	&.disabled
+		cursor default
+		pointer-events none
+
+		&:after
+			position-center(1)
+			display block
+			content ''
+			background alpha(#ffffff, 60%)
+
+	&:disabled
+		@extends .btn.disabled
+
+.input-for-btn
+	position absolute
+	z-index -1
+	opacity 0

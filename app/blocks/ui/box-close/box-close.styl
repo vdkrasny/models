@@ -1,0 +1,50 @@
+.box-close
+	position relative
+
+	&_sm
+
+		.box-close__btn
+			right 6px
+
+			&:before
+				transform scale(.75)
+
+	&_xs
+
+		.box-close__btn
+			top -8px
+			right -5px
+			width 10px
+			height @width
+
+			&:before
+				transform scale(.5)
+
+	&__btn
+		position absolute
+		z-index 1
+		top -8px
+		right 10px
+		overflow hidden
+		width 15px
+		height @width
+		cursor pointer
+		background-color $color-accent
+		background-repeat no-repeat
+		background-position center
+		border-radius 50%
+		transition background-color 150ms ease
+
+		&:before
+			display block
+			width 100%
+			height 100%
+			content ''
+			background url(../images/icon_box-close.png) no-repeat center
+			transition opacity 300ms ease
+
+		&:hover
+			background-color darken($color-accent, 10%)
+
+			&:before
+				opacity .9

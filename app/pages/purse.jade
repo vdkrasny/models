@@ -1,0 +1,163 @@
+extends ../blocks/layout/default/default
+
+include ../styles/typography/typography
+
+include ../blocks/ui/grid-actions/grid-actions
+include ../blocks/ui/field/field
+include ../blocks/ui/rating/rating
+
+include ../blocks/widgets/paid-option/paid-option
+include ../blocks/widgets/modal-form/modal-form
+include ../blocks/include/remodal/remodal
+
+block head
+	- var pageTitle = 'Кошелек';
+
+block content
+	+b.create-casting
+		.container
+			.grid
+				.col-24.col-lg-9
+					+b.widget._fill
+						+e.inner
+							.grid.grid_items-center.grid_content-between
+								.col-auto
+									+typography()._size_xl.__title=pageTitle
+							.grid.grid_items-center
+								.col-24
+									+b.card-profile._lg
+										+avatar('https://via.placeholder.com/120x120').__avatar
+										+b.user-info
+											+e('ul').list
+												+e('li').list-item Иванов Иван Иванович
+												+e('li').list-item
+													+rating()._up._lg.card-profile__rating
+														+icon().rating-star-md
+							.grid.grid_batch-plan
+								.col.col-xl-8
+									+b.batch-plan
+										+e('span').title текущий баланс
+										+e.inner
+											+e.inner-content
+												+e('span').price 10 000
+													+e('span').price-cy руб.
+											+e.inner-footer
+												+btn('a')._icon-left._agree._size_lg._fill.__btn
+													+e('img').icon(src='./assets/images/icon_btn-money.png')
+													+e('span').label ПОПОЛНИТЬ
+								.col.col-xl-8
+									+b.batch-plan
+										+e('span').title текущий баланс
+										+e.inner
+											+e.inner-content
+												+e('span').quantity 100
+													+e('span').quantity-sr проектов
+											+e.inner-footer
+												+e('span').accent осталось 20 проектов
+								.col.col-xl-8
+									+b.batch-plan
+										+e('span').title текущий баланс
+										+e.inner
+											+e.inner-content
+												+e('span').quantity 1
+													+e('span').quantity-sr проект в день
+											+e.inner-footer
+												+e('span').accent осталось 20 проектов
+				.col-24.col-lg-15
+					+b.widget._fill
+						+e.inner
+							.grid.grid_items-center.grid_content-between
+								.col-auto
+									+typography()._size_xs.__title платные опции
+							.grid
+								- for(var i = 0; i < 4; i++)
+									.col-24.col-md-12
+										+paid-option
+				.col-24
+					+b.widget
+						+e.inner
+							.grid.grid_items-center.grid_content-between
+								.col-auto
+									+typography()._size_xs.__title Пакетные плланы
+							.grid.grid_batch-plan
+								- for(var i = 0; i < 3; i++)
+									.col.col-lg-auto
+										+b.batch-plan
+											+e('span').title пакетный план 1
+											+e.inner
+												+e.inner-content
+													+e('ul').list
+														+e('li').list-item 1 проект в день
+														+e('li').list-item
+															+e('span').price 500
+																+e('span').price-cy руб.
+														+e('li').list-item
+															+e('span').bold на месяц
+														+e('li').list-item
+															+e('span').accent 91 руб. за 1 проект
+												+e.inner-footer
+													+btn('a')._icon-left._agree._size_lg._fill.__btn
+														+e('img').icon(src='./assets/images/icon_btn-money.png')
+														+e('span').label КУПИТЬ ПЛАН
+								- for(var i = 0; i < 3; i++)
+									.col.col-lg-auto
+										+b.batch-plan._dark
+											+e('span').title пакетный план 1
+											+e.inner
+												+e.inner-content
+													+e('ul').list
+														+e('li').list-item 1 проект в день
+														+e('li').list-item
+															+e('span').price 500
+																+e('span').price-cy руб.
+														+e('li').list-item
+															+e('span').bold на месяц
+														+e('li').list-item
+															+e('span').accent 91 руб. за 1 проект
+												+e.inner-footer
+													+btn('a')._icon-left._agree._size_lg._fill.__btn
+														+e('img').icon(src='./assets/images/icon_btn-money.png')
+														+e('span').label КУПИТЬ ПЛАН
+block modals
+	+remodal('pop1')
+		+modal-form._md
+			+e.header
+				+e('span').title пополнение счета
+			+e.inner
+				.grid
+					.col-24
+						.grid.grid_items-center
+							.col-24.col-xs-10
+								+typography()._size_xs Пополнить на сумму
+							.col-20.col-xs-10
+								+field('1000')._input._default
+							.col-4
+								+typography()._size_xs._color_neutral руб.
+					.col-24
+						.grid.grid_content-between
+							.col-24.col-xs-auto
+								+btn('a')._icon-left._clear._size_lg
+									+e('img').icon(src='./assets/images/icon_btn-cancel.png')
+									+e('span').label ОТМЕНИТЬ
+							.col-24.col-xs-auto
+								+btn('a')._icon-left._agree._size_lg
+									+e('img').icon(src='./assets/images/icon_btn-money.png')
+									+e('span').label ПЕРЕЙТИ К ОПЛАТЕ
+	+remodal('pop2')
+		+modal-form._md
+			+e.header
+				+e('span').title покупка плана
+			+e.inner
+				.grid
+					.col-24
+						+typography()._size_xl._color_neutral 50 проектов  2000 руб.
+					.col-24
+						.grid.grid_content-between
+							.col-24.col-xs-auto
+								+btn('a')._icon-left._clear._size_lg.typography.typography_color_accent
+									+e('img').icon(src='./assets/images/icon_btn-cancel.png')
+									+e('span').label ОТМЕНИТЬ
+							.col-24.col-xs-auto
+								+btn('a')._icon-left._agree._size_lg
+									+e('img').icon(src='./assets/images/icon_btn-money.png')
+									+e('span').label ПЕРЕЙТИ К ОПЛАТЕ

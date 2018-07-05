@@ -1,0 +1,283 @@
+extends ../blocks/layout/default/default
+
+include ../styles/typography/typography
+
+include ../blocks/ui/grid-actions/grid-actions
+include ../blocks/ui/field/field
+include ../blocks/ui/switcher-choice/switcher-choice
+include ../blocks/ui/rating/rating
+include ../blocks/ui/thumbs-buttons/thumbs-buttons
+include ../blocks/ui/switcher/switcher
+
+include ../blocks/widgets/card-project/card-project
+include ../blocks/widgets/info-box/info-box
+
+block head
+	- var pageTitle = 'Создание кастинга';
+
+block content
+	+b.create-casting
+		.container
+			.grid
+				.col-24
+					+b.widget
+						+e.inner
+							.grid.grid_items-center
+								.col-24.col-sm-auto
+									+typography()._size_xl.__title=pageTitle
+								.col-24.col-sm-auto
+									+switcher-choice()
+										+e('span').styled(role='checkbox')
+											+e('span').styled-icon(style='background-image: url(./assets/images/icon_switcher-choice-flag-ru.png);')
+										+e('span').side-left(data-switcher-choice-icon-url='./assets/images/icon_switcher-choice-flag-ru.png') Рускоязычная анкета
+										+e('span').side-right(data-switcher-choice-icon-url='./assets/images/icon_switcher-choice-flag-en.png') Международная анкета
+							.grid.grid_items-center
+								.col-24.col-lg-7
+									+b.card-profile._lg
+										+avatar('https://via.placeholder.com/120x120').__avatar
+										+b.user-info
+											+e('ul').list
+												+e('li').list-item Иванов Иван Иванович
+												+e('li').list-item
+													+rating()._up._lg.card-profile__rating
+														+icon().rating-star-md
+								.col-24.col-lg-17
+									.grid
+										.col-24
+											+typography()._size_xs._uppercase Основные параметры
+										.col-24
+										.col-24
+											.grid.grid_items-center
+												.col-24.col-sm-auto
+													+switcher-choice()
+														+e('span').styled(role='checkbox')
+															+e('span').styled-icon
+														+e('span').side-left Открытый
+														+e('span').side-right Закрытый
+												.col-1.hidden-after-sm
+												.col-24.col-lg-auto
+													+switcher-choice()
+														+e('span').styled(role='checkbox')
+															+e('span').styled-icon
+														+e('span').side-left Очный
+														+e('span').side-right Заочный
+												.col-1.hidden-after-lg
+												.col-24.col-lg-auto
+													+switcher-choice()
+														+e('span').styled(role='checkbox')
+															+e('span').styled-icon
+														+e('span').side-left Оплачиваемый
+														+e('span').side-right Неоплачиваемый
+												.col-1.hidden-after-lg
+												.col-24.col-lg-auto
+													.grid.grid_items-center
+														.col-auto
+															+typography()._size_xs Оплата
+														.col-auto
+															+b.field._default._input._value-center.disabled.typography.typography_size_xs
+																+e('input').entry(value='10 000 руб.' disabled)
+														.col-auto
+															+typography()._size_xs за участие
+				.col-24
+					+b.widget
+						+e.inner
+							.grid.grid_items-center
+								.col-24.col-xs-auto
+									+typography()._size_xs.__title Основные параметры
+							.grid.grid_items-end
+								.col-24.col-lg-5.col-xl-3
+									.grid.grid_items-center
+										.col-24
+											+typography()._size_xs._weight_light Контактное лицо
+										.col-24
+											+field('ФИО')._input._primary
+								.col-24.col-lg-10.col-xl-12.col-offset-xl-1
+									.grid
+										.col-24.col-xs-12
+											.grid.grid_items-center
+												.col-24.col-xl-12
+													+typography()._size_xs._weight_light Мобильный телефон
+												.col-24.col-xl-12
+													+field()._input._primary
+														+e.controls
+															+btn()._default._square._size_sm
+																+e('img').icon(src='./assets/images/icon_loader.png')
+										.col-24.col-xs-12
+											.grid.grid_items-center
+												.col-24.col-xl-12
+													+typography()._size_xs._weight_light Офисный телефон
+												.col-24.col-xl-12
+													+field()._input._primary
+														+e.controls
+															+btn()._default._square._size_sm
+																+e('img').icon(src='./assets/images/icon_loader.png')
+										.col-24.col-xs-12
+											.grid.grid_items-center
+												.col-24.col-xl-12
+													+typography()._size_xs._weight_light Электронная почта
+												.col-24.col-xl-12
+													+field()._input._primary
+														+e.controls
+															+btn()._default._square._size_sm
+																+e('img').icon(src='./assets/images/icon_loader.png')
+										.col-24.col-xs-12
+											.grid.grid_items-center
+												.col-24.col-xl-12
+													+typography()._size_xs._weight_light Скайп
+												.col-24.col-xl-12
+													+field()._input._primary
+														+e.controls
+															+btn()._default._square._size_sm
+																+e('img').icon(src='./assets/images/icon_loader.png')
+								.col-24.col-xs.col-offset-xl-1
+									.grid
+										.col-24
+											.grid.grid_items-center
+												.col-auto
+													+switcher()
+														+e('span').styled(role='checkbox')
+												.col-auto
+													+figure('icon_messenger-sms.png')
+												.col
+													+typography()._size_xs._weight_light СМС
+										.col-24
+											.grid.grid_items-center
+												.col-auto
+													+switcher()
+														+e('span').styled(role='checkbox')
+												.col-auto
+													+figure('icon_messenger-tgm.png')
+												.col
+													+typography()._size_xs._weight_light Telegram
+								.col-24.col-xs.col-offset-xl-1
+									.grid
+										.col-24
+											.grid.grid_items-center
+												.col-auto
+													+switcher()
+														+e('span').styled(role='checkbox')
+												.col-auto
+													+figure('icon_messenger-watsapp.png')
+												.col
+													+typography()._size_xs._weight_light Watsapp
+										.col-24
+											.grid.grid_items-center
+												.col-auto
+													+switcher()
+														+e('span').styled(role='checkbox')
+												.col-auto
+													+figure('icon_messenger-viber.png')
+												.col
+													+typography()._size_xs._weight_light Viber
+				.col-24.col-lg-15
+					+b.widget
+						+e.inner
+							.grid.grid_items-center
+								.col-24.col-xs-auto
+									+typography()._size_xs.__title Время и место проведения
+							.grid
+								.col-24
+									+field('Описание')._input._default
+								.col-24
+									.grid.grid_items-center
+										.col-24.col-md-8
+											.grid.grid_items-center
+												.col-24.col-md-12
+													+typography()._size._weight_light Дата проведения:
+												.col-24.col-md
+													+field('12.11.18')._input._default
+										.col-24.col-md-5
+											.grid.grid_items-center
+												.col-24.col-md-auto
+													+typography()._size._weight_light Дней
+												.col-24.col-md
+													+field()._input._default
+										.col-24.col-md-5
+											.grid.grid_items-center
+												.col-24.col-md-auto
+													+typography()._size._weight_light Часов
+												.col-24.col-md
+													+field()._input._default
+										.col-24.col-md-6
+											+typography()._size._weight_light Закончится
+												| #[span 11.12.2018] в #[span 9:00]
+										.col-24.col-md-8
+											.grid.grid_items-center
+												.col-24.col-md-12
+													+typography()._size._weight_light Начало в:
+												.col-24.col-md
+													+field('09:00')._input._default
+										.col-24.col-md-5
+											.grid.grid_items-center
+												.col-24.col-md-auto
+													+typography()._size._weight_light Начало в:
+												.col-24.col-md
+													+field('12:00')._input._default
+								.col-24
+									.grid.grid_items-center
+										.col-24.col-md-4
+											+typography()._size._weight_light Место проведение:
+										.col-24.col-xs-12.col-sm-6.col-md-5
+											+field('Страна')._input._default
+										.col-24.col-xs-12.col-sm-6.col-md-5
+											+field('Город')._input._default
+										.col-24.col-xs-12.col-sm-6.col-md-5
+											+field('Улица')._input._default
+										.col-24.col-xs-12.col-sm-6.col-md-5
+											+field('Дом')._input._default
+								.col-24
+									.grid
+										.col-24.col-md-15
+											+field('Описание места', 'textarea')._textarea._fill._default
+										.col-24.col-md-9
+											.create-casting__map
+												.create-casting__map-controls
+													+btn()._icon-left._agree._size_md
+														+e('span').label УТОЧНИТЬ НА КАРТЕ
+				.col-24.col-lg-9.widget-with-controls
+					+b.widget
+						+e.inner
+							.grid.grid_items-center
+								.col-24.col-xs-auto
+									+typography()._size_xs.__title Основные параметры
+							.grid
+								.col-24
+									.grid.grid_items-center
+										.col-24.col-xs-auto
+											+typography()._size Рейтинг:
+										.col-24.col-xs
+											+b.irs-box._default._default_double
+												+e('input').js-init(type='text' data-type='double' data-hide-min-max='true' data-min='0' data-max='10' data-from='0' data-step='0.1')
+								.col-24
+									.grid.grid_items-center
+										.col-24.col-xs-auto
+											+typography()._size Проектов больше чем:
+										.col-24.col-xs
+											+b.irs-box._default
+												+e('input').js-init(type='text' data-hide-min-max='true' data-min='0' data-max='10' data-from='0')
+							.grid.grid_items-center
+								.col-24.col-md-16
+									.grid
+										.col-24
+											+btn()._icon-right._like-a-field._size_md._fill
+												+icon('img').__icon(src='./assets/images/icon_field-check.png')
+												+e('span').label Изменить параметры лица и тела
+										.col-24
+											+btn()._icon-right._like-a-field._size_md._fill
+												+icon('img').__icon(src='./assets/images/icon_field-dash.png')
+												+e('span').label задать требуемые навыки
+										.col-24
+											+btn()._icon-right._like-a-field._size_md._fill
+												+icon('img').__icon(src='./assets/images/icon_field-dash.png')
+												+e('span').label Задать виды работ
+								.col-24.col-md-8
+									+typography()._size_xs
+										| Под ваши параметры подходит
+										span.create-casting__to-candidate 182
+										| кандидатура
+					.widget-with-controls__inner
+						+grid-actions
+							li.col-auto
+								+btn()._icon-left._agree._size_lg
+									+e('img').icon(src='./assets/images/icon_btn-check-md.png')
+									+e('span').label НАЧАТЬ КАСТИНГ

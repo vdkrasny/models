@@ -1,0 +1,401 @@
+extends ../blocks/layout/default/default
+
+include ../styles/typography/typography
+
+include ../blocks/ui/grid-actions/grid-actions
+include ../blocks/ui/field/field
+include ../blocks/ui/rating/rating
+include ../blocks/ui/box-close/box-close
+include ../blocks/ui/calendar/calendar
+include ../blocks/ui/file/file
+include ../blocks/ui/audio-file/audio-file
+include ../blocks/ui/area-load/area-load
+include ../blocks/ui/i-label/i-label
+
+include ../blocks/widgets/card-user/card-user
+include ../blocks/widgets/party/party
+
+block head
+	- var pageTitle = 'Создание проекта';
+
+block content
+	+b.create-casting
+		.container
+			.grid
+				.col-24
+					+b.widget
+						+e.inner
+							.grid.grid_items-center
+								.col-24.col-xs-auto
+									+typography()._size_xl.__title=pageTitle
+								.col-24.col-xs-auto
+									+switcher-choice()
+										+e('span').styled(role='checkbox')
+											+e('span').styled-icon
+										+e('span').side-left Открытый
+										+e('span').side-right Закрытый
+								.col-1.hidden-after-md
+								.col-24.col-xs-auto
+									+switcher-choice()
+										+e('span').styled(role='checkbox')
+											+e('span').styled-icon(style='background-image: url(./assets/images/icon_switcher-choice-flag-ru.png);')
+										+e('span').side-left(data-switcher-choice-icon-url='./assets/images/icon_switcher-choice-flag-ru.png') Рускоязычная анкета
+										+e('span').side-right(data-switcher-choice-icon-url='./assets/images/icon_switcher-choice-flag-en.png') Международная анкета
+							.grid.grid_content-end
+								.col-24
+									+switcher-choice()
+										+e('span').styled(role='checkbox')
+											+e('span').styled-icon
+										+e('span').side-left Коммерчиский
+										+e('span').side-right Не коммерчиский
+								- var title = ['Тип проекта:', 'Жанр:']
+								- each item in title
+									.col-24
+										.grid.grid_items-center
+											.col-24.col-md-2
+												+typography()._size._weight_light=item
+											.col-24.col-md-4
+												select
+													option=item
+											.col-24.col-md-auto
+												+grid-actions
+													li.col
+														+box-close()._sm
+															+btn()._icon-left._default.btn_size_md
+																+e('img').icon(src='./assets/images/icon_btn-photo.png')
+																+e('span').label Актер
+													- for(var i = 0; i < 2; i++)
+														li.col
+															+box-close()._sm
+																+btn()._icon-left._default.btn_size_md
+																	+e('img').icon(src='./assets/images/icon_btn-photo.png')
+																	+e('span').label Модель
+								.col-24
+									.grid.grid_items-center
+										.col-24.col-md-2
+											+typography()._size._weight_light Дата начала:
+										.col-24.col-md-8
+											.grid.grid_items-center
+												.col-24.col-xs-6
+													+b.field._input._several
+														+e.controls
+															+btn()._clear._square.btn_size_sm
+																+e('img').icon(src='./assets/images/icon_btn-arrow-left.png')
+														+e.inner
+															+e('input').entry(type='text' value='12')
+														+e.controls
+															+btn()._clear._square.btn_size_sm
+																+e('img').icon(src='./assets/images/icon_btn-arrow-right.png')
+												.col-24.col-xs
+													+b.field._input._several
+														+e.controls
+															+btn()._clear._square.btn_size_sm
+																+e('img').icon(src='./assets/images/icon_btn-arrow-left.png')
+														+e.inner
+															+e('input').entry(type='text' value='Май')
+														+e.controls
+															+btn()._clear._square.btn_size_sm
+																+e('img').icon(src='./assets/images/icon_btn-arrow-right.png')
+												.col-24.col-xs
+													+b.field._input._several
+														+e.controls
+															+btn()._clear._square.btn_size_sm
+																+e('img').icon(src='./assets/images/icon_btn-arrow-left.png')
+														+e.inner
+															+e('input').entry(type='text' value='2018 год')
+														+e.controls
+															+btn()._clear._square.btn_size_sm
+																+e('img').icon(src='./assets/images/icon_btn-arrow-right.png')
+										.col-24.col-md-2
+											+typography()._size._weight_light Длительность:
+										.col-24.col-md-5
+											.grid.grid_items-center
+												.col-auto
+													+typography()._size._weight_light Дней
+												.col
+													+b.field._input._default._value-center
+														+e.inner
+															+e('input').entry(type='text' value='12')
+												.col-auto
+													+typography()._size._weight_light Часов
+												.col
+													+b.field._input._default._value-center
+														+e.inner
+															+e('input').entry(type='text' value='12')
+										.col-24.col-md-6
+											.grid.grid_items-center
+												.col-auto
+													+typography()._size._weight_light Технический перерыв:
+												.col-auto
+													+switcher-choice()
+														+e('span').styled(role='checkbox')
+															+e('span').styled-icon
+														+e('span').side-left Вкл
+														+e('span').side-right Выкл
+								.col-24
+									+field('Заголовок')._input._default
+								.col-24
+									+field('Описание', 'textarea')._textarea._default
+								.col-auto
+									+btn()._icon-left._agree._size_lg
+										+e('img').icon(src='./assets/images/icon_btn-check-md.png')
+										+e('span').label СОХРАНИТЬ
+				.col-24
+					+b.widget
+						+e.inner
+							.grid
+								.col-24
+									+typography()._size_md._weight_light Участники
+							.grid
+								.col-24.col-xs-12.col-sm-8.col-md-6.col-lg-4.col-xl-3
+									+party
+										+i-label().__header-label Модель 1
+								.col-24.col-xs-12.col-sm-8.col-md-6.col-lg-4.col-xl-3
+									+b.party.nav-drop
+										+e.header
+											+i-label().__header-label Модель 1
+											+avatar('https://via.placeholder.com/120x120')._lg
+												+e.confirmed
+										+e.body
+											span.party__state Параметры
+												br
+												| не заданы
+										.nav-drop__content
+											ul.nav-drop__list
+												- var arr = ['Перейти к кастингу', 'Отменить кастинг']
+												- var arr = ['Задать условия', 'Задать кастинг', 'Отклики', 'добавить из контактов', 'Искать по базе?', 'Удалить']
+												- each item in arr
+													li.nav-drop__item
+														+link('#link')._hidden=item
+														span.nav-drop__label=item
+								.col-24.col-xs-12.col-sm-8.col-md-6.col-lg-4.col-xl-3
+									+party
+										+i-label()._purple.__header-label Фотограф 1
+								.col-24.col-xs-12.col-sm-8.col-md-6.col-lg-4.col-xl-3
+									+b.party.nav-drop
+										+e.header
+											+i-label()._purple.__header-label Фотограф 2
+											+avatar('https://via.placeholder.com/120x120')._lg
+												+e.confirmed
+										+e.body
+											+e.body
+												+e('span').state Параметры
+													br
+													| не заданы
+										.nav-drop__content
+											ul.nav-drop__list
+												- var arr = ['Задать условия', 'Задать кастинг', 'Отклики', 'добавить из контактов', 'Искать по базе?', 'Удалить']
+												- each item in arr
+													li.nav-drop__item
+														+link('#link')._hidden=item
+														span.nav-drop__label=item
+								.col-24.col-xs-12.col-sm-8.col-md-6.col-lg-4.col-xl-3
+									+party
+										+i-label()._blue.__header-label Стилист 1
+								.col-24.col-xs-12.col-sm-8.col-md-6.col-lg-4.col-xl-3
+									+b.party.nav-drop
+										+e.header
+											+i-label()._blue.__header-label Стилист 2
+											+avatar('img_party-start.png')._lg
+												+e.confirmed
+										+e.body
+											+e.body
+												+e('span').state Идет кастинг
+										.nav-drop__content
+											ul.nav-drop__list
+												- var arr = ['Перейти к кастингу', 'Отменить кастинг']
+												- each item in arr
+													li.nav-drop__item
+														+link('#link')._hidden=item
+														span.nav-drop__label=item
+								.col-24.col-xs-12.col-sm-8.col-md-6.col-lg-4.col-xl-3
+									+party
+										+i-label()._blue.__header-label Стилист 3
+								.col-24.col-xs-12.col-sm-8.col-md-6.col-lg-4.col-xl-3
+									+b.party._new
+										+e.header.nav-drop
+											+avatar('img_party-new.png')
+											.nav-drop__content
+												ul.nav-drop__list
+													- var arr = ['Модель', 'Актриса', 'Фотограф', 'Видеооператор', 'Осветитель', 'Режисер', 'Агент/Агенство', 'Студия', 'Визажист']
+													- each item in arr
+														li.nav-drop__item
+															+link('#link')._hidden=item
+															span.nav-drop__label=item
+				.col-24
+					+b.widget
+						+e.inner
+							.grid
+								.col-24.col-lg-4
+									.grid
+										.col-24
+											+typography()._size_md._weight_light Рейтинг проекта
+										.col-24
+											+rating()._up._lg
+												+icon().rating-star-md
+								.col-24.col-lg
+									.grid
+										.col-24
+											+typography()._size_md._weight_light Бюджет проекта
+										.col-24
+											.grid.grid_items-center
+												.col-24.col-xs-12.col-md-6.col-lg-4
+													+field('80 000 р')._input._primary.typography_size_sm
+												.col-24.col-xs-12.col-md-auto
+													+switcher-choice()
+														+e('span').styled(role='checkbox')
+															+e('span').styled-icon
+														+e('span').side-left Открыть
+														+e('span').side-right Скрыть
+								.col-24
+									.grid
+										.col-24
+											+typography()._size_md._weight_light Расчет гонорара
+										.col-24
+											.grid
+												- for(var i = 0; i < 3; i++)
+													.col-24
+														+box-close
+															+grid-actions
+																li.col-24.col-xs-20.col-md
+																	+field('Работодатель')._input._primary.typography_size_xs
+																li.col-24.col-xs-4.col-md-3.col-lg-2
+																	+b.field._input._primary.typography_size_xs
+																		+e.controls
+																			i.icon.rating-star-xs
+																		+e.inner
+																			+e('input').entry(value='7.57' type='text')
+																li.col-24.col-xs.col-lg
+																	+btn()._default._size_md._fill
+																		+e('span').label Полные права
+																li.col-24.col-xs.col-lg
+																	+btn()._default._size_md._fill
+																		+e('span').label Задать условия
+																li.col-24.col-xs.col-lg
+																	+btn()._default._size_md._fill
+																		+e('span').label Передача материалов
+																li.col-24.col-xs-12.col-lg
+																	+field('Рекомендуемая оплата')._input._primary.typography_size_xs
+																li.col-24.col-xs-12.col-lg
+																	+field('Реальная оплата')._input._primary.typography_size_xs
+																
+				.col-24
+					+b.widget
+						+e.inner
+							.grid
+								.col-24.col-md-auto
+									.grid.grid_items-center
+										.col-24.col-sm-auto
+											+typography()._size_md._weight_light Техническое задание
+										.col-24.col-sm-auto
+											+switcher-choice()
+												+e('span').styled(role='checkbox')
+													+e('span').styled-icon
+												+e('span').side-left Открыть
+												+e('span').side-right Скрыть
+
+							.grid
+								.col-24.col-sm-12.col-lg-6.create-project-task
+									.grid
+										.col-24
+											+typography()._size._weight_light Для визажиста
+										.col-24
+											+file('icon_file-type-pdf.png', 'Название технического задания')
+											+file('icon_file-type-doc.png', 'Название технического задания')
+										.col-24
+											+grid-actions
+												- for(var i = 0; i < 5; i++)
+													li.col-auto
+														+box-close._sm
+															+figure('https://via.placeholder.com/45x45')
+									.grid
+										.col-24.col-lg-18
+											+field('Загрузить')._input._primary
+												+e.controls
+													+btn()._default._square._size_sm
+														+e('img').icon(src='./assets/images/icon_loader.png')
+								.col-24.col-sm-12.col-lg-6.create-project-task
+									.grid
+										.col-24
+											+typography()._size._weight_light Для стилиста
+										.col-24
+											- for(var i = 0; i < 3; i++)
+												+file('icon_file-type-pdf.png', 'Название технического задания')
+									.grid
+										.col-24.col-lg-18
+											+field('Загрузить')._input._primary
+												+e.controls
+													+btn()._default._square._size_sm
+														+e('img').icon(src='./assets/images/icon_loader.png')
+								.col-24.col-sm-12.col-lg-6.create-project-task
+									.grid
+										.col-24
+											+typography()._size._weight_light Для модели
+										.col-24
+											- for(var i = 0; i < 3; i++)
+												+file('icon_file-type-pdf.png', 'Название технического задания')
+									.grid
+										.col-24.col-lg-18
+											+field('Загрузить')._input._primary
+												+e.controls
+													+btn()._default._square._size_sm
+														+e('img').icon(src='./assets/images/icon_loader.png')
+								.col-24.col-sm-12.col-lg-6
+									+area-load('Добавить группу')
+				.col-24
+					+b.widget
+						+e.inner
+							.grid
+								.col-24
+									+typography()._size_xs.__title Фото из проектов
+								- for(var i = 0; i < 7; i++)
+									.col-24.col-xs-12.col-sm-8.col-md-6.col-lg-3
+										+box-close
+											+figure('https://via.placeholder.com/210x200')
+								.col-24.col-xs-12.col-sm-8.col-md-6.col-lg-3
+									+area-load('Добавить фото')
+							.grid
+								.col-24
+									+typography()._size_xs.__title видео из проектов
+								- for(var i = 0; i < 7; i++)
+									.col-24.col-xs-12.col-sm-8.col-md-6.col-lg-3
+										+box-close
+											+figure('https://via.placeholder.com/210x170')
+								.col-24.col-xs-12.col-sm-8.col-md-6.col-lg-3
+									+area-load('Добавить видео')
+							.grid
+								.col-24
+									+typography()._size_xs.__title Аудиоальбом
+								- for(var i = 0; i < 3; i++)
+									.col-24.col-md-12.col-lg-8
+										+audio-file
+								.col-24
+									+area-load('Добавить аудио')
+				.col-24
+					+b.widget._clear
+						+e.inner
+							.grid
+								.col-24
+									+typography()._size_xs.__title Завершение проекта:
+							.grid.grid_items-center.grid_content-between
+								.col-24.col-lg-auto
+									+grid-actions
+										li.col-auto
+											+btn()._icon-left._cancel.btn_size_md
+												+e('img').icon(src='./assets/images/icon_btn-no.png')
+												+e('span').label Кастинги закрыты
+										li.col-auto
+											+btn()._icon-left._agree.btn_size_md
+												+e('img').icon(src='./assets/images/icon_btn-check-sm.png')
+												+e('span').label Поставить оценки
+										li.col-auto
+											+btn()._icon-left._agree.btn_size_md
+												+e('img').icon(src='./assets/images/icon_btn-check-sm.png')
+												+e('span').label Написать отзывы
+										li.col-auto
+											+btn()._icon-left._agree.btn_size_md
+												+e('img').icon(src='./assets/images/icon_btn-check-sm.png')
+												+e('span').label Работы загруженны
+								.col-24.col-lg-auto
+									+btn()._cancel.btn_size_lg._fill
+										+e('span').label ЗАВЕРШИТЬ ПРОЕКТ

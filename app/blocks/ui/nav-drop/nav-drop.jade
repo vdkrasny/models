@@ -1,0 +1,23 @@
+mixin nav-drop(valTag)
+	- var valTag = valTag || 'div'
+
+	+b(valTag).nav-drop&attributes(attributes)
+		block
+		+e.content
+			+e('ul').list
+				+e('li').item
+					+link('#link')._hidden В закладки
+					+icon().nav-drop-mark.__icon
+					+e('span').label В закладки
+				+e('li').item
+					+link('#link')._hidden В проект
+					+icon().nav-drop-project.__icon
+					+e('span').label В проект
+				+e('li').item
+					+link('#link')._hidden В кастинг
+					+icon().nav-drop-casting.__icon
+					+e('span').label В кастинг
+				+e('li').item
+					+link('#link')._hidden В друзья
+					+icon().nav-drop-friend.__icon
+					+e('span').label В друзья

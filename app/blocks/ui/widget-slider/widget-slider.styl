@@ -1,0 +1,80 @@
+.widget-slider
+	position relative
+	display block
+
+	&_fill
+		margin-x -9px
+
+		.widget-slider__body
+			margin-x 14px
+
+	&__control-prev
+		position absolute
+		z-index 10
+		top 50%
+		padding 0
+		display block
+		overflow hidden
+		width 45px
+		height 45px
+		font-size 0
+		line-height 0
+		text-decoration none
+		cursor pointer
+		user-select none
+		background #ffffff
+		border none
+		border-radius 50%
+		transition 300ms ease
+		transition-property box-shadow
+		transform translateY(-50%)
+
+		&:before
+			position-center()
+			display block
+			width 14px
+			height 26px
+			content ''
+			background-repeat no-repeat
+			background-position center
+
+		&:hover
+		&:focus
+			box-shadow 0 0 20px 0 alpha(#72aaff, 15%)
+
+	&__control-next
+		@extends .widget-slider__control-prev
+
+	&__control-prev
+		left 0
+
+		&:before
+			background-image url(../images/icon_widget-slider-control-prev.png)
+
+	&__control-next
+		right 0
+
+		&:before
+			background-image url(../images/icon_widget-slider-control-next.png)
+
+	&__body
+		margin-x 45px
+
+	&__slide
+		margin 10px
+
+		&-text
+			text-align center
+
++media($breakpoints[xs], 'max')
+	.widget-slider
+
+		&__control-prev,
+		&__control-next
+			display none
+
+		&__body
+			margin-x 0
+
+		&__slide
+			margin 0

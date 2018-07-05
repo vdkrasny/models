@@ -1,0 +1,88 @@
+.guide-control
+  $guide-control-size = 32px
+  $guide-control-burger-width = 20px
+  $guide-control-burger-height = 14px
+
+  $guide-control-line-height = 2px
+  $guide-control-line-radius = $guide-control-line-height
+  $guide-control-line-color = $color-accent
+  $to-translate = (($guide-control-burger-height - $guide-control-line-height) / 2)
+
+  $effect-sec = .25s
+  $effect = ease-in-out
+
+  position relative
+  display block
+  overflow hidden
+  width $guide-control-size
+  min-width $guide-control-size
+  height $guide-control-size
+  min-height $guide-control-size
+  cursor pointer
+  background-color transparent
+  border 2px solid $guide-control-line-color
+  // border-radius 50%
+  transition 300ms
+  transition-property background-color
+
+  &__burger
+    display inline-block
+    width $guide-control-burger-width
+    height $guide-control-burger-height
+    vertical-align middle
+    position-center()
+
+  &__line
+    position absolute
+    left 0
+    display block
+    width 100%
+    height $guide-control-line-height
+    pointer-events none
+    background-color $guide-control-line-color
+    border-radius $guide-control-line-radius
+
+    &_top
+      top 0
+      transition all $effect-sec $effect
+
+    &_icon
+      top 0
+      bottom 0
+      margin auto
+      transition transform $effect-sec $effect
+
+      &:before
+        position absolute
+        left 0
+        width 100%
+        height $guide-control-line-height
+        content ''
+        background-color $guide-control-line-color
+        border-radius $guide-control-line-radius
+        transition transform $effect-sec $effect
+
+    &_end
+      bottom 0
+      transition all $effect-sec $effect
+
+  &.is-active
+    & .guide-control__line
+
+      &_top
+        opacity 0
+        transform translate3d((-2 * $to-translate), 0, 0)
+        transition all $effect-sec $effect
+
+      &_icon
+        transform rotate(45deg)
+        transition transform $effect-sec $effect
+
+        &:before
+          transform rotate(-90deg)
+          transition transform $effect-sec $effect
+
+      &_end
+        opacity 0
+        transform translate3d((2 * $to-translate), 0, 0)
+        transition all $effect-sec $effect

@@ -1,0 +1,37 @@
+include ../../ui/widget-slider/widget-slider
+include ../card-media/card-media
+
+mixin widget_media(valTitle)
+	+b.widget&attributes(attributes)
+		+e.inner
+			+e.header
+				.grid.grid_items-start.grid_content-between
+					// left side widget__header
+					.col-auto
+						.grid.grid_items-start
+							.col-auto
+								+e('span').title!=valTitle
+							.col-auto
+								+grid-actions
+									li.col-auto
+										select
+											option Добавить фильтр
+											option Фильтр 1
+											option Фильтр 2
+											option Фильтр 3
+					// right side widget__header
+					.col-auto
+						+grid-actions
+							li.col-auto
+								+btn('a', '#btn')._default._size_md
+									+e('span').label Перейти в раздел
+							li.col-auto
+								+e.controls
+									+btn('a', '#btn')._clear._square._size_sm
+										+icon.widget-close.__icon Закрыть
+									+e('span').controls-inner
+										+btn('a', '#btn')._clear._square._size_sm
+											+icon.widget-gear.__icon Настройки
+										+btn('a', '#btn')._clear._square._size_sm
+											+icon.widget-issues.__icon Помощь
+			block

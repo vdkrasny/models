@@ -1,0 +1,10 @@
+mixin card-media(valImage)
+	+b.card-media&attributes(attributes)
+		+e.body(style='background-image: url(./assets/images/' + valImage + ');')
+			+e.inner
+				+e('span').title Название новости
+				+e('span').date 12.18.2017
+				+e.content.normalize
+					p Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.
+				block
+		+e.link(href='#') Подробнее

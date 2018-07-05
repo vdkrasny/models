@@ -1,0 +1,19 @@
+extends ../blocks/layout/contacts/contacts
+
+include ../blocks/widgets/card-user/card-user
+
+block head
+	- var pageTitle = 'Контакты';
+
+block content
+	+e.inner
+		.grid
+			.col-24.col-xs-12.col-sm-6.col-lg-4.col-xxl-3
+				+b.box-clip
+					+card-user._show-info
+			.col-24.col-xs-12.col-sm-6.col-lg-4.col-xxl-3
+				+b.box-clip
+					+card-user._show-info
+			- for(var i = 0; i < 14; i++)
+				.col-24.col-xs-12.col-sm-6.col-lg-4.col-xxl-3
+					+card-user._show-info

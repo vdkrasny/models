@@ -1,0 +1,12 @@
+mixin switcher(idVal, nameVal)
+	- idVal = idVal || 'id__' + Math.random()
+	- nameVal = idVal
+
+	+b.switcher
+		+e('input').input(type='checkbox' id=idVal name=nameVal)&attributes(attributes)
+		+e('label').label(for=idVal)
+			// +e('span').styled(role='checkbox')
+			// +e('span').name
+			block
+		// +e.desc
+			// +e('span').desc-text Оплачиваемый

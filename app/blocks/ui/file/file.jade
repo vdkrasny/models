@@ -1,0 +1,7 @@
+mixin file(valTypeName, valName)
+	- var valName = valName || 'Название договора'
+
+	+b.file&attributes(attributes)
+		+e('img').type(src='./assets/images/' + valTypeName)
+		+e('span').name=valName
+		block

@@ -1,0 +1,203 @@
+@import '../../../../node_modules/ion-rangeslider/css/ion.rangeSlider.css'
+
+$irs-height = 5px // px only
+$irs-grid-height = 20px // px only
+$irs-line-bar-top = 0
+$irs-line-bar-height = $irs-height
+$irs-line-bg = #f2f6fb
+$irs-bar-bg = $color-default
+$irs-line-edge-radius = $irs-height // px only
+
+$irs-box-height = 38px
+$irs-slider-width = 18px // 18px
+$irs-slider-height = $irs-slider-width
+$irs-slider-top = ($irs-line-bar-top - (($irs-slider-height - $irs-height) / 2))
+$irs-slider-bg = #3bae45
+$irs-slider-bg-hover = darken($irs-slider-bg, 10%)
+$irs-slider-radius = 5px
+
+$irs-min-max-top = 50%
+$irs-min-max-min-width = 14px
+$irs-min-max-font-size = 12px
+$irs-min-max-line-height = 16px
+
+$irs-min-offset = 15px
+$irs-min-side = (($irs-min-offset + $irs-min-max-min-width) * -1)
+$irs-max-offset = 15px
+$irs-max-side = (($irs-max-offset + $irs-min-max-min-width) * -1)
+
+$irs-from-to-single-top = 50%
+$irs-from-to-single-min-width = 55px
+$irs-from-to-single-font-size = 12px
+$irs-from-to-single-line-height = 38px
+
+$irs-single-offset = 15px
+$irs-single-side = (($irs-single-offset + $irs-from-to-single-min-width) * -1) + $irs-min-side
+$irs-from-to-offset = 15px
+$irs-from-to-side = (($irs-from-to-offset + $irs-from-to-single-min-width) * -1) + $irs-max-side
+
+.irs-box
+
+	&_default
+		padding-top (($irs-box-height - $irs-height) / 2)
+		padding-right (($irs-single-side) * -1)
+		padding-left ($irs-min-side * -1)
+		padding-bottom (($irs-box-height - $irs-height) / 2)
+
+		&_double
+			padding-left (($irs-from-to-side) * -1)
+
+			.irs
+				&-from,
+				&-to
+					visibility visible unquote('!important')
+
+				&-single
+					visibility hidden unquote('!important')
+
+		.irs
+			height $irs-height
+
+			&-with-grid
+				height ($irs-height + $irs-grid-height)
+
+			&-line
+				top $irs-line-bar-top
+				height $irs-line-bar-height
+				background $irs-line-bg
+				border-radius $irs-line-edge-radius
+
+			&-bar
+				top $irs-line-bar-top
+				height $irs-line-bar-height
+				background $irs-bar-bg
+
+			&-bar-edge
+				top $irs-line-bar-top
+				width ($irs-slider-width / 2)
+				height $irs-line-bar-height
+				background $irs-bar-bg
+				border-radius $irs-line-edge-radius 0 0 $irs-line-edge-radius
+
+			&-slider
+				top $irs-slider-top
+				width $irs-slider-width
+				height $irs-slider-height
+				cursor pointer
+				background $irs-slider-bg
+				border-radius $irs-slider-radius
+				transition 300ms ease
+				transition-property background
+
+				&.state_hover,
+				&:hover
+					background $irs-slider-bg-hover
+
+			&-min,
+			&-max
+				top $irs-min-max-top
+				visibility visible unquote('!important')
+				min-width $irs-min-max-min-width
+				font-size $irs-min-max-font-size
+				line-height $irs-min-max-line-height
+				text-align center
+				color #9aa7bf
+				background transparent
+				transform translateY(($irs-min-max-top * -1))
+
+			&-min
+				left $irs-min-side
+
+			&-max
+				right $irs-max-side
+
+			&-from,
+			&-to,
+			&-single
+				// if ($irs-slider-top < 0)
+				// top ($irs-slider-top - $irs-from-to-single-line-height - $irs-from-to-single-top)
+				// else
+				// top (($irs-slider-top + ($irs-from-to-single-line-height + $irs-from-to-single-top)) * -1)
+				top $irs-from-to-single-top
+				overflow hidden
+				min-width $irs-from-to-single-min-width
+				max-width $irs-from-to-single-min-width
+				font-size $irs-from-to-single-font-size
+				line-height $irs-from-to-single-line-height
+				text-align center
+				white-space nowrap
+				text-overflow ellipsis
+				color #38383a
+				background #f5f5f5
+				border-radius 5px
+				transform translateY(($irs-from-to-single-top * -1))
+
+			&-from
+				right auto unquote('!important')
+				left $irs-single-side unquote('!important')
+
+			&-to,
+			&-single
+				right $irs-from-to-side unquote('!important')
+				left auto unquote('!important')
+
+			&-grid
+				height $irs-grid-height
+
+			&-grid-pol
+				background #e1e4e9
+
+			&-grid-text
+				color #999999
+
++media($breakpoints[xs], 'max')
+
+	$irs-min-max-min-width = 0
+
+	$irs-min-offset = 0
+	$irs-min-side = (($irs-min-offset + $irs-min-max-min-width) * -1)
+	$irs-max-offset = 0
+	$irs-max-side = (($irs-max-offset + $irs-min-max-min-width) * -1)
+
+	$irs-from-to-single-min-width = 45px
+
+	$irs-single-offset = 10px
+	$irs-single-side = (($irs-single-offset + $irs-from-to-single-min-width) * -1) + $irs-min-side
+	$irs-from-to-offset = 10px
+	$irs-from-to-side = (($irs-from-to-offset + $irs-from-to-single-min-width) * -1) + $irs-max-side
+
+	.irs-box
+
+		&_default
+			padding-top (($irs-box-height - $irs-height) / 2)
+			padding-right (($irs-single-side) * -1)
+			padding-left ($irs-min-side * -1)
+			padding-bottom (($irs-box-height - $irs-height) / 2)
+
+			&_double
+				padding-left (($irs-from-to-side) * -1)
+
+			.irs
+
+				&-min,
+				&-max
+					min-width $irs-min-max-min-width
+
+				&-min
+					left $irs-min-side
+
+				&-max
+					right $irs-max-side
+
+				&-from,
+				&-to,
+				&-single
+					min-width $irs-from-to-single-min-width
+					max-width $irs-from-to-single-min-width
+
+				&-from
+					left $irs-single-side unquote('!important')
+
+				&-to,
+				&-single
+					right $irs-from-to-side unquote('!important')

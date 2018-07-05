@@ -1,0 +1,25 @@
+include ../../ui/rating/rating
+include ../../ui/figure/figure
+include ../../ui/nav-line/nav-line
+include ../../ui/rating/rating
+include ../../ui/i-label/i-label
+
+mixin card-user()
+	+b.card-user&attributes(attributes)
+		+e.header
+			+i-label().__i-label Модель
+			+b.user-info._lg
+				+e('ul').list
+					+e('li').list-item Иван Иванов
+					+e('li').list-item.__age 32 года
+		+e.body
+			+rating()._up.__body-rating
+				+icon.rating-star-xs
+			+e.slider
+				+figure('img_faces-slide.png')
+			+e.body-nav
+				+nav-line._fill
+		+e.footer
+			+rating()._up.__footer-rating
+				+icon.rating-star-xs
+		block

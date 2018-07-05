@@ -1,0 +1,101 @@
+.rating
+	display flex
+	flex-wrap nowrap
+	font-size 14px
+
+	&_xl
+		margin-y 10px
+		font-size 95px
+		line-height .75
+		color #c8c8c8
+
+		.rating__inner
+			align-items flex-start
+
+	&_lg
+		font-size 48px
+		line-height .75
+		color #c8c8c8
+
+		.rating__inner
+			align-items flex-start
+
+	&_up
+
+		.rating__detail
+			flex-direction column
+
+		.rating__arrow
+			display inline-block
+			background-position $rating__arrow_up[2] $rating__arrow_up[3]
+
+		.rating__change
+			color #2e9a14
+
+	&_down
+
+		.rating__detail
+			flex-direction column-reverse
+
+		.rating__arrow
+			display inline-block
+			background-position $rating__arrow_down[2] $rating__arrow_down[3]
+
+		.rating__change
+			color #ff151f
+
+	&_accent
+		color $color-accent
+
+	&_label
+		padding 12px 20px
+		display inline-flex
+		color #ffffff
+		background-color $color-accent
+
+	&__inner
+		display flex
+		align-items center
+
+	&__label
+		margin-left 10px
+		vertical-align middle
+
+	&__detail
+		margin-left 10px
+		display flex
+		align-items center
+		justify-content space-between
+		user-select none
+
+	&__arrow
+		display none
+		width $rating__arrow_up[4]
+		height $rating__arrow_up[5]
+		background-image url($sp_rating[2])
+
+	&__change
+		font-size 10px
+		font-weight bold
+		line-height 1.2
+
+.rating-label-pos
+	position absolute
+	left 0
+	bottom 10px
+
++media($breakpoints[xs], 'max')
+	.rating
+
+		&_xl
+			font-size 80px
+
+		&_lg
+			font-size 36px
+
++media($breakpoints[xs])
+	.rating-in-graf
+		position absolute
+		top 0
+		left 50px
+		display inline-block

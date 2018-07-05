@@ -1,0 +1,4 @@
+mixin tooltip(valTag, valData)
+	- valTag = valTag || 'span'
+	+b(valTag).tooltip&attributes(attributes)(tooltip-data=valData)
+		block

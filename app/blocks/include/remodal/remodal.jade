@@ -1,0 +1,4 @@
+mixin remodal(modalId)
+	+b.remodal&attributes(attributes)(data-remodal-id=modalId)
+		button.remodal-close(data-remodal-action='close')
+		block

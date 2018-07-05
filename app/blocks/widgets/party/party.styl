@@ -1,0 +1,58 @@
+.party
+	margin-y 10px
+	display flex
+	flex-direction column
+	align-items center
+	justify-content space-between
+	height 100%
+
+	&_new
+
+		.party__header
+			align-items center
+			margin-top 60px
+
+	&__header
+		display flex
+		flex-direction column
+		align-items flex-start
+
+	&__header-label
+		margin-bottom 15px
+		font-size 16px
+
+	&__header-info
+		margin-top 10px
+		display flex
+		flex-direction column
+		align-items flex-end
+		width 100%
+
+		& > * + *
+			margin-top 15px
+
+	&__body
+		margin-top 10px
+		text-align center
+
+	// &__body-label
+	// 	line-height 1
+	// 	color #ff002a
+	// 	background-color transparent
+
+	&__state
+		display block
+		font-size 14px
+		color #8996a3
+
++media($breakpoints[xs])
+	.party
+		margin 0
+		padding 10px
+
+		&__header
+			padding-x 15px
+			align-items center
+
+		&__state
+			text-align center

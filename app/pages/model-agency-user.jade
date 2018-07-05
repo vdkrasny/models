@@ -1,0 +1,398 @@
+extends ../blocks/layout/default/default
+
+include ../styles/typography/typography
+
+include ../blocks/ui/grid-actions/grid-actions
+include ../blocks/ui/rating/rating
+include ../blocks/ui/file/file
+include ../blocks/ui/widget-slider/widget-slider
+include ../blocks/ui/lang/lang
+include ../blocks/ui/box-close/box-close
+include ../blocks/ui/field/field
+include ../blocks/ui/switcher/switcher
+include ../blocks/ui/audio-file/audio-file
+include ../blocks/ui/area-load/area-load
+include ../blocks/ui/i-label/i-label
+
+include ../blocks/widgets/card-user/card-user
+include ../blocks/widgets/review/review
+include ../blocks/widgets/check-list/check-list
+
+block head
+	- var pageTitle = 'Модельное агентво (для пользователя)';
+
+block content
+	+b.create-casting
+		.container
+			.grid
+				.col-24.col-lg-16
+					.grid
+						.col-24
+							+b.widget
+								+e.inner
+									.grid
+										.col-24.col-md-12
+											+switcher-choice()
+												+e('span').styled(role='checkbox')
+													+e('span').styled-icon(style='background-image: url(./assets/images/icon_switcher-choice-flag-ru.png);')
+												+e('span').side-left(data-switcher-choice-icon-url='./assets/images/icon_switcher-choice-flag-ru.png') Ваша рускоязычная анкета
+												+e('span').side-right(data-switcher-choice-icon-url='./assets/images/icon_switcher-choice-flag-en.png') Ваша международная анкета
+										.col-24.col-md-12
+											.grid.grid_items-center.grid_content-between
+												.col-auto
+													+i-label() Модельное агентво
+												.col-auto
+													+e.right-side
+														+e.views
+															+e.views-count 214
+															+icon('img').__views-icon(src='./assets/images/icon_widget-views-eye.png')
+															span Показы анкеты
+									.grid
+										.col-24.col-xs-16.col-md-8
+											.grid
+												.col-24
+													.grid.grid_content-end
+														.col-24
+															+figure('https://via.placeholder.com/380x380')
+										.col-24.col-xs-16.col-md
+											.grid
+												.col-24
+													+typography()._weight_light.__title Имя модельного агенства
+													+typography()._size_xs._weight_light Полное и длинное описание
+												.col-24
+													+rating()._up._xl
+														+icon().rating-star-md
+												.col-24
+													.grid.grid_items-center
+														- var arr = [['Дата рождения', '12.12.2012'], ['Город', 'Москва']]
+														- each item in arr
+															.col-10
+																+typography()._size_xs._weight_light._color_neutral=item[0]
+															.col-14
+																+typography()._size_xs._weight_light=item[1]
+										.col-24.col-xs-8.col-md-4
+											+b.profile-column
+												+avatar('https://via.placeholder.com/120x120')._lg
+													+e.confirmed
+												+e.inner
+													+grid-actions.grid_content-end
+														li.col-auto
+															+btn()._icon-left._clear._size_sm.typography.typography_size_xs
+																+e('img').icon(src='./assets/images/icon_nav-line-chat-hover.png')
+																+e('span').label Написать
+														li.col-auto
+															+nav-drop()._right
+																+btn()._icon-left._clear._size_sm.typography.typography_size_xs
+																	+e('img').icon(src='./assets/images/icon_nav-line-add-hover.png')
+																	+e('span').label Добавить
+														li.col-auto
+															+btn()._cancel._size_md
+																+e('span').label Подать заявку
+														li.col-auto
+															+btn()._cancel._size_md
+																+e('span').label Пригласить в проект
+
+						.col-24
+							+b.widget
+								+e.inner
+									.grid
+										.col-24
+											+typography()._size_xs.__title Страны и города активности
+										- for(var i = 0; i < 2; i++)
+											.col-24.col-xs-12.col-md-6
+												.grid
+													.col-24
+														+lang('icon_switcher-choice-flag-ru.png', 'Россия')
+													.col-21.col-offset-3
+														+check-list()
+															- for(var i = 0; i < 4; i++)
+																+e('li').item Название города
+											.col-24.col-xs-12.col-md-6
+												.grid
+													.col-24
+														+lang('icon_switcher-choice-flag-en.png', 'Англия')
+													.col-21.col-offset-3
+														+check-list()
+															- for(var i = 0; i < 4; i++)
+																+e('li').item Название города
+						.col-24
+							+b.widget
+								+e.inner
+									.grid.grid_items-center.grid_content-between
+										// left side
+										.col-24.col-md-auto
+											.grid.grid_items-center
+												.col-24.col-xs-auto
+													+typography()._size_xs.__title Эксклюзивные договоры
+												.col-24.col-xs-auto
+													+switcher-choice()
+														+e('span').styled(role='checkbox')
+															+e('span').styled-icon
+														+e('span').side-left.typography.typography_size Аватарки
+														+e('span').side-right.typography.typography_size Фотографии
+												.col-24.col-md-auto
+													+grid-actions
+														li.col-auto
+															select
+																option Добавить фильтр
+																option Фильтр 1
+																option Фильтр 2
+																option Фильтр 3
+														li.col-auto
+															select
+																option Показать фото
+																option Фильтр 1
+																option Фильтр 2
+																option Фильтр 3
+										// right side
+										.col-24.col-md-auto
+											+grid-actions
+												li.col-auto
+													+btn('a', '#btn')._default._size_md
+														+e('span').label Показать все
+									+widget-slider
+										.grid.grid_items-end.grid_gutters-no
+											.col
+												+e.slide.is-current
+													+card-user
+											.col.hidden-after-xs
+												+e.slide
+													+card-user
+											.col.hidden-after-sm
+												+e.slide
+													+card-user
+											.col.hidden-after-md
+												+e.slide
+													+card-user
+											.col.hidden-after-xl
+												+e.slide
+													+card-user
+						.col-24
+							+b.widget
+								+e.inner
+									.grid.grid_items-center.grid_content-between
+										// left side
+										.col-24.col-md-auto
+											.grid.grid_items-center
+												.col-24.col-md-auto
+													+typography()._size_xs.__title Проекты
+												.col-24.col-md-auto
+													+grid-actions
+														li.col-24.col-sm-auto
+															+typography()._size Сортировка по:
+														li.col-auto
+															select
+																option Алфавит
+														li.col-auto
+															select
+																option Рейтинг
+														li.col-auto
+															select
+																option Гонорар
+														li.col-auto
+															select
+																option Тип
+										// right side
+										.col-24.col-md-auto
+											+grid-actions
+												li.col-auto
+													+switcher-choice()._sm
+														+e('span').styled(role='checkbox')
+															+e('span').styled-icon
+														+e('span').side-left.typography.typography_size Завершенные
+														+e('span').side-right.typography.typography_size Текущие
+												li.col-auto
+													+btn('a', '#btn')._default._size_md
+														+e('span').label Показать все
+								+e.inner
+									.grid.grid_gutters-x
+										.col-24.col-md-12
+											.grid
+												.col-24
+													+b.card-project
+														+e('i').btn-more
+														+e.main
+															+b.card-profile._md
+																+avatar('https://via.placeholder.com/65x65').__avatar
+																+b.user-info
+																	+e('ul').list
+																		+e('li').list-item Название проекта
+																		+e('li').list-item
+																			+rating()._up._accent
+																				+icon.rating-star-md
+															+e.info
+																.grid.grid_items-center
+																	.col-auto
+																		+figure('https://via.placeholder.com/30x30')
+																	.col-auto
+																		+e('span').price._sm 3000Р
+																	.col-auto
+																		+grid-actions
+																			li.col
+																				+btn()._default.btn_size_sm
+																					+e('span').label РЕКЛАМА
+														+e.content.normalize(data-card-project='more-content')
+															p Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.
+														+e.nav-line(data-card-project='nav-line')
+															+nav-line
+												.col-24
+													+b.card-project.show-more-content
+														+e('i').btn-more
+														+e.main
+															+b.card-profile._md
+																+avatar('https://via.placeholder.com/65x65').__avatar
+																+b.user-info
+																	+e('ul').list
+																		+e('li').list-item Название проекта
+																		+e('li').list-item
+																			+rating()._up._accent
+																				+icon.rating-star-md
+															+e.info
+																.grid.grid_items-center
+																	.col-auto
+																		+figure('https://via.placeholder.com/30x30')
+																	.col-auto
+																		+e('span').price._sm 3000Р
+																	.col-auto
+																		+grid-actions
+																			li.col
+																				+btn()._default.btn_size_sm
+																					+e('span').label РЕКЛАМА
+														+e.content.normalize(data-card-project='more-content')
+															p Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.
+														+e.nav-line(data-card-project='nav-line')
+															+nav-line
+										.col-24.col-md-12
+											.grid
+												- for(var i = 0; i < 3; i++)
+													.col-24
+														+b.card-project
+															+e('i').btn-more
+															+e.main
+																+b.card-profile._md
+																	+avatar('https://via.placeholder.com/65x65').__avatar
+																	+b.user-info
+																		+e('ul').list
+																			+e('li').list-item Название проекта
+																			+e('li').list-item
+																				+rating()._up._accent
+																					+icon.rating-star-md
+																+e.info
+																	.grid.grid_items-center
+																		.col-auto
+																			+figure('https://via.placeholder.com/30x30')
+																		.col-auto
+																			+e('span').price._sm 3000Р
+																		.col-auto
+																			+grid-actions
+																				li.col
+																					+btn()._default.btn_size_sm
+																						+e('span').label РЕКЛАМА
+															+e.content.normalize(data-card-project='more-content')
+																p Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.
+															+e.nav-line(data-card-project='nav-line')
+																+nav-line
+						.col-24
+							+b.widget
+								+e.inner
+									.grid
+										.col-24
+											+typography()._size_xs.__title Виды организуемых  проектов
+										- for(var i = 0; i < 3; i++)
+											.col-24.col-xs-12.col-md-8
+												include ../blocks/widgets/check-list/check-list
+												+check-list()
+													- for(var i = 0; i < 3; i++)
+														+e('li').item Название этого вида <br> работы которую может выполнять
+				.col-24.col-lg-8
+					.grid
+						.col-24
+							+b.widget
+								+e.inner
+									.grid
+										.col-24
+											+typography()._size_xs.__title Видео снэп
+										.col-24
+											+figure('https://via.placeholder.com/460x270')
+						.col-24
+							+b.widget
+								+e.inner
+									.grid
+										.col-24
+											+typography()._size_xs.__title Знание языков
+										.col-24
+											.grid.grid_items-center
+												.col-24.col-md-9
+													+lang('icon_switcher-choice-flag-ru.png', 'Русский язык')
+												.col-auto
+													+btn()._tag._size_sm.typography.typography_size_xs
+														+e('span').label Родной
+										.col-24
+											.grid.grid_items-center
+												.col-24.col-md-9
+													+lang('icon_switcher-choice-flag-en.png', 'Английский язык')
+												.col-auto
+													+btn()._tag._size_sm.typography.typography_size_xs
+														+e('span').label Свободно владею
+						.col-24
+							+b.widget
+								+e.inner
+									.grid
+										.col-24
+											+typography()._size_xs.__title Об агенстве
+										.col-24
+											+typography('div')._size_xs._weight_light.normalize
+												p Предлагаем Вашему вниманию набор новых готовых сайтов для самых разных сфер бизнеса — от суши-бара до юридической компании. Мы разберем новый уникальный дизайн одностраничного интернет-магазина, кроме того, уделим внимание интересному решению для сайтов компаний, занимающихся доставкой еды.
+												p Предлагаем Вашему вниманию набор новых готовых сайтов для самых разных сфер бизнеса — от суши-бара до юридической компании. Мы разберем новый уникальный дизайн одностраничного интернет-магазина, кроме того, уделим внимание интересному решению для сайтов компаний, занимающихся доставкой еды.
+						.col-24
+							+b.widget
+								+e.inner
+									.grid
+										.col-24
+											+typography()._size_xs.__title Договоры и контракты
+										.col-24
+											.grid.grid_gutters-x
+												.col-24.col-xs-12
+													- for(var i = 0; i < 4; i++)
+														+file('icon_file-type-pdf.png')
+												.col-24.col-xs-12
+													- for(var i = 0; i < 4; i++)
+														+file('icon_file-type-pdf.png')
+						.col-24
+							+b.widget
+								+e.inner
+									.grid.grid_items-center.grid_content-between
+										.col-auto
+											+typography()._size_sm.__title Отзывы
+										.col-auto
+											+btn()._default._size_md
+												+e('span').label Смотреть все отзывы
+									.grid
+										.col-24
+											+review
+												p Предлагаем Вашему вниманию набор новых готовых сайтов для самых разных сфер бизнеса — от суши-бара до юридической компании. Мы разберем новый уникальный дизайн одностраничного интернет-магазина, кроме того, уделим внимание интересному решению для сайтов компаний, занимающихся доставкой еды.
+										.col-24
+											+review
+												p Предлагаем Вашему вниманию набор новых готовых сайтов для самых разных сфер бизнеса — от суши-бара до юридической компании. Мы разберем новый уникальный дизайн
+										.col-24
+											+review
+												p Предлагаем Вашему вниманию набор новых готовых сайтов для самых разных сфер бизнеса — от суши-бара до юридической компании. Мы разберем новый уникальный дизайн .
+						.col-24
+							+b.widget
+								+e.inner
+									.grid.grid_items-center.grid_content-between
+										.col-auto
+											+typography()._size_sm.__title юридическая информация
+									.grid
+										- var arr = [['ИНН', 'АВ'], ['Банкосвкий счет', '2875634'], ['Кем выдан', 'ГОВД  Минск'], ['Адрес регистрации', 'ГОВД  Минск']]
+										- each item in arr
+											.col-24
+												.grid.grid_items-center
+													.col-24.col-xs-7
+														+typography()._size_xs=item[0]
+													.col-24.col-xs-17
+														+typography()._size_xs._color_neutral=item[1]
+									.grid
+										- for(var i = 0; i < 4; i++)
+											.col-24.col-xs-auto
+												+figure('img_pass-sm.png')

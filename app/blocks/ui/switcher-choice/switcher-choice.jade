@@ -1,0 +1,8 @@
+mixin switcher-choice(idVal, nameVal)
+	- idVal = idVal || 'id__' + Math.random()
+	- nameVal = idVal
+
+	+b.switcher-choice&attributes(attributes)
+		+e('input').input(type='checkbox' id=idVal name=nameVal)
+		+e('label').label(for=idVal)
+			block

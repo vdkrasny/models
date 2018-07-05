@@ -1,0 +1,144 @@
+.btn
+
+	&:not(.btn_square)
+		padding 0 1em
+		min-width 70px
+
+	&_size
+
+		&_sm
+			min-width 28px
+			height @min-width
+			font-size 10px
+
+		&_md
+			min-width 38px
+			height @min-width
+			font-size 14px
+
+		&_lg
+			min-width 48px
+			height @min-width
+			font-size 14px
+
+		&_xl
+			min-width 56px
+			height @min-width
+			font-size 16px
+
+	&_clear
+		color $color-default
+		background-color transparent
+		border-radius 5px
+		transition-property opacity
+
+		&:hover,
+		&:focus,
+		.input-for-btn:checked + &
+			&:not(.disabled):not(:disabled)
+				opacity .75
+
+	&_default
+		color #ffffff
+		background-color $color-default
+		border-radius 5px
+		transition-property background
+
+		&:hover,
+		&:focus,
+		.input-for-btn:checked + &
+			&:not(.disabled):not(:disabled)
+				background-color $color-accent
+
+	&_agree
+		color #ffffff
+		background-color #3bae45
+		border-radius 5px
+		transition-property background
+
+		&:hover,
+		&:focus,
+		.input-for-btn:checked + &
+			&:not(.disabled):not(:disabled)
+				background-color darken(#3bae45, 10%)
+
+	&_cancel
+		color #ffffff
+		background-color $color-accent
+		border-radius 5px
+		transition-property background
+
+		&:hover,
+		&:focus,
+		.input-for-btn:checked + &
+			&:not(.disabled):not(:disabled)
+				background-color darken($color-accent, 10%)
+
+	&_inverse
+		color #000000
+		background-color #ffffff
+		border-radius 5px
+		transition-property color, background
+
+		&:hover,
+		&:focus,
+		.input-for-btn:checked + &
+			&:not(.disabled):not(:disabled)
+				color #ffffff
+				background-color #000000
+
+	&_tag
+		cursor default
+		color #000000
+		background-color #f2f6fb
+		border-radius 5px
+
+	&_like-a-field
+		justify-content space-between
+		font-size 12px
+		color #212121
+		background-color #f5f5f5
+		border-radius 5px
+		transition-property background
+
+		&:hover,
+		&:focus,
+		.input-for-btn:checked + &
+			&:not(.disabled):not(:disabled)
+				background-color darken(#f5f5f5, 10%)
+
+	&_group
+		margin-left 1px
+		display inline-flex
+		font-weight 300
+		border-radius 0
+
+		&:not(.btn_square)
+			padding 0 30px
+
+		&-first
+			margin-left 0
+			border-radius 5px 0 0 5px
+
+		&-last
+			border-radius 0 5px 5px 0
+
+	&_fill
+		width 100%
+
++media($breakpoints[md], 'max')
+	.btn
+		&_group
+			margin-top 1px
+			margin-left 0
+			width 100%
+
+			&:not(.btn_square)
+				padding 0 30px
+
+			&-first
+				margin-top 0
+				border-radius 5px 5px 0 0
+
+			&-last
+				border-radius 0 0 5px 5px

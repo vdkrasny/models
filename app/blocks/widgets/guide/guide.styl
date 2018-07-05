@@ -1,0 +1,67 @@
+$guide-section-offset-y = 12px
+$guide-section-offset-x = 20px
+
+.guide
+	@extends $ex-block-box-shadow
+
+	height 100vh
+	color #000
+	background-color #fff
+
+	&__inner
+		padding-y 30px
+
+	&__section
+		padding $guide-section-offset-y 10px
+
+		&-inner
+			padding-left 30px
+
+	&__user-card
+		margin-y $guide-section-offset-y
+		padding-y 20px
+		padding-right $guide-section-offset-x
+		padding-left 40px
+		background-color #f2f6fb
+
+	&__list-links
+		font-weight 300
+		color $color-default
+
+		li
+			position relative
+			margin-top 10px
+			padding-left 20px
+			font-size 14px
+			line-height 1.2
+
+			&:first-of-type
+				margin-top 0
+
+			&:before
+				position absolute
+				top 50%
+				left 5px
+				display block
+				width 4px
+				height 4px
+				content ''
+				background-color #b0bacc
+				transform translateY(-50%)
+
+	&__list-tel
+		display block
+
+		li
+			margin-top 10px
+
+			&:first-of-type
+				margin-top 0
+
+	&__tel
+		font-size 14px
+		color #c5c8ca
+
+		span
+			font-size 18px
+			color #2c3034

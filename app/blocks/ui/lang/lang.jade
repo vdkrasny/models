@@ -1,0 +1,5 @@
+mixin lang(valFlag, valLabel)
+	+b.lang&attributes(attributes)
+		+e.flag(style='background-image: url(./assets/images/' + valFlag + ')')
+		+e('span').label=valLabel
+		block

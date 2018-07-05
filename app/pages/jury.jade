@@ -1,0 +1,107 @@
+extends ../blocks/layout/default/default
+
+include ../styles/typography/typography
+
+include ../blocks/ui/grid-actions/grid-actions
+include ../blocks/ui/field/field
+include ../blocks/ui/switcher-choice/switcher-choice
+include ../blocks/ui/rating/rating
+include ../blocks/ui/thumbs-buttons/thumbs-buttons
+
+include ../blocks/widgets/card-project/card-project
+include ../blocks/widgets/info-box/info-box
+
+block head
+	- var pageTitle = 'Экспертное жюри';
+
+block content
+	.container
+		.grid
+			.col-24.col-lg-9
+				+b.widget._fill
+					+e.inner
+						.grid.grid_items-center.grid_content-between
+							.col-auto
+								+typography()._size_xl.__title=pageTitle
+						.grid
+							.col-24
+								+b.card-profile._lg
+									+avatar('https://via.placeholder.com/120x120').__avatar
+									+b.user-info
+										+e('ul').list
+											+e('li').list-item Иванов Иван Иванович
+											+e('li').list-item
+												+rating()._up._lg.card-profile__rating
+													+icon().rating-star-md
+							.col-24
+								.normalize
+									p.h5 ПРАВИЛА ЭКСПЕРТА
+									ol
+										li Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.
+										li Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.
+										li Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.
+										li Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.
+										li Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.
+							.col-24
+								+grid-actions.grid_items-center.grid_content-between
+									li.col
+										+switcher-choice()
+											+e('span').styled(role='checkbox')
+												+e('span').styled-icon
+											+e('span').side-left.typography.typography_size Принимаю условия
+											+e('span').side-right.typography.typography_size Не принимаю условия
+									li.col-auto
+										+btn()._agree._size_lg
+											+e('span').label НАЧАТЬ ОЦЕНКУ
+			.col-24.col-lg-15
+				+b.widget._fill
+					+e.inner
+						.grid
+							.col-24
+								+figure('https://via.placeholder.com/900x540')
+							.col-24.col-md-13
+								.grid
+									.col-24
+										.grid.grid_items-center
+											.col-24.col-xs-6
+												+typography().typography_size Работа со светом:
+											.col-24.col-xs
+												+b.irs-box._default
+													+e('input').js-init(type='text' data-min='0' data-max='10' data-from='0')
+									.col-24
+										.grid.grid_items-center
+											.col-24.col-xs-6
+												+typography().typography_size Работа со светом:
+											.col-24.col-xs
+												+b.irs-box._default
+													+e('input').js-init(type='text' data-min='0' data-max='10' data-from='0')
+									.col-24
+										.grid.grid_items-center
+											.col-24.col-xs-6
+												+typography().typography_size Работа со светом:
+											.col-24.col-xs
+												+b.irs-box._default
+													+e('input').js-init(type='text' data-min='0' data-max='10' data-from='0')
+									.col-24
+										+switcher-choice()
+											+e('span').styled(role='checkbox')
+												+e('span').styled-icon
+											+e('span').side-left.typography.typography_size Художественный замысел читается
+											+e('span').side-right.typography.typography_size Художественный замысел не читается
+							.col-24.col-md-11
+								.grid.grid_content-end
+									.col-24
+										+info-box('icon_info-box-attention.png')._red
+											+e.text.normalize
+												p СООБЩИТЬ О НАРУШЕНИИ ПРАВИЛ САЙТА
+											+link('#')._hidden Пожаловаться
+									.col-24
+										.grid.grid_items-center
+											.col
+												+typography().typography_size Выберите положительный или отрицательный отзыв
+											.col
+												+thumbs-buttons
+									.col-auto
+										+btn()._icon-left._agree._size_lg
+											+e('img').icon(src='./assets/images/icon_btn-check-md.png')
+											+e('span').label ГОТОВО

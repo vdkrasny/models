@@ -1,0 +1,4 @@
+mixin typography(valTag)
+	- valTag = valTag || 'span'
+	+b(valTag).typography&attributes(attributes)
+		block

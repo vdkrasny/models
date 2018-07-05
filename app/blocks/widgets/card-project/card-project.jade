@@ -1,0 +1,35 @@
+include ../../ui/avatar/avatar
+include ../../ui/rating/rating
+include ../../ui/figure/figure
+include ../../ui/grid-actions/grid-actions
+include ../../ui/nav-line/nav-line
+
+mixin card-project()
+	+b.card-project&attributes(attributes)
+		+e('i').btn-more
+		+e.main
+			+b.card-profile._md
+				+avatar('https://via.placeholder.com/65x65').__avatar
+				+b.user-info
+					+e('ul').list
+						+e('li').list-item Название проекта
+						+e('li').list-item
+							+rating()._up._accent
+								+icon.rating-star-md
+			+e.info
+				.grid.grid_items-center
+					.col-auto
+						+figure('https://via.placeholder.com/38x38')
+					.col-auto
+						+e('span').price 3000Р
+					.col-auto
+						+grid-actions
+							li.col
+								+btn()._default.btn_size_sm
+									+e('span').label РЕКЛАМА
+		+e.content.normalize(data-card-project='more-content')
+			p Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.
+		+e.nav-line(data-card-project='nav-line')
+			+nav-line
+				+e('li').item
+					+e('a').link.icon-mark(href='#mark') Закладки

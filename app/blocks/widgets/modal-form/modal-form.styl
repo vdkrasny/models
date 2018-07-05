@@ -1,0 +1,58 @@
+.modal-form
+	@extends $ex-block-box-shadow
+
+	position relative
+	display block
+	min-width 320px
+	text-align left
+	pointer-events auto
+	background-color #ffffff
+	border-radius 5px
+
+	&__header
+		padding 25px 60px 25px 20px
+
+		.modal-form__title
+			font-size 16px
+
+	&__inner
+		padding 7px 20px
+
+		.modal-form__title
+			font-size 14px
+
+	&__group-strips
+		position relative
+		padding-bottom 48px
+
+		&:after
+			position absolute
+			right 10px
+			left 10px
+			bottom 20px
+			display block
+			height 1px
+			content ''
+			background #ddd
+
+	&__footer
+		padding 30px 20px 25px
+
+	&__title
+		display block
+		line-height 1.25
+		text-transform uppercase
+
++media($breakpoints[xs])
+	.modal-form
+
+		&_md
+			min-width 420px
+			max-width 420px
+
++media($breakpoints[lg])
+	.modal-form
+
+		&_lg
+			min-width 780px
+			max-width 780px

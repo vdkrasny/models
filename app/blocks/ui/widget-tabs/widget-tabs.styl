@@ -1,0 +1,35 @@
+.widget-tabs
+	position relative
+	display block
+
+	&__nav
+		display flex
+		flex-wrap nowrap
+		align-items flex-end
+		overflow-x auto
+
+	&__nav-item
+		padding 0 15px
+		display inline-block
+		font-size 14px
+		line-height 50px
+		vertical-align middle
+		white-space nowrap
+		cursor pointer
+		transition 300ms ease
+		transition-property background-color
+
+		&:first-child
+			margin-left 0
+
+		&:last-child
+			margin-right 0
+
+		&:hover,
+		&:focus,
+		&.is-current
+			background-color #f2f6fb
+
+	&__content
+		padding 40px 30px
+		background-color #f2f6fb

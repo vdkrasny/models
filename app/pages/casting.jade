@@ -1,0 +1,282 @@
+extends ../blocks/layout/default/default
+
+include ../styles/typography/typography
+
+include ../blocks/ui/grid-actions/grid-actions
+include ../blocks/ui/field/field
+include ../blocks/ui/rating/rating
+include ../blocks/ui/box-close/box-close
+include ../blocks/ui/calendar/calendar
+include ../blocks/ui/i-label/i-label
+
+include ../blocks/widgets/card-user/card-user
+
+block head
+	- var pageTitle = 'Кастинг';
+
+block content
+	+b.create-casting
+		.container
+			.grid
+				.col-24
+					+b.widget
+						+e.inner
+							.grid.grid_gutters-lg-x
+								.col-24.col-lg-12
+									.grid.grid_items-center.grid_content-between
+										.col-auto
+											+typography()._size_xl.__title=pageTitle
+									.grid
+										.col-24
+											.grid
+												.col-md
+													+b.card-profile._lg
+														+avatar('https://via.placeholder.com/120x120').__avatar
+														+b.user-info
+															+e('ul').list
+																+e('li').list-item Иванов Иван Иванович
+																+e('li').list-item
+																	+rating()._up._lg.card-profile__rating
+																		+icon().rating-star-md
+												.col-24.col-md
+													+switcher-choice()
+														+e('span').styled(role='checkbox')
+															+e('span').styled-icon
+														+e('span').side-left Мои проекты
+														+e('span').side-right Подходящие мне				
+										.col-24
+											+typography()._size_xs.__title проекты  с активными кастингами
+										- for(var i = 0; i < 5; i++)
+											.col-24
+												.box-clip
+													+b.card-project._hover
+														+e.main
+															+b.card-profile._md
+																+avatar('https://via.placeholder.com/65x65').__avatar
+																+b.user-info
+																	+e('ul').list
+																		+e('li').list-item Название проекта
+																		+e('li').list-item
+																			+rating()._up._lg
+																				+icon().rating-star-md
+															+e.info(style='width: 130px;')
+																.grid.grid_items-center
+																	.col-24
+																		+grid-actions
+																			li.col
+																				+btn()._default.btn_size_sm
+																					+e('span').label РЕКЛАМА
+																	.col-auto
+																		+figure('https://via.placeholder.com/30x30')
+																	.col-auto
+																		+e('span').price._sm 3000Р
+															+e.people
+																- var arrCast = [['icon_casting-red.png', 'Модель'], ['icon_casting-blue.png', 'Стилист'], ['icon_casting-red.png', 'Визажист'], ['icon_casting-red.png', 'Визажист']]
+																- each item in arrCast	
+																	+e.people-item
+																		+b.avatar.__people-avatar
+																			+e('a').image(href='#' style='background-image: url(./assets/images/' + item[0] + ');')
+																				+e.content
+																					+e.label=item[1]
+								.col-24.col-lg-12
+									+b.widget
+										+e.inner
+											.grid
+												.col-24
+													+typography('div')._size_xs._weight_light.normalize
+														span.h2 Название проекта
+														p Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.
+														p Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.
+												.col-24.hidden-after-sm
+												.col-24.col-sm-10
+													.grid
+														.col-24
+															+grid-actions
+																li.col-24
+																	.grid.grid_items-center
+																		.col-8
+																		.col
+																			+btn()._default.btn_size_md
+																				+e('span').label Коммерческий
+																li.col-24
+																	.grid.grid_items-center
+																		.col-8
+																			+typography()._size Тип проекта:
+																		.col
+																			+btn()._icon-left._default.btn_size_md
+																				+e('img').icon(src='./assets/images/icon_btn-photo.png')
+																				+e('span').label Актер
+																li.col-24
+																	.grid.grid_items-center
+																		.col-8
+																			+typography()._size Жанр:
+																		.col
+																			+btn()._default.btn_size_md
+																				+e('span').label Название жанра
+														.col-24
+															ul.grid
+																li.col-24
+																	.grid.grid_items-center
+																		.col-auto
+																			img(src='./assets/images/img_list-1.png')
+																		.col
+																			+typography()._size_md 3000P
+																li.col-24
+																	.grid.grid_items-center
+																		.col-auto
+																			img(src='./assets/images/img_list-2.png')
+																		.col
+																			+typography()._size_xs Начало в 10:00 АМ
+																li.col-24
+																	.grid.grid_items-center
+																		.col-auto
+																			img(src='./assets/images/img_list-3.png')
+																		.col
+																			+typography()._size_xs 9 часов
+																li.col-24
+																	.grid.grid_items-center
+																		.col-auto
+																			img(src='./assets/images/img_list-4.png')
+																		.col
+																			+typography()._size_xs Кросс студия
+												.col
+													+calendar
+												.col-24.hidden-after-sm
+												.col-24.col-sm-10
+													+typography('div')._size_xs._weight_light.normalize
+														p Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.
+												.col-24.col-sm
+													#map(style='background-color:#b0bacc;height:150px;')
+												.col-24
+													+typography()._size_xs ДЕТАЛИ
+												.col-24
+													+grid-actions.grid_items-start
+														li.col-18
+															+grid-actions
+																li.col-12
+																	+btn()._default.btn_size_md._fill
+																		+e('span').label Показать условия проекта
+																li.col-12
+																	+btn()._default.btn_size_md._fill
+																		+e('span').label Показать требования к кандидатам
+																li.col-12
+																	+btn()._default.btn_size_md._fill
+																		+e('span').label Показать условия передачи прав
+																li.col-12
+																	+btn()._default.btn_size_md._fill
+																		+e('span').label Редактировать параметры кастинга
+														li.col-6
+															+btn()._cancel._icon-left.btn_size_md._fill
+																+e('img').icon(src='./assets/images/icon_box-close.png')
+																+e('span').label Закрыть кастинг
+				.col-24
+					+b.widget
+						+e.inner
+							.grid.grid_items-center.grid_content-between
+								.col-auto
+									+typography()._size_xs.__title Кандидаты на утверждение
+							.grid.grid_items-center
+								.col-24.col-md-auto
+									+grid-actions.grid_gutters-no
+										li.col-24.col-md-auto
+											+btn()._default._group._group-first.btn_size_md
+												+e('span').label Поиск по параметрам
+										li.col-24.col-md-auto
+											+btn()._default._group.btn_size_md
+												+e('span').label Заявки
+										li.col-24.col-md-auto
+											+btn()._default._group.btn_size_md
+												+e('span').label Очный кастинг
+										li.col-24.col-md-auto
+											+btn()._default._group._group-last.btn_size_md
+												+e('span').label Предварительный отбор
+								.col-24.col-md-auto
+									+grid-actions.grid_gutters-no
+										li.col-auto
+											+btn()._icon-left._agree.btn_size_md
+												+e('img').icon(src='./assets/images/icon_btn-check-md.png')
+												+e('span').label Изменить параметры кастинга
+						+e.inner
+							.grid.grid_content-between
+								.col-24.col-lg
+									.grid.grid_items-center
+										.col-24.col-md-11
+											+grid-actions
+												li.col-auto
+													select
+														option Показать фото
+												li.col
+													select
+														option Добавить фильтр
+										.col-1.hidden-after-md
+										.col-24.col-md-auto
+											+grid-actions
+												li.col-auto
+													+box-close()
+														+btn('span')._tag.btn_size_md
+															+e('span').label Модель
+												li.col-auto
+													+box-close()
+														+btn('span')._tag.btn_size_md
+															+e('span').label Модель
+								.col-24.col-lg-auto
+									+grid-actions
+										li.col-24.col-sm-auto
+											+typography()._size Сортировка по:
+										li.col-auto
+											select
+												option Алфавит
+										li.col-auto
+											select
+												option Рейтинг
+										li.col-auto
+											select
+												option Последнее сообщение
+										li.col-auto
+											select
+												option Тип
+						+e.inner
+							.grid
+								- for(var i = 0; i < 2; i++)
+									.col-24.col-xs-12.col-sm-6.col-lg-4.col-xxl-3
+										+b.box-clip
+											+b.card-user._show-info
+												+e.header
+													+i-label().__i-label Модель
+													+b.user-info._lg
+														+e('ul').list
+															+e('li').list-item Иван Иванов
+															+e('li').list-item.__age 32 года
+												+e.body
+													+rating()._up.__body-rating
+														+icon.rating-star-xs
+													+e.slider
+														+figure('img_faces-slide.png')
+													+e.body-nav
+														+b('ul').nav-line._fill
+															+e('li').item
+																+e('a').link.icon-chat(href='#chat') Чат
+															+b('li').nav-drop.__item
+																a.nav-line__link.icon-add(href='#add') Добавить
+																+e.content
+																	+e('ul').list
+																		+e('li').item
+																			+link('#link')._hidden
+																			+e('span').label Предварительный отбор
+																		+e('li').item
+																			+link('#link')._hidden
+																			+e('span').label Пригласить на очный кастинг
+																		+e('li').item
+																			+link('#link')._hidden
+																			+e('span').label Пригласить в проект
+																		+e('li').item
+																			+link('#link')._hidden
+																			+e('span').label Утвердить и закрыть кастинг
+															+e('li').item
+																+e('a').link.icon-profile(href='#profile') Профиль
+												+e.footer
+													+rating()._up.__footer-rating
+														+icon.rating-star-xs
+								- for(var i = 0; i < 14; i++)
+									.col-24.col-xs-12.col-sm-6.col-lg-4.col-xxl-3
+										+card-user._show-info

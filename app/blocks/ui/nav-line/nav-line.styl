@@ -1,0 +1,64 @@
+.nav-line
+	display flex
+	align-items center
+	justify-content center
+	height 100%
+
+	&_fill
+
+		.nav-line__item
+			flex 1 1 auto
+
+			&:first-child
+				border-left none
+
+			&:last-child
+				border-right none
+
+	&__item
+		display block
+		height 100%
+
+		& + .nav-line__item
+			border-left 1px solid #ffffff
+
+		&:first-child
+			border-left 1px solid #ffffff
+
+		&:last-child
+			border-right 1px solid #ffffff
+
+	&__link
+		display block
+		min-width 45px
+		height 100%
+		min-height 32px
+		font-size 0
+		line-height 0
+		background-color $color-accent
+		background-repeat no-repeat
+		background-position center
+		border 4px solid $color-accent
+		transition 300ms ease
+		transition-property background-color
+
+		&:hover
+			background-color #ffffff
+
+		&.icon-mark
+			background-image url(../images/icon_nav-line-mark.png)
+
+		&.icon-add
+			background-image url(../images/icon_nav-line-add.png)
+			&:hover
+				background-image url(../images/icon_nav-line-add-hover.png)
+
+		&.icon-chat
+			background-image url(../images/icon_nav-line-chat.png)
+			&:hover
+				background-image url(../images/icon_nav-line-chat-hover.png)
+
+		&.icon-profile
+			background-image url(../images/icon_nav-line-profile.png)
+			&:hover
+				background-image url(../images/icon_nav-line-profile-hover.png)

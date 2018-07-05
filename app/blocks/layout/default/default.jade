@@ -1,0 +1,35 @@
+include /../node_modules/bemto.jade/bemto
+include /../node_modules/jade-injected/jade-injected
+include ../../include/scripts/scripts
+
+include ../../ui/guide-control/guide-control
+
+include ../../widgets/guide/guide
+include ../../widgets/footer/footer
+include ../../widgets/header/header
+
+doctype html
+html(lang='ru')
+	include ../../include/head/head
+	body
+
+		block fixed
+
+		+b.page
+			+e.board
+				+e.board-section
+					+guide-control
+			+e.guide
+				// +e('i').guide-close
+				+guide
+			+header
+			+e.content
+
+				block content
+
+			+footer
+
+		block modals
+
+		+scripts(['app.min.js'])
+		block script

@@ -1,0 +1,8 @@
+mixin area-load(labelVal, idVal)
+	- idVal = idVal || 'id__' + Math.random()
+
+	+b.area-load&attributes(attributes)
+		+btn('label')._square._default._size_sm(for=idVal)
+			+e('img').icon(src='./assets/images/icon_loader.png')
+		+typography()._size_xs=labelVal
+		input(type='file' id=idVal)

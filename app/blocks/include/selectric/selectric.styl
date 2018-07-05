@@ -1,0 +1,227 @@
+$bg-color = #f5f5f5
+$border-color = #dddddd
+$border-width = 0
+$border-radius = 5px
+$height = 38px
+$inner-height = $height - ($border-width * 2)
+$spacing = 15px // label left-right paddings
+$font-size = 12px
+$label-color = #444444
+
+$items-bg-color = $bg-color
+$items-border-color = $border-color
+$items-border-width = $border-width
+$items-border-radius = 0
+$items-spacing = $spacing
+$items-font-size = $font-size
+$items-label-color = $label-color
+$items-selected-color = #ffffff
+$items-selected-bg = #5c5f6a
+
+$group-spacing = $spacing
+$group-spacing-li = ($spacing + 10px)
+$group-color = lighten($items-label-color, 30%)
+
+.selectric-wrapper
+	position relative
+	cursor pointer
+
+.selectric-responsive
+	width 100%
+
+.selectric
+	position relative
+	min-width 100px
+	background $bg-color
+	border $border-width solid $border-color
+	border-radius $border-radius
+	transition 300ms ease
+	transition-property background, border
+
+	.label
+		margin 0 (($spacing * 2) + 4px) 0 $spacing
+		display block
+		overflow hidden
+		height $inner-height
+		font-size $font-size
+		line-height $inner-height
+		white-space nowrap
+		text-overflow ellipsis
+		user-select none
+		color $label-color
+
+	.button
+		position absolute
+		top 0
+		right 0
+		display block
+		width (($spacing * 2) + 4px)
+		height $inner-height
+		font-size 0
+		line-height 0
+
+		&:after
+			position absolute
+			top 0
+			right 0
+			left 0
+			bottom 0
+			margin auto
+			width 5px
+			height 4px
+			content ''
+			background url(../images/icon_selectric.png) no-repeat center
+			transition 300ms ease
+			transition-property transform
+
+	.selectric-focus &
+		background-color darken($bg-color, 10%)
+		border-color darken($border-color, 15%)
+
+	.selectric-hover &
+		background-color darken($bg-color, 10%)
+		border-color darken($border-color, 15%)
+
+	&-white
+	
+		.selectric
+			background-color #ffffff
+
+.selectric-open
+	z-index 9999
+
+	.selectric
+		background-color darken($bg-color, 10%)
+		border-color darken($border-color, 15%)
+		border-bottom-right-radius 0
+		border-bottom-left-radius 0
+
+	.selectric-items
+		display block
+
+	.button:after
+		transform rotate(180deg)
+
+.selectric-disabled
+	cursor default
+	user-select none
+	opacity .5
+
+.selectric-hide-select
+	position relative
+	overflow hidden
+	width 0
+	height 0
+
+	select
+		position absolute
+		left -100%
+
+	&.selectric-is-native
+		position absolute
+		z-index 10
+		width 100%
+		height 100%
+
+		select
+			position absolute
+			z-index 1
+			top 0
+			right 0
+			left 0
+			box-sizing border-box
+			width 100%
+			height 100%
+			border none
+			opacity 0
+
+.selectric-input
+	position absolute unquote('!important')
+	top 0 unquote('!important')
+	left 0 unquote('!important')
+	margin 0 unquote('!important')
+	padding 0 unquote('!important')
+	overflow hidden unquote('!important')
+	clip rect(0, 0, 0, 0) unquote('!important')
+	width 1px unquote('!important')
+	height 1px unquote('!important')
+	background none unquote('!important')
+	border none unquote('!important')
+	outline none unquote('!important')
+
+.selectric-temp-show
+	position absolute unquote('!important')
+	display block unquote('!important')
+	visibility hidden unquote('!important')
+
+.selectric-items
+	position absolute
+	z-index -1
+	top 100%
+	left 0
+	display none
+	overflow hidden
+	background $items-bg-color
+	border $items-border-width solid $items-border-color
+	border-radius $items-border-radius
+	border-bottom-right-radius $border-radius
+	border-bottom-left-radius $border-radius
+
+	.selectric-scroll
+		overflow auto
+		height 100%
+
+	.selectric-above &
+		top auto
+		bottom 100%
+
+	ul, li
+		margin 0
+		padding 0
+		min-height 20px
+		list-style none
+		font-size $items-font-size
+		line-height 1.2
+
+	li
+		padding 10px $items-spacing
+		display block
+		cursor pointer
+		color $items-label-color
+		transition 300ms ease
+		transition-property color, background
+
+		&.selected
+			color $items-selected-color
+			background $items-selected-bg
+
+		&.highlighted
+			@extends .selectric-items li.selected
+
+		&:hover
+			@extends .selectric-items li.selected
+			background lighten($items-selected-bg, 20%)
+
+	.disabled
+		cursor default unquote('!important')
+		user-select none
+		color lighten($items-label-color, 20%) unquote('!important')
+		background none unquote('!important')
+		opacity .5
+
+	.selectric-group
+
+		.selectric-group-label
+			padding-right $group-spacing
+			padding-left $group-spacing
+			font-weight bold
+			cursor default
+			user-select none
+			color $group-color
+			background none
+
+		&.disabled li
+			opacity 1
+
+		li
+			padding-left $group-spacing-li

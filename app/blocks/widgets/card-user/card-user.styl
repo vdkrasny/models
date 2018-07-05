@@ -1,0 +1,126 @@
+$card-user-pseudo-line
+	position absolute
+	z-index 3
+	display block
+	pointer-events none
+	content ''
+	border-width 0
+	border-style solid
+	border-color $color-accent
+	transition 100ms ease
+	transition-property border
+
+.card-user
+	display block
+
+	&:hover
+	.is-current &
+		@extends $ex-block-box-shadow
+
+		.card-user
+
+			&__header
+				opacity 1
+
+				&:before
+					border-bottom-width 7px
+
+			&__i-label
+				opacity 1
+
+			&__body
+				box-shadow none
+
+				&:before
+					border-left-width 7px
+
+				&:after
+					border-right-width 7px
+
+			&__body-rating
+				opacity 1
+
+			&__body-nav
+				display block
+
+	&_show-info
+
+		&:not(:hover)
+			.card-user__i-label
+				color $color-accent
+				background-color transparent
+				opacity 1
+
+		.card-user__header
+			opacity 1
+
+	&__header
+		position relative
+		padding 12px
+		font-size 18px
+		line-height 1.2
+		opacity 0
+		transition 100ms ease
+		transition-property opacity
+
+		&:before
+			@extends $card-user-pseudo-line
+
+			right 0
+			left 0
+			bottom 0
+
+	&__i-label
+		position absolute
+		z-index 4
+		right 0
+		bottom 0
+		opacity 0
+		transition 100ms ease
+		transition-property opacity
+
+	&__body
+		@extends $ex-block-box-shadow
+
+		position relative
+		transition 100ms ease
+		transition-property box-shadow
+
+		&:before
+			@extends $card-user-pseudo-line
+			top 0
+			left 0
+			bottom 0
+
+		&:after
+			@extends $card-user-pseudo-line
+			top 0
+			right 0
+			bottom 0
+
+	&__body-rating
+		position absolute
+		z-index 2
+		top 17px
+		right 15px
+		pointer-events none
+		opacity 0
+		transition 100ms ease
+		transition-property opacity
+
+	&__body-nav
+		position absolute
+		right 0
+		left 0
+		bottom -38px
+		display none
+		height 38px
+
+	&__slider
+		position relative
+		z-index 1
+
+	&__footer
+		padding 12px
+		min-height 38px
+		text-align right

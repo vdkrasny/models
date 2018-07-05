@@ -1,0 +1,320 @@
+extends ../blocks/layout/default/default
+
+include ../styles/typography/typography
+
+include ../blocks/ui/grid-actions/grid-actions
+include ../blocks/ui/figure/figure
+include ../blocks/ui/widget-slider/widget-slider
+
+include ../blocks/widgets/card-user/card-user
+include ../blocks/widgets/card-profile/card-profile
+include ../blocks/widgets/card-project/card-project
+include ../blocks/widgets/card-media/card-media
+
+block head
+	- var pageTitle = 'Главная';
+
+block content
+	.container
+		.grid
+			.col-24.col-lg-16
+				.grid
+					- var arrSliderName = ['slick-main-faces-1', 'slick-main-faces-2']
+					- each sliderId in arrSliderName
+						.col-24
+							// Новые лица
+							+b.widget
+								+e.inner
+									+e.header
+										+e.controls
+											+btn('a', '#btn')._clear._square._size_sm
+												+icon.widget-close.__icon Закрыть
+											+e('span').controls-inner
+												+btn('a', '#btn')._clear._square._size_sm
+													+icon.widget-gear.__icon Настройки
+												+btn('a', '#btn')._clear._square._size_sm
+													+icon.widget-issues.__icon Помощь
+										.grid.grid_items-start.grid_content-between
+											// left side widget__header
+											.col-24.col-sm-auto
+												.grid.grid_items-center
+													.col-24.col-xs-auto
+														+e('span').title новые лица
+													.col-24.col-xs-auto
+														+grid-actions
+															li.col-auto
+																select
+																	option Показать фото
+																	option Да
+																	option Нет
+															li.col-auto
+																select
+																	option Добавить фильтр
+																	option Фильтр 1
+																	option Фильтр 2
+																	option Фильтр 3
+											// right side widget__header
+											.col-24.col-sm-auto
+												+grid-actions
+													li.col-auto
+														+btn('a', '#btn')._default._size_md
+															+e('span').label Перейти в раздел
+									+widget-slider(id=sliderId)
+										.grid.grid_items-end.grid_gutters-no
+											.col
+												+e.slide.is-current
+													+card-user
+											.col.hidden-after-xs
+												+e.slide
+													+card-user
+											.col.hidden-after-sm
+												+e.slide
+													+card-user
+											.col.hidden-after-md
+												+e.slide
+													+card-user
+											.col.hidden-after-xl
+												+e.slide
+													+card-user
+					.col-24
+						// Новости
+						+b.widget
+							+e.inner
+								+e.header
+									+e.controls
+										+btn('a', '#btn')._clear._square._size_sm
+											+icon.widget-close.__icon Закрыть
+										+e('span').controls-inner
+											+btn('a', '#btn')._clear._square._size_sm
+												+icon.widget-gear.__icon Настройки
+											+btn('a', '#btn')._clear._square._size_sm
+												+icon.widget-issues.__icon Помощь
+									.grid.grid_items-start.grid_content-between
+										// left side widget__header
+										.col-24.col-sm-auto
+											.grid.grid_items-center
+												.col-24.col-xs-auto
+													+e('span').title Новости
+												.col-24.col-xs-auto
+													+grid-actions
+														li.col-auto
+															select
+																option Добавить фильтр
+																option Фильтр 1
+																option Фильтр 2
+																option Фильтр 3
+										// right side widget__header
+										.col-24.col-sm-auto
+											+grid-actions
+												li.col-auto
+													+btn('a', '#btn')._default._size_md
+														+e('span').label Перейти в раздел
+								+widget-slider
+									.grid.grid_items-end.grid_gutters-no
+										.col
+											+e.slide.is-current
+												+card-media('img_media-slide.png')
+										.col.hidden-after-sm
+											+e.slide
+												+card-media('img_media-slide.png')
+										.col.hidden-after-xl
+											+e.slide
+												+card-media('img_media-slide.png')
+					.col-24
+						// Статьи
+						+b.widget
+							+e.inner
+								+e.header
+									+e.controls
+										+btn('a', '#btn')._clear._square._size_sm
+											+icon.widget-close.__icon Закрыть
+										+e('span').controls-inner
+											+btn('a', '#btn')._clear._square._size_sm
+												+icon.widget-gear.__icon Настройки
+											+btn('a', '#btn')._clear._square._size_sm
+												+icon.widget-issues.__icon Помощь
+									.grid.grid_items-start.grid_content-between
+										// left side widget__header
+										.col-24.col-sm-auto
+											.grid.grid_items-center
+												.col-24.col-xs-auto
+													+e('span').title статьи
+												.col-24.col-xs-auto
+													+grid-actions
+														li.col-auto
+															select
+																option Добавить фильтр
+																option Фильтр 1
+																option Фильтр 2
+																option Фильтр 3
+										// right side widget__header
+										.col-24.col-sm-auto
+											+grid-actions
+												li.col-auto
+													+btn('a', '#btn')._default._size_md
+														+e('span').label Перейти в раздел
+								+widget-slider
+									.grid.grid_items-end.grid_gutters-no
+										.col
+											+e.slide.is-current
+												+card-media('img_media-slide.png')
+													+e.card-profile
+														+b.card-profile._sm
+															+avatar('img_avatar.png').__avatar
+															+b.user-info
+																+e('ul').list
+																	+e('li').list-item Иванов Иван
+																	+e('li').list-item
+																		+rating()._up._accent
+																			+icon.rating-star-md
+										.col.hidden-after-sm
+											+e.slide
+												+card-media('img_media-slide.png')
+													+e.card-profile
+														+b.card-profile._sm
+															+avatar('img_avatar.png').__avatar
+															+b.user-info
+																+e('ul').list
+																	+e('li').list-item Иванов Иван
+																	+e('li').list-item
+																		+rating()._up._accent
+																			+icon.rating-star-md
+										.col.hidden-after-xl
+											+e.slide
+												+card-media('img_media-slide.png')
+													+e.card-profile
+														+b.card-profile._sm
+															+avatar('img_avatar.png').__avatar
+															+b.user-info
+																+e('ul').list
+																	+e('li').list-item Иванов Иван
+																	+e('li').list-item
+																		+rating()._up._accent
+																			+icon.rating-star-md
+			.col-24.col-lg-8
+				.grid
+					.col-24
+						// Мой рейтинг
+						+b.widget
+							+e.inner
+								+e.header
+									+e.controls
+										+btn('a', '#btn')._clear._square._size_sm
+											+icon.widget-close.__icon Закрыть
+										+e('span').controls-inner
+											+btn('a', '#btn')._clear._square._size_sm
+												+icon.widget-gear.__icon Настройки
+											+btn('a', '#btn')._clear._square._size_sm
+												+icon.widget-issues.__icon Помощь
+									.grid.grid_items-start.grid_content-between
+										// left side widget__header
+										.col-16.col-xxl-17
+											+b.card-profile
+												+avatar('img_avatar.png').__avatar
+												+b.user-info._lg
+													+typography()._size_xl._uppercase Мой рейтинг
+													+e('ul').list
+														+e('li').list-item Иванов Иван
+														+e('li').list-item.__age 32 года
+										// right side widget__header
+										.col
+											+grid-actions
+												li.col-auto
+													+btn('a', '#btn')._default._size_sm
+														+e('span').label Перейти в раздел
+												li.col-auto
+													+btn('a', '#btn')._default._size_sm
+														+e('span').label Год
+								.grid
+									.col-24
+										+figure('graf.png')
+											.rating-in-graf
+												+rating()._up._xl
+													+icon.rating-star-md
+											.advice-in-graf
+												- for (var i = 0; i < 3; i++)
+													+btn('a')._icon-top._clear._square._advice
+														+e('img').icon(src='./assets/images/icon_advice.png')
+														+e('span').label Советы
+								+e.info
+									p Регистрация (продление регистрации) домена irysh-sky.by сроком на 1 год, согласно публичному договору возмездного
+					.col-24
+						// Подходящие проекты
+						+b.widget._clear
+							+e.inner
+								+e.header
+									+e.controls
+										+btn('a', '#btn')._clear._square._size_sm
+											+icon.widget-close.__icon Закрыть
+										+e('span').controls-inner
+											+btn('a', '#btn')._clear._square._size_sm
+												+icon.widget-gear.__icon Настройки
+											+btn('a', '#btn')._clear._square._size_sm
+												+icon.widget-issues.__icon Помощь
+									.grid.grid_items-start.grid_content-between
+										// left side widget__header
+										.col-24.col-sm-auto
+											.grid.grid_items-center
+												.col-24.col-xs-auto
+													+e('span').title Подходящие #[br] проекты
+										// right side widget__header
+										.col-24.col-sm-auto
+											.grid.grid_items-center
+												.col
+													+grid-actions
+														li.col-auto
+															+btn('a', '#btn')._default._size_md
+																+e('span').label Перейти в раздел
+												.col-auto
+								+grid-actions
+									li.col-24
+										+typography()._size Сортировка по:
+									li.col-auto
+										select
+											option Время
+									li.col-auto
+										select
+											option Рейтинг
+									li.col-auto
+										select
+											option Гонорар
+									li.col-auto
+										select
+											option Тип
+							.grid
+								- for(var i = 0; i < 3; i++)
+									.col-24
+										+card-project
+								.col-24
+									+card-project.show-more-content
+								- for(var i = 0; i < 4; i++)
+									.col-24
+										+card-project
+			.col-24
+				+b.widget
+					+e.inner
+						+e.header
+							+e.controls
+								+btn('a', '#btn')._clear._square._size_sm
+									+icon.widget-close.__icon Закрыть
+								+e('span').controls-inner
+									+btn('a', '#btn')._clear._square._size_sm
+										+icon.widget-gear.__icon Настройки
+									+btn('a', '#btn')._clear._square._size_sm
+										+icon.widget-issues.__icon Помощь
+							.grid.grid_items-start.grid_content-between
+								// left side widget__header
+								.col-24.col-xs-auto
+									.grid.grid_items-center
+										.col-24.col-xs-auto
+											+e('span').title топ фоторабот
+								// right side widget__header
+								.col-24.col-xs-auto
+									+grid-actions
+										li.col-auto
+											+btn('a', '#btn')._default._size_md
+												+e('span').label Перейти в раздел
+						.grid
+							- for(var i = 0; i < 8; i++)
+								.col-24.col-xs-12.col-md-8.col-lg-6
+									+figure('https://via.placeholder.com/356x320')

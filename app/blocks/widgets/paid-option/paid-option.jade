@@ -1,0 +1,13 @@
+mixin paid-option()
+	+b.paid-option&attributes(attributes)
+		+e.image(style='background-image: url(https://via.placeholder.com/160x160);')
+		+e.inner
+			.grid.grid_content-between.grid_gutters-x
+				.col
+					+e('span').title PRO #[span аккаунт]
+				.col-auto
+					+e('span').price 10 000
+						+e('span').price-cy руб.
+			+e.content.normalize
+				p Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.
+		block

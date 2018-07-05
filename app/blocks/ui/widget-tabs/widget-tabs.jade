@@ -1,0 +1,7 @@
+mixin widget-tabs(arrNavItems)
+	+b.widget-tabs&attributes(attributes)
+		+e('ul').nav
+			- for (var i = 0; i < arrNavItems.length; i++)
+				+e('li').nav-item(class='#{ i === 0 ? "is-current" : ""}')!=arrNavItems[i]
+		block
+		// +e.content

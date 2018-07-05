@@ -1,0 +1,288 @@
+include ../../ui/nav-line/nav-line
+include ../../ui/i-label/i-label
+include ../card-user/card-user
+
+mixin project-team()
+	.grid
+		.col-24
+			.box-clip
+				+b.project-team&attributes(attributes)
+					+e.project
+						+e.project-inner
+							.grid
+								.col-24.col-xs
+									+b.card-profile._md
+										+avatar('https://via.placeholder.com/65x65').__avatar
+										+b.user-info
+											+e('ul').list
+												+e('li').list-item Название проекта
+												+e('li').list-item
+													+rating()._up._lg
+														+icon().rating-star-md
+								.col-24.col-xs
+									.grid.grid_items-center
+										.col-24
+											+grid-actions
+												li.col
+													+btn()._default.btn_size_sm
+														+e('span').label РЕКЛАМА
+										.col-auto
+											+figure('https://via.placeholder.com/30x30')
+										.col-auto
+											+e('span').price._sm 3000Р
+						+e.project-inner
+							+e.project-content.normalize
+								p Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.
+						+e.project-controls
+							+btn()._agree.__project-state-btn
+								+e('span').label НАБОР
+							+nav-line._fill.__project-nav-line
+								+e('li').item
+									+e('a').link.icon-mark(href='#mark') Закладки
+					+e.group
+						.grid
+							- for(var i = 0; i < 2; i++)
+								.col-24.col-xs-12.col-sm-24.col-lg-12.col-xl-8
+									+e.card-profile
+										+e.card-profile-controls
+											div
+												+typography()._size_md Модель
+												+typography('p')._size Вы подходите
+											+btn('a')._icon-right.__card-profile-controls-add-btn
+												+e('span').label Добавить#[br]заявку
+												+btn('span')._square._inverse._size_sm.__icon
+													+e('img').icon(src='./assets/images/icon_loader-gray.png')
+										+b.card-profile._md
+											+avatar('img_avatar.png').__avatar
+												+e.confirmed._sm
+											+b.user-info
+												+e('ul').list
+													+e('li').list-item Иванов Иван
+													+e('li').list-item.__age 32 года
+													+e('li').list-item
+														.grid.grid_gutters-x.grid_items-end
+															.col
+																+rating()._up.__rating
+																	+icon().rating-star-xs
+															.col
+																+i-label() Модель
+							.col-24.col-xs-12.col-sm-24.col-lg-12.col-xl-8.hidden-after-md
+								+e.card-profile
+									+e.card-profile-controls
+										div
+											+typography()._size_md Модель
+											+typography('p')._size Вы подходите
+										+btn('a')._icon-right.__card-profile-controls-add-btn
+											+e('span').label Добавить#[br]заявку
+											+btn('span')._square._inverse._size_sm.__icon
+												+e('img').icon(src='./assets/images/icon_loader-gray.png')
+									+b.card-profile._md
+										+avatar('img_avatar.png').__avatar
+											+e.confirmed._sm
+										+b.user-info
+											+e('ul').list
+												+e('li').list-item Иванов Иван
+												+e('li').list-item.__age 32 года
+												+e('li').list-item
+													.grid.grid_gutters-x.grid_items-end
+														.col
+															+rating()._up.__rating
+																+icon().rating-star-xs
+														.col
+															+i-label() Модель
+							- for(var i = 0; i < 3; i++)
+								.col-24.col-xs-12.col-sm-24.col-lg-12.col-xl-8.hidden-after-lg
+									+e.card-profile
+										+e.card-profile-controls
+											div
+												+typography()._size_md Модель
+												+typography('p')._size Вы подходите
+											+btn('a')._icon-right.__card-profile-controls-add-btn
+												+e('span').label Добавить#[br]заявку
+												+btn('span')._square._inverse._size_sm.__icon
+													+e('img').icon(src='./assets/images/icon_loader-gray.png')
+										+b.card-profile._md
+											+avatar('img_avatar.png').__avatar
+												+e.confirmed._sm
+											+b.user-info
+												+e('ul').list
+													+e('li').list-item Иванов Иван
+													+e('li').list-item.__age 32 года
+													+e('li').list-item
+														.grid.grid_gutters-x.grid_items-end
+															.col
+																+rating()._up.__rating
+																	+icon().rating-star-xs
+															.col
+																+i-label() Модель
+							- for(var i = 0; i < 3; i++)
+								.col-24.col-xs-12.col-sm-24.col-lg-12.col-xl-8.hidden-after-xl
+									+e.card-profile
+										+e.card-profile-controls
+											div
+												+typography()._size_md Модель
+												+typography('p')._size Вы подходите
+											+btn('a')._icon-right.__card-profile-controls-add-btn
+												+e('span').label Добавить#[br]заявку
+												+btn('span')._square._inverse._size_sm.__icon
+													+e('img').icon(src='./assets/images/icon_loader-gray.png')
+										+b.card-profile._md
+											+avatar('img_avatar.png').__avatar
+												+e.confirmed._sm
+											+b.user-info
+												+e('ul').list
+													+e('li').list-item Иванов Иван
+													+e('li').list-item.__age 32 года
+													+e('li').list-item
+														.grid.grid_gutters-x.grid_items-end
+															.col
+																+rating()._up.__rating
+																	+icon().rating-star-xs
+															.col
+																+i-label() Модель
+					+e.group-hidden
+						+e.group-hidden-title
+							p Eще 5 человек в команде
+						+e.group-hidden-area
+							.area-load.area-load_absolute
+								+e('span').group-hidden-counter +5
+		- for (var i = 0; i < 3; i++)
+			.col-24
+				.box-clip
+					+b.project-team&attributes(attributes)
+						+e.project
+							+e.project-inner
+								.grid
+									.col-24.col-xs
+										+b.card-profile._md
+											+avatar('https://via.placeholder.com/65x65').__avatar
+											+b.user-info
+												+e('ul').list
+													+e('li').list-item Название проекта
+													+e('li').list-item
+														+rating()._up._lg
+															+icon().rating-star-md
+									.col-24.col-xs
+										.grid.grid_items-center
+											.col-24
+												+grid-actions
+													li.col
+														+btn()._default.btn_size_sm
+															+e('span').label РЕКЛАМА
+											.col-auto
+												+figure('https://via.placeholder.com/30x30')
+											.col-auto
+												+e('span').price._sm 3000Р
+							+e.project-inner
+								+e.project-content.normalize
+									p Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.
+							+e.project-controls
+								+btn()._cancel.__project-state-btn
+									+e('span').label ЗАВЕРШЕН
+						+e.group
+							.grid
+								- for(var i = 0; i < 2; i++)
+									.col-24.col-xs-12.col-sm-24.col-lg-12.col-xl-8
+										+e.card-profile
+											+e.card-profile-controls
+												div
+													+typography()._size_md Модель
+													+typography('p')._size Вы подходите
+												+btn('a')._icon-right.__card-profile-controls-add-btn
+													+e('span').label Добавить#[br]заявку
+													+btn('span')._square._inverse._size_sm.__icon
+														+e('img').icon(src='./assets/images/icon_loader-gray.png')
+											+b.card-profile._md
+												+avatar('img_avatar.png').__avatar
+													+e.confirmed._sm
+												+b.user-info
+													+e('ul').list
+														+e('li').list-item Иванов Иван
+														+e('li').list-item.__age 32 года
+														+e('li').list-item
+															.grid.grid_gutters-x.grid_items-end
+																.col
+																	+rating()._up.__rating
+																		+icon().rating-star-xs
+																.col
+																	+i-label() Модель
+								.col-24.col-xs-12.col-sm-24.col-lg-12.col-xl-8.hidden-after-md
+									+e.card-profile
+										+e.card-profile-controls
+											div
+												+typography()._size_md Модель
+												+typography('p')._size Вы подходите
+											+btn('a')._icon-right.__card-profile-controls-add-btn
+												+e('span').label Добавить#[br]заявку
+												+btn('span')._square._inverse._size_sm.__icon
+													+e('img').icon(src='./assets/images/icon_loader-gray.png')
+										+b.card-profile._md
+											+avatar('img_avatar.png').__avatar
+												+e.confirmed._sm
+											+b.user-info
+												+e('ul').list
+													+e('li').list-item Иванов Иван
+													+e('li').list-item.__age 32 года
+													+e('li').list-item
+														.grid.grid_gutters-x.grid_items-end
+															.col
+																+rating()._up.__rating
+																	+icon().rating-star-xs
+															.col
+																+i-label() Модель
+								- for(var i = 0; i < 3; i++)
+									.col-24.col-xs-12.col-sm-24.col-lg-12.col-xl-8.hidden-after-lg
+										+e.card-profile
+											+e.card-profile-controls
+												div
+													+typography()._size_md Модель
+													+typography('p')._size Вы подходите
+												+btn('a')._icon-right.__card-profile-controls-add-btn
+													+e('span').label Добавить#[br]заявку
+													+btn('span')._square._inverse._size_sm.__icon
+														+e('img').icon(src='./assets/images/icon_loader-gray.png')
+											+b.card-profile._md
+												+avatar('img_avatar.png').__avatar
+													+e.confirmed._sm
+												+b.user-info
+													+e('ul').list
+														+e('li').list-item Иванов Иван
+														+e('li').list-item.__age 32 года
+														+e('li').list-item
+															.grid.grid_gutters-x.grid_items-end
+																.col
+																	+rating()._up.__rating
+																		+icon().rating-star-xs
+																.col
+																	+i-label() Модель
+								- for(var i = 0; i < 3; i++)
+									.col-24.col-xs-12.col-sm-24.col-lg-12.col-xl-8.hidden-after-xl
+										+e.card-profile
+											+e.card-profile-controls
+												div
+													+typography()._size_md Модель
+													+typography('p')._size Вы подходите
+												+btn('a')._icon-right.__card-profile-controls-add-btn
+													+e('span').label Добавить#[br]заявку
+													+btn('span')._square._inverse._size_sm.__icon
+														+e('img').icon(src='./assets/images/icon_loader-gray.png')
+											+b.card-profile._md
+												+avatar('img_avatar.png').__avatar
+													+e.confirmed._sm
+												+b.user-info
+													+e('ul').list
+														+e('li').list-item Иванов Иван
+														+e('li').list-item.__age 32 года
+														+e('li').list-item
+															.grid.grid_gutters-x.grid_items-end
+																.col
+																	+rating()._up.__rating
+																		+icon().rating-star-xs
+																.col
+																	+i-label() Модель
+						+e.group-hidden
+							+e.group-hidden-title
+								p Eще 5 человек в команде
+							+e.group-hidden-area
+								.area-load.area-load_absolute
+									+e('span').group-hidden-counter +5

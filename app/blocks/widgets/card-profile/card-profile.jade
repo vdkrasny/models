@@ -1,0 +1,9 @@
+mixin card-profile()
+	+b.card-profile&attributes(attributes)
+		+avatar('img_avatar.png').__avatar
+		+b.user-info
+			+e('ul').list
+				+e('li').list-item Иванов Иван
+				+e('li').list-item
+					+rating()._up
+						+icon.rating-star-md

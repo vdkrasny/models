@@ -1,0 +1,70 @@
+.chat-message
+	position relative
+	display block
+
+	&_short
+
+		.chat-message__avatar
+			display none
+
+		.chat-message__info
+			display none
+
+	&_you
+
+		.chat-message__autor
+			color #60a2e5
+
+	&__info
+		margin-bottom 10px
+		display flex
+		align-items baseline
+		line-height 16px
+
+		& > * + *
+			margin-left 15px
+
+	&__autor
+		font-size 14px
+		font-weight 500
+		color $color-accent
+
+	&__date-send
+		font-size 12px
+		font-weight 500
+		color #afbacc
+
+	&__content
+		display block
+		font-size 13px
+
+		& + .chat-message__content
+			&_media
+				margin-top 15px
+
+	&__text-nowrap
+		display block
+		overflow hidden
+		line-height 25px
+		white-space nowrap
+		text-overflow ellipsis
+
++media($breakpoints[xs])
+	.chat-message
+
+		&__avatar
+			position absolute
+			top 0
+			left 0
+			width 25px
+			min-width 25px
+			height 25px
+
+		&__inner
+			margin-left 45px
+
++media($breakpoints[xs], 'max')
+	.chat-message
+
+		&__avatar
+			display none

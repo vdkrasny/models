@@ -1,0 +1,152 @@
+.project-team
+	@extends $ex-block-box-shadow
+
+	display flex
+	flex-wrap wrap
+	justify-content space-between	
+
+	&__project
+		display flex
+		flex-direction column
+		justify-content space-between
+		width 370px
+
+		&-inner
+			padding-x 15px
+			padding-bottom 30px
+
+		&-content
+			font-size 14px
+			font-weight 300
+
+		&-controls
+			margin-top 20px
+			display flex
+			flex-wrap wrap
+			justify-content space-between
+
+		&-state-btn
+			padding 0 30px unquote('!important')
+			height 52px
+			font-size 14px
+			border-radius 0
+			border-bottom-left-radius 5px
+
+		&-nav-line
+			min-width 200px
+			height 52px
+
+	&__group
+		margin-x 40px
+		width calc(100% - (80px + 370px + (160px + 35px)))
+
+	&__group-hidden
+		margin 35px 35px 35px 0
+		display flex
+		flex-direction column
+		width 160px
+
+		&-title
+			margin 0 20px 15px
+			display block
+			font-size 14px
+			line-height 20px
+			color #d2d8e5
+		
+		&-area
+			position relative
+			height 100%
+
+		&-counter
+			display block
+			font-size 72px
+			font-weight 500
+			user-select none
+			color #d2d8e5
+
+	&__card-profile
+		position relative
+		padding 1px 0 1px 25px
+
+		&:hover
+			.project-team
+				&__card-profile-controls
+					pointer-events auto
+					opacity 1
+
+		&-controls
+			position-center(2)
+			padding-x 15px
+			display flex
+			align-items center
+			justify-content space-between
+			pointer-events none
+			color #ffffff
+			background-color $color-accent
+			background-image url(../images/icon_project-team-card-profile-hover.png)
+			background-repeat no-repeat
+			background-position -10px center
+
+			opacity 0
+			transition 300ms ease
+			transition-property opacity
+
+			&-add-btn
+				padding 0 unquote('!important')
+				font-size 14px
+				text-align right
+
++media($breakpoints[lg], 'max')
+	.project-team
+
+		&__group
+			margin-x 30px
+			width 260px
+
+		&__group-hidden
+			margin 30px 30px 30px 0
+
+		&__card-profile
+			padding-left 15px
+
++media($breakpoints[md], 'max')
+	.project-team
+		&__group
+			margin 0 0 82px
+
+		&__group-hidden
+			position absolute
+			right 0
+			bottom 0
+			margin 0
+			width 260px
+
+			&-title
+				margin 0 10px 10px
+				text-align center
+
+			&-counter
+				font-size 48px
+
++media($breakpoints[sm], 'max')
+	.project-team
+		&__project
+		&__group
+		&__group-hidden
+			width 100%
+
+		&__project
+			&-state-btn
+				border-bottom-left-radius 0
+
++media($breakpoints[xs], 'max')
+	.project-team
+
+		&__project
+
+			&-state-btn
+			&-nav-line
+				width 100%
+
+			&-nav-line
+				border-top 1px solid #ffffff

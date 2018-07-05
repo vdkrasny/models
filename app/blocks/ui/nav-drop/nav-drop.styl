@@ -1,0 +1,83 @@
+.nav-drop
+	position relative
+	&:hover
+
+		.nav-drop__content
+			display block
+
+	&__content
+		position absolute
+		z-index 99
+		top 100%
+		left 50%
+		padding-top 15px
+		display none
+		transform translateX(-50%)
+
+	&__list
+		position relative
+		padding-y 12px
+		font-size 14px
+		font-weight 300
+		color #ffffff
+		background-color $color-accent
+		border-radius 5px
+
+		&:before
+			position absolute
+			top -12px
+			left 50%
+			display block
+			content ''
+			border 6px solid transparent
+			border-bottom-color $color-accent
+			transform translateX(-50%)
+
+	&__item
+		position relative
+		padding-x 8px
+		display flex
+		align-items center
+		height 32px
+		border-bottom 1px solid #c60222
+		transition 300ms ease
+		transition-property background
+
+		&:first-of-type
+			border-top 1px solid #c60222
+
+		&:hover
+		&:focus
+			background-color darken($color-accent, 10%)
+
+			.nav-drop__icon
+				opacity .75
+
+	&__icon
+		margin-x 8px
+		transition 300ms ease
+		transition-property opacity
+
+	&__label
+		margin-x 8px
+		display inline-block
+		white-space nowrap
+
+
+	&_right
+
+		.nav-drop__content
+			top 50%
+			left 100%
+			padding-top 0
+			padding-left 15px
+			transform translateY(-50%)
+
+		.nav-drop__list:before
+			top 50%
+			left -12px
+			border-right-color $color-accent
+			border-bottom-color transparent
+			transform translateY(-50%)
+
+

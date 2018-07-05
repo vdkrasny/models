@@ -1,0 +1,8 @@
+mixin info-box(src)
+	- var isExternalImage = /^(?:https?\:)?\/\//i;
+	- src = isExternalImage.test(src) ? src : './assets/images/' + src;
+
+	+b.info-box
+		+e('span').icon&attributes(attributes)
+			img(src=src)
+		block

@@ -1,0 +1,11 @@
+include ../nav-drop/nav-drop
+
+mixin nav-line()
+	+b('ul').nav-line&attributes(attributes)
+		+e('li').item
+			+e('a').link.icon-chat.tooltip(href='#chat' data-tooltip='Отправить сообщение') Чат
+		+nav-drop('li').__item
+			a.nav-line__link.icon-add(href='#add') Добавить
+		+e('li').item
+			+e('a').link.icon-profile.tooltip(href='#profile' data-tooltip='Открыть профиль') Профиль
+		block

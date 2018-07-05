@@ -1,0 +1,131 @@
+@import '../../../../node_modules/remodal/dist/remodal.css'
+// @import '../../../../node_modules/remodal/dist/remodal-default-theme.css'
+
+$remodal-overlay-bg = #ffffff
+$remodal-overlay-bg-alpha = 90%
+$remodal-bg = transparent
+$remodal-offset-y = 0
+$remodal-offset-x = 0
+$remodal-close-size = 24px
+$remodal-close-color = #000000
+$remodal-close-icon-size = 36px
+
+.remodal-bg
+
+	&.remodal-is-opening,
+	&.remodal-is-opened
+		filter blur(3px)
+
+.remodal-overlay
+	background alpha($remodal-overlay-bg, $remodal-overlay-bg-alpha)
+
+	&.remodal-is-opening,
+	&.remodal-is-closing
+		animation-duration 300ms
+		animation-fill-mode forwards
+
+	&.remodal-is-opening
+		animation-name remodal-overlay-opening-keyframes
+
+	&.remodal-is-closing
+		animation-name remodal-overlay-closing-keyframes
+
+.remodal-wrapper
+	padding $remodal-offset-y $remodal-offset-x 0
+
+.remodal
+	margin-bottom $remodal-offset-y
+	box-sizing border-box
+	text-align left
+	background-color $remodal-bg
+	transform translate3d(0, 0, 0)
+
+	&.remodal-is-opening,
+	&.remodal-is-closing
+		animation-duration 300ms
+		animation-fill-mode forwards
+
+	&.remodal-is-opening
+		animation-name remodal-opening-keyframes
+
+	&.remodal-is-closing
+		animation-name remodal-closing-keyframes
+
+	&.remodal-dark .remodal-close
+		color #ffffff
+
+.remodal,
+.remodal-wrapper:after
+	vertical-align middle
+
+.remodal-close
+	position absolute
+	z-index 1
+	top 18px
+	right 18px
+	margin 0
+	padding 0
+	display flex
+	justify-content center
+	align-items center
+	overflow visible
+
+	width $remodal-close-size
+	height $remodal-close-size
+	line-height $remodal-close-size
+	text-decoration none
+	cursor pointer
+	color $remodal-close-color
+	background-color transparent
+	border none
+	outline none
+	transition transform 200ms
+
+	&:after
+		display inline-block
+		font-family Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif
+		font-size $remodal-close-icon-size
+		line-height $remodal-close-size
+		content '\00d7'
+		transition transform 200ms
+
+	& > *
+		margin-right 10px
+
+	&:hover
+	&:focus
+
+		&:after
+			transform scale(.8)
+
+// .lt-ie9
+
+@keyframes remodal-opening-keyframes
+	from
+		opacity 0
+		transform scale(1.05)
+	to
+		opacity 1
+		filter blur(0)
+		transform none
+
+@keyframes remodal-closing-keyframes
+	from
+		opacity 1
+		transform scale(1)
+	to
+		opacity 0
+		filter blur(0)
+		transform scale(.95)
+
+@keyframes remodal-overlay-opening-keyframes
+	from
+		opacity 0
+	to
+		opacity 1
+
+@keyframes remodal-overlay-closing-keyframes
+	from
+		opacity 1
+	to
+		opacity 0

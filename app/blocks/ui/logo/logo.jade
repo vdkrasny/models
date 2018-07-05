@@ -1,0 +1,10 @@
+include ../link/link
+include ../figure/figure
+
+mixin logo()
+	+b.logo&attributes(attributes)
+		+link('./')._hidden Компания
+		// +figure('logo.png').__image
+		+e.inner
+			+e('span').name LOGO
+			+e('span').tagline Слоган нашей компании

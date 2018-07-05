@@ -1,0 +1,10 @@
+include ../icon/icon
+
+mixin rating(valChange)
+	+b.rating&attributes(attributes)
+		+e.inner
+			block
+			+e('span').label 5.32
+		+e('span').detail
+			+icon.__arrow
+			+e('span').change=valChange

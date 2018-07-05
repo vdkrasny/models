@@ -1,0 +1,42 @@
+.nav-pages
+	display block
+	font-size 16px
+
+	&__item
+		position relative
+		padding-left 20px
+		display flex
+		align-items center
+		height 40px
+		border-bottom 1px solid #f8f8f9
+		transition 300ms ease
+		transition-property background
+
+		&:first-of-type
+			border-top 1px solid #f8f8f9
+
+		&:hover
+		&:focus
+			background-color #f8f8f9
+
+			.nav-pages__icon
+				opacity .75
+
+	&__link
+		z-index 1
+
+	&__icon
+		margin-x 10px
+		transition 300ms ease
+		transition-property opacity
+
+	&__label
+		margin-x 10px
+		display inline-block
+
+	&__badge
+		margin-top -6px
+		margin-left -5px
+
+	&__btn
+		z-index 2

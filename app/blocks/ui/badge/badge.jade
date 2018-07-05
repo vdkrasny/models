@@ -1,0 +1,4 @@
+mixin badge(valTag)
+	- valTag = valTag || 'span'
+	+b(valTag).badge&attributes(attributes)
+		block

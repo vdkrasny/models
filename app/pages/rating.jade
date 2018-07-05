@@ -1,0 +1,109 @@
+extends ../blocks/layout/default/default
+
+include ../styles/typography/typography
+
+include ../blocks/ui/grid-actions/grid-actions
+include ../blocks/ui/field/field
+include ../blocks/ui/rating/rating
+
+include ../blocks/widgets/info-box/info-box
+
+block head
+	- var pageTitle = 'Рейтинг';
+
+block content
+	.container
+		.grid
+			.col-24.col-lg-9
+				+b.widget._fill
+					+e.inner
+						.grid.grid_items-center.grid_content-between
+							.col-auto
+								+typography()._size_xl.__title=pageTitle
+						.grid
+							.col-24
+								+b.card-profile._lg
+									+avatar('https://via.placeholder.com/120x120').__avatar
+									+b.user-info
+										+e('ul').list
+											+e('li').list-item Иванов Иван Иванович
+											+e('li').list-item
+												+rating()._up._lg.card-profile__rating
+													+icon().rating-star-md
+							- for(var i = 0; i < 2; i++)
+								.col-24
+									+info-box('icon_info-box-attention.png')._red
+										+e.text.normalize
+											p Предупреждаем, Ваша деловая активность снизилась.
+												br
+												| От этого страдает проектный рейтинг и рейтинг активности
+			.col-24.col-lg-15
+				+b.widget._fill
+					+e.inner
+						.grid.grid_items-center.grid_content-between
+							.col-auto
+								+typography()._size_xs.__title советы по повышению рейтинга
+						.grid
+							- for(var i = 0; i < 2; i++)
+								.col-24
+									+info-box('icon_info-box-advice.png')._blue
+										+e.text.normalize
+											p Предупреждаем, Ваша деловая активность снизилась.От этого страдает проектный рейтинг и рейтинг активности Предупреждаем, Ваша деловая активность снизилась.От этого страдает проектный рейтинг и рейтинг активности
+							.col-24
+								+info-box('icon_info-box-advice.png')._green
+									+e.text.normalize
+										p Предупреждаем, Ваша деловая активность снизилась.От этого страдает проектный рейтинг и рейтинг активности Предупреждаем, Ваша деловая активность снизилась.От этого страдает проектный рейтинг и рейтинг активности
+							.col-24
+								+info-box('icon_info-box-advice.png')._yellow
+									+e.text.normalize
+										p Предупреждаем, Ваша деловая активность снизилась.От этого страдает проектный рейтинг и рейтинг активности Предупреждаем, Ваша деловая активность снизилась.От этого страдает проектный рейтинг и рейтинг активности
+			.col-24
+				+b.widget
+					+e.inner
+						.grid.grid_items-center.grid_content-between
+							.col-auto
+								+typography()._size_xs.__title Составляющие рейтинга
+						.grid
+							.col-24.col-lg
+								.grid
+									.col-24
+										.grid.grid_items-center
+											.col-24.col-sm-5
+												+typography()._size_xs Рейтинг активности
+											.col-24.col-sm
+												+b.rating._up
+													+b.rating-progress
+														+e.bar(role='progressbar' style='width: 76%;')._blue
+															+e('span').bar-label 1.83
+													+e('span').detail
+														+icon.__arrow
+														+e('span').change
+									.col-24
+										.grid.grid_items-center
+											.col-24.col-sm-5
+												+typography()._size_xs Экспертный рейтинг
+											.col-24.col-sm
+												+b.rating._down
+													+b.rating-progress
+														+e.bar(role='progressbar' style='width: 70%;')._green
+															+e('span').bar-label 1.83
+													+e('span').detail
+														+icon.__arrow
+														+e('span').change
+									.col-24
+										.grid.grid_items-center
+											.col-24.col-sm-5
+												+typography()._size_xs Проектный рейтинг
+											.col-24.col-sm
+												+b.rating._up
+													+b.rating-progress
+														+e.bar(role='progressbar' style='width: 55%;')._purple
+															+e('span').bar-label 1.83
+													+e('span').detail
+														+icon.__arrow
+														+e('span').change
+							.col-24.col-lg-auto
+								+figure('graf-2.png')
+									.rating-in-graf
+										+rating()._up._xl
+											+icon.rating-star-md

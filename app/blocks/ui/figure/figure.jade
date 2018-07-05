@@ -1,0 +1,7 @@
+mixin figure(src)
+	- var isExternalImage = /^(?:https?\:)?\/\//i;
+	- src = isExternalImage.test(src) ? src : './assets/images/' + src;
+
+	+b.figure&attributes(attributes)
+		img(src=src)
+		block

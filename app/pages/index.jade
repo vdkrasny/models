@@ -1,0 +1,58 @@
+extends ../blocks/layout/default/default
+
+include ../styles/typography/typography
+
+block head
+	- var pageTitle = 'Навигация по проекту';
+
+block content
+	.container
+		+typography('div')._size_xs.normalize
+			h2=pageTitle + ':'
+			ul
+				li
+					a(href='main.html') Главная
+				li
+					a(href='contacts.html') Контакты
+				li
+					a(href='contacts1.html') Контакты 1
+				li
+					a(href='chat.html') Чат
+				li
+					a(href='jury.html') Экспертное жюри
+				li
+					a(href='rating.html') Рейтинг
+				li
+					a(href='create-casting.html') Создание кастинга
+				li
+					a(href='purse.html') Кошелек
+				li
+					a(href='purse.html#pop1') Кошелек (попап 1)
+				li
+					a(href='purse.html#pop2') Кошелек (попап 2)
+				li
+					a(href='casting.html') Кастинг
+				li
+					a(href='projects.html') Проекты
+				li
+					a(href='project.html') Проект
+				li
+					a(href='create-project.html') Создание проекта
+				li
+					a(href='model-agency-inner.html') Модельное агентво (внутренняя)
+				li
+					a(href='model-agency-user.html') Модельное агентво (для пользователя)
+				li
+					a(href='model-agent-inner.html') Модельный агент (внутренняя)
+				li
+					a(href='model-agent-user.html#pop1') Модельный агент (попап 1)
+				li
+					a(href='model-agent-user.html#pop2') Модельный агент (попап 2)
+				li
+					a(href='model-agent-user.html') Модельный агент (для пользователя)
+				li
+					a(href='model-inner.html') Модель (внутренняя)
+				li
+					a(href='model-inner.html#pop1') Модель (внутренняя) (попап 1)
+				li
+					a(href='model-user.html') Модель (для пользователя)

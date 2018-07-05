@@ -1,0 +1,22 @@
+mixin party()
+	+b.party.nav-drop&attributes(attributes)
+		+e.header
+			block
+			+avatar('https://via.placeholder.com/120x120')._lg
+				+e.confirmed
+			+e.header-info
+				+rating()._up._sm
+					+icon().rating-star-xs
+		+e.body
+			+b().user-info._lg
+				+e('ul').user-info__list
+					+e('li').list-item Иван Иванов
+					+e('li').list-item
+						+e('span').age 32 года
+			.nav-drop__content
+				ul.nav-drop__list
+					- var arr = ['Написать отзыв', 'Хорошая работа', 'Плохая работа', 'Открыть профиль', 'Изменить условия', 'Добавить в другой проект', 'Удалить из проекта']
+					- each item in arr
+						li.nav-drop__item
+							+link('#link')._hidden=item
+							span.nav-drop__label=item

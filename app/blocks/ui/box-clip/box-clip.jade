@@ -1,0 +1,5 @@
+mixin box-clip(valTag)
+	- var valTag = valTag || 'div'
+
+	+b(valTag).box-clip&attributes(attributes)
+		block

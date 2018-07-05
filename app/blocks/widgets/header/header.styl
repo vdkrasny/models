@@ -1,0 +1,46 @@
+.header
+	min-height 170px
+	font-size 14px
+	line-height 1.2
+
+	&__inner
+		padding 25px 60px
+
+	&__title
+		margin-bottom 15px
+		display block
+		font-size 48px
+		font-weight 300
+		line-height 1
+		text-transform uppercase
+
+	&__subtitle
+		display block
+		text-transform uppercase
+
++media($breakpoints[md], 'max')
+	.header
+
+		&__inner
+			padding 20px 40px
+
+		&__title
+			font-size 36px
+
++media($breakpoints[sm], 'max')
+	.header
+
+		&__inner
+			padding 20px 30px
+
+		&__title
+			font-size 32px
+
++media($breakpoints[xs], 'max')
+	.header
+
+		&__inner
+			padding-x 0
+
+		&__title
+			font-size 24px

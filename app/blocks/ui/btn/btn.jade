@@ -1,0 +1,7 @@
+mixin btn(valTag, valHref)
+	- valTag = valTag || 'button'
+	- valHref = valHref || '#'
+	- (valTag === 'a') ? attributes.href = valHref : attributes.href
+
+	+b(valTag).btn&attributes(attributes)
+		block

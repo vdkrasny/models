@@ -1,0 +1,184 @@
+gutter = .5em // or ($grid-gutter / 2)
+
+make-col(colIndex, colQuantity = $grid-columns)
+	flex 0 0 percentage(colIndex / colQuantity)
+	max-width percentage(colIndex / colQuantity)
+
+make-col-offset(colIndex, colQuantity = $grid-columns)
+	margin-left percentage(colIndex / colQuantity)
+
+set-col-style()
+	& > .col,
+	& > [class*=col-]
+		{block}
+
+.grid
+	margin-x gutter * -1
+	display flex
+	flex-wrap wrap
+	font-size $grid-gutter
+
+	& > .col,
+	& > [class*=col-]
+		& > .grid
+			margin-y gutter * -1
+			width calc(100% + 1em)
+
+			& + .grid
+				margin-top gutter
+
+	+set-col-style()
+		padding gutter
+
+	&_actions
+		font-size 10px
+		align-items center
+
+	&_batch-plan
+		font-size 8px
+
+	&_content
+		&-start
+			justify-content flex-start
+		&-center
+			justify-content center
+		&-end
+			justify-content flex-end
+		&-around
+			justify-content space-around
+		&-between
+			justify-content space-between
+
+	&_items
+		&-start
+			align-items flex-start
+		&-center
+			align-items center
+		&-end
+			align-items flex-end
+
+	&_reverse
+		flex-direction row-reverse
+
+	&_gutters
+		&-x
+			margin-y 0
+			+set-col-style()
+				padding-y 0
+		&-y
+			margin-x 0
+			+set-col-style()
+				padding-x 0
+		&-no
+			margin 0
+			+set-col-style()
+				padding 0
+
+.col,
+.col-auto
+	position relative
+	padding-x gutter
+	width 100%
+	min-height 1px
+
+for key, value in $breakpoints
+
+	for $i in (1..$grid-columns)
+		.col-{$i}
+			@extends .col
+
+	.col-{key}
+	.col-{key}-auto
+		@extends .col
+
+	for $i in (1..$grid-columns)
+		.col-{key}-{$i}
+			@extends .col
+
+.col
+	flex-basis 0
+	flex-grow 1
+	max-width 100%
+
+.col-auto
+	flex 0 0 auto
+	width auto
+
+for $i in (1..$grid-columns)
+	.col-{$i}
+		make-col($i)
+
+.col-offset-auto
+	margin-left auto
+
+for $i in (1..($grid-columns - 1))
+	.col
+		&-offset-{$i}
+			make-col-offset($i)
+
+for key, value in $breakpoints
+	+media(value)
+
+		.grid
+			&_content-{key}
+				&-start
+					justify-content flex-start
+				&-center
+					justify-content center
+				&-end
+					justify-content flex-end
+				&-around
+					justify-content space-around
+				&-between
+					justify-content space-between
+
+			&_items-{key}
+				&-start
+					align-items flex-start
+				&-center
+					align-items center
+				&-end
+					align-items flex-end
+
+			&_reverse-{key}
+				flex-direction row-reverse
+
+			&_gutters-{key}
+				&-x
+					margin-y 0
+					+set-col-style()
+						padding-y 0
+				&-y
+					margin-x 0
+					+set-col-style()
+						padding-x 0
+				&-no
+					margin 0
+					+set-col-style()
+						padding 0
+
+		.col-{key}
+			flex-basis 0
+			flex-grow 1
+			max-width 100%
+
+		.col-{key}-auto
+			flex 0 0 auto
+			width auto
+
+		for $i in (1..$grid-columns)
+			.col-{key}-{$i}
+				make-col($i)
+
+		.col-offset-{key}-auto
+			margin-left auto
+
+		for $i in (1..($grid-columns - 1))
+			.col-offset-{key}-{$i}
+				make-col-offset($i)
+
+for key, value in $breakpoints
+	+media(value, 'max')
+
+		.hidden-after-{key}
+			display none

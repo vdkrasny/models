@@ -1,0 +1,19 @@
+.tooltip
+	position relative
+
+.tooltip:hover:after
+	position absolute
+	z-index 100
+	top 100%
+	left 50%
+	margin-top 7px
+	padding 8px 12px
+	font-size 14px
+	line-height 1.4
+	white-space nowrap
+	pointer-events none
+	content attr(data-tooltip)
+	color #ffffff
+	background-color #ff002a
+	border-radius 5px
+	transform translateX(-50%)

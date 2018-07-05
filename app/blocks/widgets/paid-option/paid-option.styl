@@ -1,0 +1,57 @@
+.paid-option
+	display flex
+	flex-wrap nowrap
+	background-color #f2f6fb
+	border-radius 5px
+	transition 150ms ease 
+	transition-property box-shadow
+
+	&:hover
+		box-shadow 0 0 0 2px $color-accent
+
+	&__image
+		display block
+		min-width 160px
+		min-height 160px
+		background-color #9aa7bf
+		background-repeat no-repeat
+		background-position center
+		background-size cover
+		border-radius 5px 0 0 5px
+
+	&__inner
+		padding 20px 15px
+
+	&__head
+		display flex
+		align-items center
+		justify-content space-between
+
+	&__title
+		font-size 16px
+		font-weight bold
+		line-height 20px
+		text-transform uppercase
+
+		span
+			font-size 12px
+
+	&__price
+		font-size 18px
+		font-weight 500
+		line-height 20px
+		color #2e9a14
+
+		&-cy
+			font-size 14px
+
+	&__content
+		margin-top 20px
+		font-weight 300
+
++media($breakpoints[xs], 'max')
+	.paid-option
+		display block
+
+		&__image
+			border-radius 5px 5px 0 0

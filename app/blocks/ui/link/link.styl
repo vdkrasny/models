@@ -1,0 +1,28 @@
+.link
+	display inline-block
+	cursor pointer
+
+	&_hidden
+		position-center(2)
+		display block
+		overflow hidden
+		width 100%
+		height 100%
+		font-size 0
+		line-height 0
+		opacity 0
+
+	&_default
+		text-decoration none
+
+		&:hover
+		&:focus
+			text-decoration underline
+
+	&_primary
+		transition 300ms ease
+		transition-property color
+
+		&:hover
+		&:focus
+			color $color-accent

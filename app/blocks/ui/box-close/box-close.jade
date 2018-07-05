@@ -1,0 +1,6 @@
+mixin box-close(valTag)
+	- var valTag = valTag || 'div'
+
+	+b(valTag).box-close&attributes(attributes)
+		+e('span').btn
+		block

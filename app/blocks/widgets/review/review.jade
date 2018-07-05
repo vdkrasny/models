@@ -1,0 +1,15 @@
+include ../../ui/i-label/i-label
+
+mixin review()
+	+b.review&attributes(attributes)
+		+b.card-profile._md
+			+avatar('img_avatar.png').__avatar
+			+b.user-info
+				+e('ul').list
+					+e('li').list-item
+						+typography()._size_xl._weight_light Иванов Иван
+					+e('li').list-item.__age 32 года
+					+e('li').list-item
+						+i-label() Модель
+		+e.text.normalize
+			block

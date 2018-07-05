@@ -1,0 +1,87 @@
+.modal-photo
+	display block
+
+	&__image
+		position relative
+
+	&__control
+		position absolute
+		z-index 1
+		top 50%
+		margin-top -33px
+		display block
+		width 35px
+		height 66px
+		cursor pointer
+		background-image url(../images/modal-photo-controls.png)
+		background-repeat no-repeat
+		transition 150ms ease 
+		transition-property width, transform
+
+		&_prev
+			left -82px
+			width 50px
+			background-position center left 
+
+			&:hover
+				transform translateX(-15px)
+
+		&_next
+			right -82px
+			width 50px
+			background-position center right
+
+			&:hover
+				transform translateX(15px)
+
+	&__info
+		padding-top 25px
+		padding-bottom 25px
+		display flex
+		justify-content space-between
+		flex-wrap wrap
+		width 100%
+
+		&-card
+			flex 0 0 60%
+			display block
+			max-width 445px
+			box-shadow none
+
+			.card-project__main
+				padding 0
+				align-items flex-end
+
+			.card-profile
+				margin 0
+
+			.card-project__content
+				padding 15px 0 0
+
+		&-controls
+			flex 0 0 245px
+			display block
+			max-width 245px
+
++media($breakpoints[md], 'max')
+	.modal-photo
+		&__control
+
+			&_prev
+				left 15px
+
+			&_next
+				right 15px
+
++media($breakpoints[sm], 'max')
+	.modal-photo
+
+		&__info
+			display block
+
+			&-card
+				max-width 100%
+
+			&-controls
+				margin 20px auto 0
+				max-width 245px

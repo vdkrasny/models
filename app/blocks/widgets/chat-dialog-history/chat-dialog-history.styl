@@ -1,0 +1,26 @@
+.chat-dialog-history
+	display block
+	height 50vh
+
+	&__message
+		position relative
+		padding 10px 15px
+		cursor pointer
+		transition 300ms ease
+		transition-property background
+
+		&:hover
+			background-color #e9f6fa
+
+	&__container
+		display block
+		width 100%
+
++media($breakpoints[xl])
+	.chat-dialog-history
+
+		&__container
+			max-width 70%
+
++media($breakpoints[lg])
+	height 480px

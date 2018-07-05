@@ -1,0 +1,52 @@
+media($size, $prefixes = 'min', $direction = 'width')
+	if $prefixes == 'max' && $size != null
+		$size = $size - 1px
+	else
+		$size
+	@media only screen and ({$prefixes}-{$direction}: $size)
+		{block}
+
+// The number of parameters in both objects must always be the same
+// Size of container will not be set if parameter == 0
+/*
+$breakpoints = {
+  xs: 576px,
+  ...
+  md: 992px,
+  lg: 1280px
+}
+$container-size = {
+  xs: 0,
+  ...
+  md: 980px,
+  lg: 0
+}
+*/
+
+$breakpoints = {
+  xs: 576px,
+  sm: 768px,
+  md: 992px,
+  lg: 1280px,
+  xl: 1680px,
+  xxl: 1820px
+}
+
+$container-size = {
+  xs: 0,
+  sm: 0,
+  md: 0,
+  lg: 0,
+  xl: 0,
+  xxl: 1920px
+}
+
+$container-fill = false // if `true` add .container-fill class
+$container-gutter = 30px
+
+@import '_container.styl'
+
+$grid-columns = 24
+$grid-gutter = 16px // or == $container-gutter
+
+@import '_grid.styl'

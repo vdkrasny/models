@@ -1,0 +1,9 @@
+mixin audio-file()
+	+b.audio-file&attributes(attributes)
+		+e('span').name(title='Название файла') Название файла
+		+btn('a', '#btn')._default._square._size_sm
+			+e('span').icon
+				img(src='./assets/images/icon_audio-file-play.png')
+		+e.track
+			+e.track-fill(style='width: 30%;')
+		block

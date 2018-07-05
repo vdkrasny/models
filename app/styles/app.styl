@@ -1,0 +1,46 @@
+import('sprites/*')
+import('helpers/svg-size')
+@import 'helpers/variables.styl'
+@import 'helpers/mixins.styl'
+@import 'helpers/fonts.styl'
+@import 'helpers/optimize.styl'
+
+html
+	font-family $app-font-family
+	font-size $app-font-size
+
+body
+	color $app-color
+	background-color $app-bg-color
+	text-rendering optimizeLegibility
+
+a
+	text-decoration none
+	color inherit
+
+@import 'helpers/breakpoints/init.styl' // example uses of complex helpers
+
+import('../blocks/include/**/*') // folder with css of plugins
+
+import('../blocks/ui/**/*') // UI that is standalone unit
+
+import('../blocks/widgets/**/*') // widgets is what combines the UI on page
+
+.create-project-task
+	display flex
+	flex-direction column
+	justify-content space-between
+
+.advice-in-graf
+	position absolute
+	top 0
+	right 0
+
+	& > * + *
+		margin-top 15px
+
+.btn_advice
+	font-size 12px
+	color $color-accent
+	
+@import 'typography/typography.styl'

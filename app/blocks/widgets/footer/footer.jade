@@ -1,0 +1,12 @@
+include ../../../styles/typography/typography
+
+mixin footer()
+	+b('footer').footer&attributes(attributes)
+		.page__content
+			.container
+				+e.inner
+					.grid.grid_content-between
+						.col-24.col-md-auto
+							+typography()._size_xs._uppercase карта сайта
+						.col-24.col-md-auto
+							+typography()._size_xs._uppercase копирайт 2017

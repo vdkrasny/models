@@ -1,0 +1,480 @@
+extends ../blocks/layout/default/default
+
+include ../styles/typography/typography
+
+include ../blocks/ui/grid-actions/grid-actions
+include ../blocks/ui/rating/rating
+include ../blocks/ui/file/file
+include ../blocks/ui/widget-slider/widget-slider
+include ../blocks/ui/lang/lang
+include ../blocks/ui/box-close/box-close
+include ../blocks/ui/field/field
+include ../blocks/ui/switcher/switcher
+include ../blocks/ui/audio-file/audio-file
+include ../blocks/ui/area-load/area-load
+include ../blocks/ui/i-label/i-label
+
+include ../blocks/widgets/card-user/card-user
+include ../blocks/widgets/review/review
+include ../blocks/widgets/check-list/check-list
+
+block head
+	- var pageTitle = 'Модель (для пользователя)';
+
+block content
+	+b.create-casting
+		.container
+			.grid
+				.col-24.col-lg-16
+					.grid
+						.col-24
+							+b.widget
+								+e.inner
+									.grid
+										.col-24.col-md-12
+											+switcher-choice()
+												+e('span').styled(role='checkbox')
+													+e('span').styled-icon(style='background-image: url(./assets/images/icon_switcher-choice-flag-ru.png);')
+												+e('span').side-left(data-switcher-choice-icon-url='./assets/images/icon_switcher-choice-flag-ru.png') Рускоязычная анкета
+												+e('span').side-right(data-switcher-choice-icon-url='./assets/images/icon_switcher-choice-flag-en.png') Международная анкета
+										.col-24.col-md-12
+											.grid.grid_items-center.grid_content-between
+												.col-auto
+													+i-label() Модель
+												.col-auto
+													+e.right-side
+														+e.views
+															+e.views-count 214
+															+icon('img').__views-icon(src='./assets/images/icon_widget-views-eye.png')
+															span Показы анкеты
+									.grid
+										.col-24.col-xs-18.col-md-12
+											.grid
+												.col-24.col-xs-12
+													.grid.grid_content-end
+														.col-24
+															+figure('https://via.placeholder.com/280x350')
+												.col-24.col-xs-12
+													.grid.grid_content-end
+														.col-24
+															+figure('https://via.placeholder.com/280x350')
+										.col-24.col-xs-18.col-md
+											.grid
+												.col-24
+													+typography()._weight_light.__title Иванов Иван Иванович
+												.col-24
+													+rating()._up._xl
+														+icon().rating-star-md
+												.col-24
+													.grid.grid_items-center
+														- var arr = [['Дата рождения', '12.12.2012'], ['Город', 'Москва']]
+														- each item in arr
+															.col-10
+																+typography()._size_xs._weight_light._color_neutral=item[0]
+															.col-14
+																+typography()._size_xs._weight_light=item[1]
+										.col-24.col-xs-6.col-md-4
+											+b.profile-column
+												+avatar('https://via.placeholder.com/120x120')._lg
+													+e.confirmed
+												+e.inner
+													+grid-actions.grid_content-end
+														li.col-auto
+															+btn()._icon-left._clear._size_sm.typography.typography_size_xs
+																+e('img').icon(src='./assets/images/icon_nav-line-chat-hover.png')
+																+e('span').label Написать
+														li.col-auto
+															+nav-drop()._right
+																+btn()._icon-left._clear._size_sm.typography.typography_size_xs
+																	+e('img').icon(src='./assets/images/icon_nav-line-add-hover.png')
+																	+e('span').label Добавить
+						.col-24
+							+b.widget
+								+e.inner
+									.grid.grid_items-center.grid_content-between
+										.col-24.col-xs-12
+											+typography()._size_xs.__title Модельные снэпы
+									+widget-slider._fill
+										.grid.grid_items-start.grid_gutters-no
+											.col
+												+e.slide
+													.grid
+														.col-24
+															+figure('https://via.placeholder.com/200x240')
+														.col-24
+															+e.slide-text
+																+typography()._size_xs Название снэпа
+											.col.hidden-after-xs
+												+e.slide
+													.grid
+														.col-24
+															+figure('https://via.placeholder.com/200x240')
+														.col-24
+															+e.slide-text
+																+typography()._size_xs Название снэпа
+											.col.hidden-after-xs
+												+e.slide
+													.grid
+														.col-24
+															+figure('https://via.placeholder.com/200x240')
+														.col-24
+															+e.slide-text
+																+typography()._size_xs Название снэпа
+											.col.hidden-after-sm
+												+e.slide
+													.grid
+														.col-24
+															+figure('https://via.placeholder.com/200x240')
+														.col-24
+															+e.slide-text
+																+typography()._size_xs Название снэпа
+											.col.hidden-after-md
+												+e.slide
+													.grid
+														.col-24
+															+figure('https://via.placeholder.com/200x240')
+														.col-24
+															+e.slide-text
+																+typography()._size_xs Название снэпа
+											.col.hidden-after-lg
+												+e.slide
+													.grid
+														.col-24
+															+figure('https://via.placeholder.com/200x240')
+														.col-24
+															+e.slide-text
+																+typography()._size_xs Название снэпа
+						.col-24
+							+b.widget
+								+e.inner
+									.grid.grid_items-center.grid_content-between
+										.col-24.col-xs-12
+											+typography()._size_xs.__title Модельные образы
+									+widget-slider._fill
+										.grid.grid_items-start.grid_gutters-no
+											.col
+												+e.slide
+													.grid
+														.col-24
+															+figure('https://via.placeholder.com/200x240')
+														.col-24
+															+e.slide-text
+																+typography()._size_xs Название модельного образа
+											.col.hidden-after-xs
+												+e.slide
+													.grid
+														.col-24
+															+figure('https://via.placeholder.com/200x240')
+														.col-24
+															+e.slide-text
+																+typography()._size_xs Название модельного образа
+											.col.hidden-after-xs
+												+e.slide
+													.grid
+														.col-24
+															+figure('https://via.placeholder.com/200x240')
+														.col-24
+															+e.slide-text
+																+typography()._size_xs Название модельного образа
+											.col.hidden-after-sm
+												+e.slide
+													.grid
+														.col-24
+															+figure('https://via.placeholder.com/200x240')
+														.col-24
+															+e.slide-text
+																+typography()._size_xs Название модельного образа
+											.col.hidden-after-md
+												+e.slide
+													.grid
+														.col-24
+															+figure('https://via.placeholder.com/200x240')
+														.col-24
+															+e.slide-text
+																+typography()._size_xs Название модельного образа
+											.col.hidden-after-lg
+												+e.slide
+													.grid
+														.col-24
+															+figure('https://via.placeholder.com/200x240')
+														.col-24
+															+e.slide-text
+																+typography()._size_xs Название модельного образа
+						.col-24
+							+b.widget
+								+e.inner
+									.grid.grid_items-center.grid_content-between
+										.col-24.col-xs-12
+											+typography()._size_xs.__title Модельные образы
+									+e.inner
+										.grid
+											.col-24
+												+typography()._size_xs Общие параметры
+											- var arr = [['Пол', 'Мужской'], ['Возрост', '18 лет'], ['Рост', '180 см'], ['Вес', '50 кг']]
+											- each item in arr
+												.col-24.col-xs-auto
+													.grid.grid_items-center
+														.col-auto
+															+typography()._size_xs._color_neutral=item[0]
+														.col-auto
+															+typography()._size_xs=item[1]
+									+widget-slider._fill
+										.grid.grid_items-end.grid_gutters-no
+											.col
+												+e.slide
+													.grid
+														.col-24
+															+e.slide-text
+																+typography()._size_xs Тип лица
+														.col-24
+															+figure('https://via.placeholder.com/200x240')
+											.col.hidden-after-xs
+												+e.slide
+													.grid
+														.col-24
+															+e.slide-text
+																+typography()._size_xs Тип фигуры
+														.col-24
+															+figure('https://via.placeholder.com/200x240')
+											.col.hidden-after-xs
+												+e.slide
+													.grid
+														.col-24
+															+e.slide-text
+																+typography()._size_xs Форма груди
+														.col-24
+															+figure('https://via.placeholder.com/200x240')
+											.col.hidden-after-sm
+												+e.slide
+													.grid
+														.col-24
+															+e.slide-text
+																+typography()._size_xs Цвет волос
+														.col-24
+															+figure('https://via.placeholder.com/200x240')
+											.col.hidden-after-md
+												+e.slide
+													.grid
+														.col-24
+															+e.slide-text
+																+typography()._size_xs Цвет Глаз
+														.col-24
+															+figure('https://via.placeholder.com/200x240')
+											.col.hidden-after-lg
+												+e.slide
+													.grid
+														.col-24
+															+e.slide-text
+																+typography()._size_xs Степень оголения
+														.col-24
+															+figure('https://via.placeholder.com/200x240')
+						.col-24
+							+b.widget
+								+e.inner
+									.grid
+										.col-24
+											+typography()._size_xs.__title Виды организуемых  проектов
+										- for(var i = 0; i < 3; i++)
+											.col-24.col-xs-12.col-md-8
+												+check-list()
+													- for(var i = 0; i < 3; i++)
+														+e('li').item Название этого вида <br> работы которую может выполнять
+						.col-24
+							+b.widget
+								+e.inner
+									.grid.grid_items-center.grid_content-between
+										.col
+											.grid.grid_items-start
+												.col-24.col-xs-auto
+													+typography()._size_xs.__title Фото из проектов
+												.col-24.col-xs-auto
+													+grid-actions
+														li.col-auto
+															select
+																option Добавить фильтр
+																option Фильтр 1
+																option Фильтр 2
+																option Фильтр 3
+									+widget-slider._fill
+										.grid.grid_gutters-no
+											.col
+												+e.slide
+													+figure('https://via.placeholder.com/220x200')
+														.rating-label-pos
+															+b.rating._label
+																+e.inner
+																	+icon.rating-star-inverse-md
+																	+e('span').label 5.32
+											.col.hidden-after-xs
+												+e.slide
+													+figure('https://via.placeholder.com/220x200')
+														.rating-label-pos
+															+b.rating._label
+																+e.inner
+																	+icon.rating-star-inverse-md
+																	+e('span').label 5.32
+											.col.hidden-after-xs
+												+e.slide
+													+figure('https://via.placeholder.com/220x200')
+														.rating-label-pos
+															+b.rating._label
+																+e.inner
+																	+icon.rating-star-inverse-md
+																	+e('span').label 5.32
+											.col.hidden-after-sm
+												+e.slide
+													+figure('https://via.placeholder.com/220x200')
+														.rating-label-pos
+															+b.rating._label
+																+e.inner
+																	+icon.rating-star-inverse-md
+																	+e('span').label 5.32
+											.col.hidden-after-md
+												+e.slide
+													+figure('https://via.placeholder.com/220x200')
+														.rating-label-pos
+															+b.rating._label
+																+e.inner
+																	+icon.rating-star-inverse-md
+																	+e('span').label 5.32
+						.col-24
+							+b.widget
+								+e.inner
+									.grid.grid_items-center.grid_content-between
+										.col-24.col-xs-auto
+											.grid.grid_items-start
+												.col-24.col-xs-auto
+													+typography()._size_xs.__title видео из проектов
+												.col-24.col-xs-auto
+													+grid-actions
+														li.col-auto
+															select
+																option Добавить фильтр
+																option Фильтр 1
+																option Фильтр 2
+																option Фильтр 3
+									+widget-slider._fill
+										.grid.grid_gutters-no
+											.col
+												+e.slide
+													+figure('https://via.placeholder.com/220x200')
+														.rating-label-pos
+															+b.rating._label
+																+e.inner
+																	+icon.rating-star-inverse-md
+																	+e('span').label 5.32
+											.col.hidden-after-xs
+												+e.slide
+													+figure('https://via.placeholder.com/220x200')
+														.rating-label-pos
+															+b.rating._label
+																+e.inner
+																	+icon.rating-star-inverse-md
+																	+e('span').label 5.32
+											.col.hidden-after-xs
+												+e.slide
+													+figure('https://via.placeholder.com/220x200')
+														.rating-label-pos
+															+b.rating._label
+																+e.inner
+																	+icon.rating-star-inverse-md
+																	+e('span').label 5.32
+											.col.hidden-after-sm
+												+e.slide
+													+figure('https://via.placeholder.com/220x200')
+														.rating-label-pos
+															+b.rating._label
+																+e.inner
+																	+icon.rating-star-inverse-md
+																	+e('span').label 5.32
+											.col.hidden-after-md
+												+e.slide
+													+figure('https://via.placeholder.com/220x200')
+														.rating-label-pos
+															+b.rating._label
+																+e.inner
+																	+icon.rating-star-inverse-md
+																	+e('span').label 5.32
+				.col-24.col-lg-8
+					.grid
+						.col-24
+							+b.widget
+								+e.inner
+									.grid
+										.col-24
+											+typography()._size_xs.__title Видео снэп
+										.col-24
+											+figure('https://via.placeholder.com/460x270')
+						.col-24
+							+b.widget
+								+e.inner
+									.grid
+										.col-24
+											+typography()._size_xs.__title Знание языков
+										.col-24
+											.grid.grid_items-center
+												.col-24.col-md-9
+													+lang('icon_switcher-choice-flag-ru.png', 'Русский язык')
+												.col-auto
+													+btn()._tag._size_sm.typography.typography_size_xs
+														+e('span').label Родной
+										.col-24
+											.grid.grid_items-center
+												.col-24.col-md-9
+													+lang('icon_switcher-choice-flag-en.png', 'Английский язык')
+												.col-auto
+													+btn()._tag._size_sm.typography.typography_size_xs
+														+e('span').label Свободно владею
+						.col-24
+							+b.widget
+								+e.inner
+									.grid
+										.col-24
+											+typography()._size_xs.__title навыки
+										.col-24.col-xs-12
+											+check-list()
+												- for(var i = 0; i < 4; i++)
+													+e('li').item Название этого <br> навыка
+										.col-24.col-xs-12
+											+check-list()
+												- for(var i = 0; i < 3; i++)
+													+e('li').item Название этого <br> навыка
+						.col-24
+							+b.widget
+								+e.inner
+									.grid.grid_items-center.grid_content-between
+										.col-auto
+											+typography()._size_sm.__title Отзывы
+										.col-auto
+											+btn()._default._size_md
+												+e('span').label Смотреть все отзывы
+									.grid
+										.col-24
+											+review
+												p Предлагаем Вашему вниманию набор новых готовых сайтов для самых разных сфер бизнеса — от суши-бара до юридической компании. Мы разберем новый уникальный дизайн одностраничного интернет-магазина, кроме того, уделим внимание интересному решению для сайтов компаний, занимающихся доставкой еды.
+										.col-24
+											+review
+												p Предлагаем Вашему вниманию набор новых готовых сайтов для самых разных сфер бизнеса — от суши-бара до юридической компании. Мы разберем новый уникальный дизайн
+										.col-24
+											+review
+												p Предлагаем Вашему вниманию набор новых готовых сайтов для самых разных сфер бизнеса — от суши-бара до юридической компании. Мы разберем новый уникальный дизайн .
+						.col-24
+							+b.widget
+								+e.inner
+									+typography()._size_xs.__title Описание Райдера
+									+e.inner
+										+typography('div')._size_xs._weight_light.normalize
+											p Предлагаем Вашему вниманию набор новых готовых сайтов для самых разных сфер бизнеса — от суши-бара до юридической компании. Мы разберем новый уникальный дизайн .
+						.col-24
+							+b.widget
+								+e.inner
+									.grid.grid_items-center.grid_content-between
+										.col-auto
+											+typography()._size_sm.__title Аудиоальбом
+										.col-auto
+											+btn()._default._size_md
+												+e('span').label Смотреть все аудиофайлы
+									.grid
+										- for(var i = 0; i < 3; i++)
+											.col-24
+												+audio-file

@@ -1,0 +1,26 @@
+mixin widget(valTitle)
+	+b.widget&attributes(attributes)
+		+e.inner
+			+e.header
+				.grid.grid_items-start.grid_content-between
+					// left side widget__header
+					.col-auto
+						.grid.grid_items-start
+							.col-auto
+								+e('span').title!=valTitle
+					// right side widget__header
+					.col-auto
+						+grid-actions
+							li.col-auto
+								+btn('a', '#btn')._default._size_md
+									+e('span').label Перейти в раздел
+							li.col-auto
+								+e.controls
+									+btn('a', '#btn')._clear._square._size_sm
+										+icon.widget-close.__icon Закрыть
+									+e('span').controls-inner
+										+btn('a', '#btn')._clear._square._size_sm
+											+icon.widget-gear.__icon Настройки
+										+btn('a', '#btn')._clear._square._size_sm
+											+icon.widget-issues.__icon Помощь
+			block

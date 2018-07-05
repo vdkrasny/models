@@ -1,0 +1,85 @@
+.switcher
+	position relative
+	display block
+	font-size 20px
+
+	&__input
+		position absolute
+		z-index -1
+		opacity 0
+
+		&:focus + .switcher__label
+
+			.switcher__styled:before
+				opacity .95
+
+		&:checked + .switcher__label
+
+			.switcher__styled
+				background-color #3baf45
+
+				&:before
+					left .95em
+					background-image url(../images/icon_swicher-ok.png)
+
+		&:not(:disabled) + .switcher__label
+			cursor pointer
+
+			&:hover
+				.switcher__styled:before
+					opacity .95
+
+		&:disabled + .switcher__label
+			opacity .65
+
+	&__label
+		padding .475em 0
+		display inline-flex
+		align-items center
+		vertical-align middle
+		user-select none
+
+		& > * + *
+			margin-left 10px
+
+	&__styled
+		position relative
+		display block
+		width 1.8em
+		min-width 1.8em
+		height .95em
+		background-color $color-accent
+		border-radius 3px
+		transition 100ms ease
+		transition-property background-color
+
+		&:before
+			position absolute
+			top .1em
+			left .1em
+			width .75em
+			height .75em
+			content ''
+			background-color #ffffff
+			background-image url(../images/icon_swicher-no.png)
+			background-repeat no-repeat
+			background-position center
+			border-radius 4px
+			transition 200ms ease
+			transition-property left, background-image
+
+	&__name
+		display inline-block
+		font-size 14px
+		font-weight 300
+
+	&__desc
+		margin-left 1.8em
+		padding-left 10px
+		display block
+
+	&__desc-text
+		display block
+		font-size 12px
+		font-style italic
+		color #8a8a8a

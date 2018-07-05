@@ -1,0 +1,228 @@
+extends ../blocks/layout/default/default
+
+include ../styles/typography/typography
+
+include ../blocks/ui/grid-actions/grid-actions
+include ../blocks/ui/field/field
+include ../blocks/ui/switcher-choice/switcher-choice
+include ../blocks/ui/rating/rating
+include ../blocks/ui/i-label/i-label
+
+include ../blocks/widgets/card-project/card-project
+include ../blocks/widgets/modal-form/modal-form
+include ../blocks/include/remodal/remodal
+
+block head
+	- var pageTitle = 'Чат';
+
+block content
+	.container
+		.grid
+			.col-24.col-lg-10#chat-dialog
+				+b.widget._fill
+					+e.inner
+						.grid.grid_items-center.grid_content-between
+							.col-auto
+								+typography()._size_xl.__title=pageTitle
+						.grid
+							.col-24.col-md-10
+								select
+									option Добавить фильтр
+							.col-24.col-md-14
+								+grid-actions
+									li.col
+										+btn()._default.btn_size_md._fill
+											+e('span').label Модель
+									li.col
+										+btn()._default.btn_size_md._fill
+											+e('span').label Актер
+									li.col
+										+btn()._default.btn_size_md._fill
+											+e('span').label Видеооператор
+							.col-24
+								+field('Поиск')._input._default
+									+e.controls
+										+btn()._clear._square._size_sm
+											+icon.search.__icon Поиск
+						+b.chat-dialog
+							.grid
+								- for(var i = 0; i < 4; i++)
+									.col-24
+										+e.item
+											+e.profile
+												+b.card-profile._md
+													+avatar('img_avatar.png')._size_md.__avatar
+														+e.confirmed._sm
+													+b.user-info
+														+e('ul').list
+															+e('li').list-item Иванов Иван
+															+e('li').list-item.__age 32 года
+															+e('li').list-item
+																.grid.grid_gutters-x.grid_items-end
+																	.col
+																		+rating('+2')._up.__rating
+																			+icon().rating-star-xs
+																	.col
+																		+i-label() Модель
+											+e.message
+												+b.chat-message
+													+avatar('img_avatar.png').__avatar
+													+e.inner
+														+e.content
+															+e('p').text-nowrap Оптимизация сайта для нас это не только слова. Этот кейс - самый первый в серии других, в которых мы хотим показать результаты нашей работы.
+			.col-24.col-lg-14
+				.grid
+					.col-24.hidden-after-lg#chat-projects
+						+b.widget
+							+e.inner
+								.grid.grid_items-center.grid_content-between
+									.col-auto
+										+typography()._size_xs.__title Проекты
+									.col-auto
+										+switcher-choice()._sm
+											+e('span').styled(role='checkbox')
+												+e('span').styled-icon
+											+e('span').side-left Завершенные
+											+e('span').side-right Текущие
+								.grid
+									- for(var i = 0; i < 2; i++)
+										.col-24
+											+b.card-project
+												+e('i').btn-more
+												+e.main
+													+b.card-profile._md
+														+avatar('https://via.placeholder.com/65x65').__avatar
+														+b.user-info
+															+e('ul').list
+																+e('li').list-item Название проекта
+																+e('li').list-item
+																	+rating()._up._accent
+																		+icon.rating-star-md
+													.grid.grid_items-center
+														.col-auto
+															+figure('https://via.placeholder.com/30x30')
+														.col-auto
+															+e('span').price 3000Р
+														.col-auto
+															+i-label() Совместный проект
+														.col-auto
+															+grid-actions
+																li.col
+																	+btn()._default.btn_size_sm
+																		+e('span').label РЕКЛАМА
+												+e.content.normalize(data-card-project='more-content')
+													p Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.
+												+e.nav-line(data-card-project='nav-line')
+													+nav-line
+														+e('li').item
+															+e('a').link.icon-mark(href='#mark') Закладки
+					.col-24#chat-history
+						+b.widget
+							+e.inner
+								.grid.grid_items-center.grid_content-between.grid_gutters-no#chat-controls(style='display: none;')
+									.col-auto
+										+btn()._cancel.btn_size_md#chat-controls-open-dialog
+											+e('span').label Назад
+									.col-auto
+										+btn('a', '#open-project')._cancel.btn_size_md
+											+e('span').label Совместные проекты
+
+								.grid.grid_items-center.grid_gutters-no
+									.col-auto
+										+typography()._size_xs.__title
+											| АНДРЕЙ ИВАНОВ
+									.col-auto
+										+typography()._size ( с кем переписка )
+							+b.chat-dialog-history
+								+scroll-space
+									- for(var i = 0; i < 2; i++)
+										+e.message
+											+e.container
+												+b.chat-message
+													+avatar('img_avatar.png').__avatar
+													+e.inner
+														+e.info
+															+e('a').autor(href='#') Андрей иванов
+															+e('a').date-send(href='#') 12:00
+														+e.content.normalize
+															p Оптимизация сайта для нас это не только слова. Этот кейс - самый первый в серии других, в которых мы хотим показать результаты нашей работы.
+										+e.message(data-chat-dialog-history-message='group')
+											+e.container
+												+b.chat-message._short
+													+avatar('img_avatar.png').__avatar
+													+e.inner
+														+e.info
+															+e('a').autor(href='#') Андрей иванов
+															+e('a').date-send(href='#') 12:00
+														+e.content.normalize
+															p Оптимизация сайта для нас это не только слова. Этот кейс - самый первый в серии других, в которых мы хотим показать результаты нашей работы.
+										+e.message
+											+e.container
+												+b.chat-message._you
+													+avatar('img_avatar.png').__avatar
+													+e.inner
+														+e.info
+															+e('a').autor(href='#') Иван Андреев
+															+e('a').date-send(href='#') 12:00
+														+e.content.normalize
+															p Оптимизация сайта для нас это не только слова. Этот кейс - самый первый в серии других, в которых мы хотим показать результаты нашей работы.
+														+e.content._media
+															.grid
+																- for(var i = 0; i < 4; i++)
+																	.col-auto
+																		+figure('https://via.placeholder.com/110x110')
+							+e.inner
+								.grid.grid_gutters-no
+									.col
+										+field('Ваше сообщение')._input._default
+											+e.controls
+												+btn()._clear._square._size_sm
+													+e('img').icon(src='./assets/images/icon_chat-photo.png')
+									.col-auto
+										+btn()._clear._square._size_md
+											+e('img').icon(src='./assets/images/icon_chat-send.png')
+block modals
+	+remodal('open-project')
+		+modal-form._lg
+			+e.header
+				+e('span').title Проекты
+			+e.inner
+				.grid.grid_content-end
+					.col-auto
+						+switcher-choice()._sm
+							+e('span').styled(role='checkbox')
+								+e('span').styled-icon
+							+e('span').side-left Завершенные
+							+e('span').side-right Текущие
+				.grid
+					- for(var i = 0; i < 2; i++)
+						.col-24
+							+b.card-project
+								+e('i').btn-more
+								+e.main
+									+b.card-profile._md
+										+avatar('https://via.placeholder.com/65x65').__avatar
+										+b.user-info
+											+e('ul').list
+												+e('li').list-item Название проекта
+												+e('li').list-item
+													+rating()._up._accent
+														+icon.rating-star-md
+									.grid.grid_items-center
+										.col-auto
+											+figure('https://via.placeholder.com/30x30')
+										.col-auto
+											+e('span').price 3000Р
+										.col-auto
+											+i-label() Совместный проект
+										.col-auto
+											+grid-actions
+												li.col
+													+btn()._default.btn_size_sm
+														+e('span').label РЕКЛАМА
+								+e.content.normalize(data-card-project='more-content')
+									p Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.Небольшой и простой макап для вставки логотипов и брендинга на фирменные пакеты, через смарт объекты.
+								+e.nav-line(data-card-project='nav-line')
+									+nav-line
+										+e('li').item
+											+e('a').link.icon-mark(href='#mark') Закладки

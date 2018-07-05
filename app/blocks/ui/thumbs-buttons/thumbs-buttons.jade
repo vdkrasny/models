@@ -1,0 +1,8 @@
+mixin thumbs-buttons()
+	+b.thumbs-buttons&attributes(attributes)
+		+e.item.is-chose
+			+icon().__icon._up
+			+e('span').label Положительный
+		+e.item
+			+icon().__icon._down
+			+e('span').label Отрицательный

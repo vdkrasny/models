@@ -1,0 +1,108 @@
+.card-project
+	@extends $ex-block-box-shadow
+
+	position relative
+	background-color #ffffff
+	border-radius 5px
+
+	&_hover
+		transition 150ms ease
+		transition-property box-shadow
+
+		&:hover
+			box-shadow 0 0 0 4px $color-accent
+
+	&:hover
+		& [data-card-project='nav-line']
+			overflow visible
+			height 45px
+			// min-height 38px
+
+	&.show-more-content
+		.card-project
+
+			&__btn-more
+				transform rotate(180deg)
+
+		& [data-card-project='more-content']
+			display block
+
+	&__main
+		padding 7px 15px
+		display flex
+		flex-wrap wrap
+		align-items center
+		justify-content space-between
+		border-radius 5px
+
+	&__people
+		margin -7px -15px
+		display flex
+		flex-wrap nowrap
+		justify-content flex-end
+
+		&-item
+			padding-x 8px
+			display flex
+			align-items center
+			justify-content center
+			height 104px
+			transition background-color 300ms ease
+
+			&:hover
+				background-color $color-accent
+
+	&__people-avatar
+		width 65px
+		min-width 65px
+		height 65px
+
+	&__content
+		padding 0 15px 15px
+		font-size 14px
+
+	&__btn-more
+		position absolute
+		z-index 1
+		top 5px
+		right (@top - 1px) // because origin icon size 10x8
+		display block
+		width 20px
+		height 20px
+		cursor pointer
+		background url(../images/icon_card-project-btn-more.png) no-repeat center
+
+		transition 300ms ease
+		transition-property transform
+
+	&__price
+		font-size 24px
+		font-weight bold
+		color #6e706e
+
+		&_sm
+			font-size 18px
+			font-weight 500
+
+	&__nav-line
+		display flex
+		justify-content flex-end
+		height 45px
+		background-color $color-accent
+		border-bottom-right-radius 5px
+		border-bottom-left-radius 5px
+
+	& [data-card-project='more-content']
+		display none
+
+	& [data-card-project='nav-line']
+		overflow hidden
+		height 0
+		transition 100ms ease
+		transition-property height
+
++media($breakpoints[xs], 'max')
+	.card-project
+
+		&__people
+			display none

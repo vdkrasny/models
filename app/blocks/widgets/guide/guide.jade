@@ -1,0 +1,51 @@
+include ../../ui/link/link
+include ../../ui/btn/btn
+include ../../ui/logo/logo
+include ../../ui/switcher-choice/switcher-choice
+include ../nav-pages/nav-pages
+include ../../ui/avatar/avatar
+include ../../ui/scroll-space/scroll-space
+include ../../ui/rating/rating
+
+mixin guide()
+	+b.guide&attributes(attributes)
+		+scroll-space
+			+e.inner
+				+e.section
+					+e.section-inner
+						+logo
+				+e.section
+					+nav-pages
+				+e.section
+					+e.section-inner
+						+switcher-choice('lang-switcher')
+							+e('span').styled(role='checkbox')
+								+e('span').styled-icon(style='background-image: url(./assets/images/icon_switcher-choice-flag-ru.png);')
+							+e('span').side-left(data-switcher-choice-icon-url='./assets/images/icon_switcher-choice-flag-ru.png') RU
+							+e('span').side-right(data-switcher-choice-icon-url='./assets/images/icon_switcher-choice-flag-en.png') EN
+				+e.user-card
+					.grid.grid_content-between.grid_items-end
+						.col-auto
+							+b.card-profile
+								+avatar('img_avatar.png').__avatar
+								+b.user-info
+									+e('ul').list
+										+e('li').list-item Иванов
+											br
+											| Иван
+										+e('li').list-item
+											+rating()._up
+												+icon.rating-star-md
+						.col-auto
+							+btn('a', '#btn')._default._size_md
+								+e('span').label Выход
+				+e.section
+					+e.section-inner
+						+e('ul').list-links
+							+link()._primary Другая юридическая информация
+							+link()._primary Политика конфиденциальности
+				+e.section
+					+e.section-inner
+						+e('ul').list-tel
+							+link()._primary.__tel + 000 (00) #[span 000 00 00]
+							+link()._primary.__tel + 000 (00) #[span 000 00 00]

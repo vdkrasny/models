@@ -1,0 +1,75 @@
+// calculate em in px
+em($pixels, $font-size)
+	return unit(round($pixels / $font-size, 9), 'em')
+
+// calculate rem in px
+rem($pixels, $default = $app-font-size)
+	return unit(round($pixels / $default, 9), 'rem')
+
+// Clear the float on any element.
+clearfix()
+	&:after
+		display table
+		clear both
+		content ''
+
+// Fix no working `-webkit-text-size-adjust: 100%;` in Android.
+fix-text-size-adjust()
+	background-image linear-gradient(transparent, transparent)
+
+// Custom styles for placeholders in all browsers
+placeholder-style()
+	&::-webkit-input-placeholder
+		{block}
+	&::-moz-placeholder
+		{block}
+	&:-moz-placeholder
+		{block}
+	&:-ms-input-placeholder
+		{block}
+
+// Centering content through a position.
+// The parent must have a style `position: relative;`
+position-center($index = null)
+	position absolute
+	if $index != null
+		z-index $index
+	top 0
+	right 0
+	left 0
+	bottom 0
+	margin auto
+
+// Set element size
+size($width, $height = $width)
+	width $width
+	height $height
+
+// Set margin on left & right
+margin-x($margin)
+	margin-right $margin
+	margin-left $margin
+
+// Set margin on top & bottom
+margin-y($margin)
+	margin-top $margin
+	margin-bottom $margin
+
+// Set pading on left & right
+padding-x($padding)
+	padding-right $padding
+	padding-left $padding
+
+// Set padding on top & bottom
+padding-y($padding)
+	padding-top $padding
+	padding-bottom $padding
+
+// Set one static retina image
+retinaBackground($image, $ext = 'png') {
+	background-image url('../images/' + $image + '.' + $ext)
+
+	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+		background-image url('../images/' + $image + '@2x.' + $ext)
+	}
+}

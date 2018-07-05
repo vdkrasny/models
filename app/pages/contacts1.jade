@@ -1,0 +1,30 @@
+extends ../blocks/layout/contacts/contacts
+
+include ../blocks/ui/i-label/i-label
+
+include ../blocks/widgets/card-user/card-user
+
+block head
+	- var pageTitle = 'Контакты';
+
+block content
+	+e.inner
+		.grid
+			- for(var i = 0; i < 36; i++)
+				.col-24.col-xs-12.col-md-8.col-lg-6.col-xxl-4
+					+b.card-profile._md._hover
+						+avatar('img_avatar.png').__avatar
+							+e.confirmed._sm
+						+b.user-info
+							+e('ul').list
+								+e('li').list-item Иванов Иван
+								+e('li').list-item.__age 32 года
+								+e('li').list-item
+									.grid.grid_gutters-x.grid_items-end
+										.col
+											+rating('+2')._up.__rating
+												+icon().rating-star-xs
+										.col
+											+i-label() Модель
+						+e.nav-line
+							+nav-line

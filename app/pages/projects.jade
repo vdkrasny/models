@@ -1,0 +1,185 @@
+extends ../blocks/layout/default/default
+
+include ../styles/typography/typography
+
+include ../blocks/ui/grid-actions/grid-actions
+include ../blocks/ui/figure/figure
+include ../blocks/ui/widget-slider/widget-slider
+include ../blocks/ui/grid-actions/grid-actions
+include ../blocks/ui/field/field
+include ../blocks/ui/rating/rating
+include ../blocks/ui/box-close/box-close
+include ../blocks/ui/box-clip/box-clip
+include ../blocks/ui/calendar/calendar
+include ../blocks/ui/file/file
+include ../blocks/ui/audio-file/audio-file
+include ../blocks/ui/calendar/calendar
+
+include ../blocks/widgets/project-team/project-team
+
+block head
+	- var pageTitle = 'Проекты';
+
+block content
+	.container
+		.grid
+			.col-24
+				+b.widget
+					+e.inner
+						+e.header
+							+e.controls
+								+btn('a', '#btn')._clear._square._size_sm
+									+icon.widget-issues.__icon Помощь
+							.grid.grid_items-center.grid_content-between
+								// left side widget__header
+								.col-24.col-md-auto
+									.grid.grid_items-center
+										.col-auto
+											+typography()._size_xl.__title=pageTitle
+										.col-auto
+											+grid-actions
+												+btn()._icon-right._default.btn_size_md
+													+e('span').label Создать проект
+													+e('img').icon(src='./assets/images/icon_btn-plus.png')
+								// right side widget__header
+								.col-24.col-md-auto
+									.grid.grid_items-center
+										.col-24.col-md.col-md-auto
+											+switcher-choice()
+												+e('span').styled(role='checkbox')
+													+e('span').styled-icon
+												+e('span').side-left Мои проекты
+												+e('span').side-right Подходящие мне
+										.col-auto.hidden-after-md
+										.col-24.col-md.col-md-auto
+											+switcher-choice()
+												+e('span').styled(role='checkbox')
+													+e('span').styled-icon
+												+e('span').side-left Все проекты
+												+e('span').side-right Только закладки
+										.col-auto.hidden-after-md
+										.col-24.col-md.col-md-auto
+											+switcher-choice()
+												+e('span').styled(role='checkbox')
+													+e('span').styled-icon
+												+e('span').side-left Все проекты
+												+e('span').side-right Активные
+						.grid
+							.col-24.col-lg-7
+								+b.card-profile._lg
+									+avatar('https://via.placeholder.com/120x120').__avatar
+									+b.user-info
+										+e('ul').list
+											+e('li').list-item Иванов Иван Иванович
+											+e('li').list-item
+												+rating()._up._lg.card-profile__rating
+													+icon().rating-star-md
+							.col-24.col-lg-17
+								.grid.grid_items-center
+									.col-24.col-lg-19.col-offset-lg-5
+										.grid
+											.col-24.col-md-8
+												select
+													option Добавить фильтр
+											.col-24.col-md-16
+												+grid-actions
+													li.col-auto
+														+box-close()
+															+btn()._default.btn_size_md
+																+e('span').label Модель
+													li.col-auto
+														+box-close()
+															+btn()._default.btn_size_md
+																+e('span').label Актер
+													li.col-auto
+														+box-close()
+															+btn()._default.btn_size_md
+																+e('span').label Видеооператор
+													li.col-auto
+														+box-close()
+															+btn()._default.btn_size_md
+																+e('span').label Агент
+													li.col-auto
+														+box-close()
+															+btn()._default.btn_size_md
+																+e('span').label Визажист
+									.col-24.col-lg-19.col-offset-lg-5
+										+field('Поиск')._input._default
+											+e.controls
+												+btn()._clear._square._size_sm
+													+icon.search.__icon Поиск
+									.col-24.col-lg-5
+										+typography()._size_xl._color_neutral._uppercase Календарь
+									.col-24.col-lg-19
+										+grid-actions
+											li.col-12.col-md-auto
+												+b.field._input._several
+													+e.controls
+														+btn()._clear._square.btn_size_sm
+															+e('img').icon(src='./assets/images/icon_btn-arrow-left.png')
+													+e.inner
+														+e('input').entry(type='text' value='2018 год')
+													+e.controls
+														+btn()._clear._square.btn_size_sm
+															+e('img').icon(src='./assets/images/icon_btn-arrow-right.png')
+											li.col-12.col-md-auto
+												+b.field._input._several
+													+e.controls
+														+btn()._clear._square.btn_size_sm
+															+e('img').icon(src='./assets/images/icon_btn-arrow-left.png')
+													+e.inner
+														+e('input').entry(type='text' value='Май')
+													+e.controls
+														+btn()._clear._square.btn_size_sm
+															+e('img').icon(src='./assets/images/icon_btn-arrow-right.png')
+						+widget-slider
+							.grid.grid_gutters-no
+								.col
+									+e.slide
+										+calendar
+								.col.hidden-after-md
+									+e.slide
+										+calendar
+								.col.hidden-after-lg
+									+e.slide
+										+calendar
+			.col-24
+				+b.widget
+					+e.inner
+						.grid.grid_content-between
+							.col-24.col-lg
+								.grid.grid_items-center
+									.col-24.col-md-7
+										+grid-actions
+											li.col
+												select
+													option Добавить фильтр
+									.col-1.hidden-after-md
+									.col-24.col-md-auto
+										+grid-actions
+											li.col-auto
+												+box-close()
+													+btn('span')._tag.btn_size_md
+														+e('span').label Модель
+											li.col-auto
+												+box-close()
+													+btn('span')._tag.btn_size_md
+														+e('span').label Модель
+							.col-24.col-lg-auto
+								+grid-actions
+									li.col-24.col-sm-auto
+										+typography()._size Сортировка по:
+									li.col-auto
+										select
+											option Алфавит
+									li.col-auto
+										select
+											option Рейтинг
+									li.col-auto
+										select
+											option Последнее сообщение
+									li.col-auto
+										select
+											option Тип
+					+e.inner
+						+project-team

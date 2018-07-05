@@ -1,0 +1,7 @@
+mixin avatar(bgImage)
+	- var isExternalBgImage = /^(?:https?\:)?\/\//i;
+	- bgImage = isExternalBgImage.test(bgImage) ? bgImage : './assets/images/' + bgImage;
+
+	+b.avatar&attributes(attributes)
+		+e('a').image(href='#' style='background-image: url(' + bgImage + ');')
+		block

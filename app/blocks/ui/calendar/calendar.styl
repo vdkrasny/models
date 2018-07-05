@@ -1,0 +1,160 @@
+$calendar-days-in-line = 7
+$calendar-day-size = 28px
+$calendar-day-offset-y = 4px
+$calendar-day-offset-x = 8px
+$calendar-width = (($calendar-day-size + ($calendar-day-offset-x * 2)) * $calendar-days-in-line) + ($calendar-day-offset-x * 2)
+
+.calendar
+	@extends $ex-block-box-shadow
+
+	padding $calendar-day-offset-x
+	min-width $calendar-width
+	font-size 14px
+	border-radius 5px
+
+	&__inner
+	&__week
+	&__days
+		margin 0 auto
+		width $calendar-width
+
+	&__inner
+		padding $calendar-day-offset-x
+		display block
+
+	&__week
+	&__days
+		display flex
+		flex-wrap wrap
+
+	&__month
+		display block
+		font-weight 500
+		text-transform uppercase
+
+	&__week-day
+	&__day
+		flex 0 0 $calendar-day-size
+		position relative
+		margin $calendar-day-offset-y $calendar-day-offset-x
+		display flex
+		align-items center
+		justify-content center
+		box-sizing content-box
+		width 100%
+		max-width $calendar-day-size
+		height $calendar-day-size
+		min-height 1px
+
+	&__week-day
+		text-transform uppercase
+		color #9aa7bf
+
+	&__day
+		cursor pointer
+		border-radius $calendar-day-size
+		transition 150ms ease
+		transition-property color, background-color
+
+		&:hover
+		&:focus
+			&:not(.disabled):not(.in-range)
+				background-color #9aa7bf
+
+		&.disabled
+			cursor default
+			color #9aa7bf
+
+		&.in-range
+			margin-x 0
+			padding-x $calendar-day-offset-x
+			color #ffffff
+			background-color $color-accent
+			border-radius 0
+
+			&.range-start
+				margin-left $calendar-day-offset-x
+				padding-left 0
+				border-top-left-radius $calendar-day-size
+				border-bottom-left-radius $calendar-day-size
+
+			&.range-end
+				margin-right $calendar-day-offset-x
+				padding-right 0
+				border-top-right-radius $calendar-day-size
+				border-bottom-right-radius $calendar-day-size
+
+		&.current
+			position relative
+			z-index 1
+			color #2c3034
+
+			&:before
+				position absolute
+				z-index -1
+				display block
+				width ($calendar-day-size * 1.25)
+				height ($calendar-day-size * 1.25)
+				content ''
+				background-color #72aaff
+				border-radius 50%
+
+		&:nth-child({$calendar-days-in-line}n - {$calendar-days-in-line - 1})
+			@extends .calendar__day.in-range.range-start
+
+		&:nth-child({$calendar-days-in-line}n)
+			@extends .calendar__day.in-range.range-end
+
++media($breakpoints[xs], 'max')
+	$calendar-days-in-line = 7
+	$calendar-day-size = 22px
+	$calendar-day-offset-y = 2px
+	$calendar-day-offset-x = 4px
+	$calendar-width = (($calendar-day-size + ($calendar-day-offset-x * 2)) * $calendar-days-in-line) + ($calendar-day-offset-x * 2)
+
+	.calendar
+		padding $calendar-day-offset-x
+		min-width $calendar-width
+
+		&__inner
+		&__week
+		&__days
+			width $calendar-width
+
+		&__inner
+			padding $calendar-day-offset-x
+
+		&__week-day
+		&__day
+			flex 0 0 $calendar-day-size
+			margin $calendar-day-offset-y $calendar-day-offset-x
+			max-width $calendar-day-size
+			height $calendar-day-size
+
+		&__day
+			border-radius $calendar-day-size
+
+			&.in-range
+				padding-x $calendar-day-offset-x
+				background-color $color-accent
+
+				&.range-start
+					margin-left $calendar-day-offset-x
+					border-top-left-radius $calendar-day-size
+					border-bottom-left-radius $calendar-day-size
+
+				&.range-end
+					margin-right $calendar-day-offset-x
+					border-top-right-radius $calendar-day-size
+					border-bottom-right-radius $calendar-day-size
+
+			&.current
+				&:before
+					width ($calendar-day-size * 1.25)
+					height ($calendar-day-size * 1.25)
+
+			&:nth-child({$calendar-days-in-line}n - {$calendar-days-in-line - 1})
+				@extends .calendar__day.in-range.range-start
+
+			&:nth-child({$calendar-days-in-line}n)
+				@extends .calendar__day.in-range.range-end
